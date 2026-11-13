@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि रामचरितमानस में सीता को पृथ्वी की पुत्री कहा गया है?",
-        "image_prompt": "A close-up of an ancient manuscript page of Ramcharitmanas with Devanagari script, illuminated by soft candlelight.",
-        "video_motion_prompt": "Slow pan across the manuscript, subtle flicker of candle flame.",
+        "dialogue": "क्या आप जानते हैं कि महाभारत में पांडवों की एक बहन का नाम सत्या है?",
+        "image_prompt": "Ancient manuscript of Mahabharata with a faded illustration of a woman in traditional attire, surrounded by scrolls.",
+        "video_motion_prompt": "Slow zoom in on the manuscript page, gentle panning to the illustration.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह विवरण वाल्मीकि रामायण में नहीं मिलता, जहाँ सीता केवल राजा जनक की पुत्री है।",
-        "image_prompt": "An open page of Valmiki Ramayana showing the verse about Sita as daughter of King Janaka, with a faint watermark.",
-        "video_motion_prompt": "Gentle zoom in on the text, with a soft focus shift.",
+        "dialogue": "यह कहानी वान पर्व में मिलती है, जहाँ पांडवों के परिवार के बारे में विस्तृत वर्णन है।",
+        "image_prompt": "Illustration of the Vana Parva narrative, showing Pandavas in a forest setting, with a family tree diagram.",
+        "video_motion_prompt": "Camera pans across the illustration, focusing on the family tree.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रामचरितमानस का यह कथन 16वीं शताब्दी के तुर्सिदास द्वारा लिखा गया है।",
-        "image_prompt": "Portrait of Tulsidas in traditional attire, surrounded by scrolls and a small temple setting.",
-        "video_motion_prompt": "Slow dolly in, slight tilt to emphasize the portrait.",
+        "dialogue": "सत्या का विवाह विदर्भ के राजा से हुआ, जिससे पांडवों और विदर्भ के बीच गठबंधन बना।",
+        "image_prompt": "Cartoon-style depiction of Satyavati marrying a king, with a backdrop of a Vidarbha palace.",
+        "video_motion_prompt": "Camera rotates around the couple, highlighting the palace architecture.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह भिन्नता हमें दर्शाती है कि कैसे क्षेत्रीय परंपराएँ पौराणिक कथाओं को नया अर्थ देती हैं।",
-        "image_prompt": "A map of ancient India highlighting the regions of Awadh and Mithila, with arrows indicating cultural diffusion.",
-        "video_motion_prompt": "Pan across the map, arrows moving to show spread.",
+        "dialogue": "यह विवरण महाभारत वान पर्व, अध्याय 12, श्लोक 4 में मिलता है, पर कुछ विद्वान इसे परंपरागत जोड़ मानते हैं।",
+        "image_prompt": "Close-up of a Sanskrit verse on a parchment, with a hand holding a quill.",
+        "video_motion_prompt": "Hand moves to underline the verse, subtle light flicker.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "स्रोतों की जाँच से पता चलता है कि रामचरितमानस में सीता को 'पृथ्वी की पुत्री' कहा गया है।",
-        "image_prompt": "Digital screen displaying the Ramcharitmanas verse with highlighted text 'पृथ्वी की पुत्री'.",
-        "video_motion_prompt": "Zoom on highlighted phrase, subtle glow effect.",
+        "dialogue": "इससे पता चलता है कि पांडवों के परिवार में सत्या जैसी बहनें भी थीं, जो युद्ध के दौरान रणनीतिक गठबंधन में महत्वपूर्ण थीं।",
+        "image_prompt": "Strategic map of ancient India, highlighting Pandava territories and Vidarbha region.",
+        "video_motion_prompt": "Camera zooms into the map, lines connecting the regions.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि रामायण में इस तरह का उल्लेख नहीं मिलता, जिससे यह स्पष्ट होता है कि यह बाद की रचना है।",
-        "image_prompt": "A side-by-side comparison of the two verses from Ramcharitmanas and Valmiki Ramayana.",
-        "video_motion_prompt": "Split-screen with a smooth transition between the two texts.",
+        "dialogue": "हालाँकि, यह विवरण मुख्यतः एक पौराणिक कथा है, और ऐतिहासिक प्रमाण सीमित हैं।",
+        "image_prompt": "Scholars in a library, examining ancient manuscripts, with a faint glow of knowledge.",
+        "video_motion_prompt": "Camera slowly zooms out to show the library setting.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसलिए, हमें पौराणिक कथाओं को पढ़ते समय स्रोत और समय का ध्यान रखना चाहिए।",
-        "image_prompt": "A scholar in a library, holding a book, looking contemplatively at a window with sunrise.",
-        "video_motion_prompt": "Slow pan from the scholar to the window, capturing the morning light.",
+        "dialogue": "तो अगली बार जब आप महाभारत पढ़ें, पांडवों की बहन सत्या को याद रखें और उसके महत्व पर विचार करें।",
+        "image_prompt": "Modern reader holding a Mahabharata book, with a thoughtful expression.",
+        "video_motion_prompt": "Camera pans from the book to the reader's face, then fades to black.",
         "claim_refs": [
             "C1"
         ]

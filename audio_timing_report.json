@@ -2,10 +2,10 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 35.112,
+    "actual_total_audio_seconds": 43.368,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
-    "all_scenes_within_target": true,
+    "all_scenes_within_target": false,
     "final_duration_within_target": true,
     "scenes": [
         {
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.984,
-            "difference_seconds": -3.016,
+            "actual_duration_seconds": 4.464,
+            "difference_seconds": -2.536,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि रामचरितमानस में सीता को पृथ्वी की पुत्री कहा गया है?"
+            "dialogue": "क्या आप जानते हैं कि महाभारत में पांडवों की एक बहन का नाम सत्या है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.848,
-            "difference_seconds": -2.152,
+            "actual_duration_seconds": 5.328,
+            "difference_seconds": -1.672,
             "within_target": true,
-            "dialogue": "यह विवरण वाल्मीकि रामायण में नहीं मिलता, जहाँ सीता केवल राजा जनक की पुत्री है।"
+            "dialogue": "यह कहानी वान पर्व में मिलती है, जहाँ पांडवों के परिवार के बारे में विस्तृत वर्णन है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.368,
-            "difference_seconds": -2.632,
+            "actual_duration_seconds": 5.424,
+            "difference_seconds": -1.576,
             "within_target": true,
-            "dialogue": "रामचरितमानस का यह कथन 16वीं शताब्दी के तुर्सिदास द्वारा लिखा गया है।"
+            "dialogue": "सत्या का विवाह विदर्भ के राजा से हुआ, जिससे पांडवों और विदर्भ के बीच गठबंधन बना।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.216,
-            "difference_seconds": -0.784,
-            "within_target": true,
-            "dialogue": "यह भिन्नता हमें दर्शाती है कि कैसे क्षेत्रीय परंपराएँ पौराणिक कथाओं को नया अर्थ देती हैं।"
+            "actual_duration_seconds": 8.544,
+            "difference_seconds": 1.544,
+            "within_target": false,
+            "dialogue": "यह विवरण महाभारत वान पर्व, अध्याय 12, श्लोक 4 में मिलता है, पर कुछ विद्वान इसे परंपरागत जोड़ मानते हैं।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.736,
-            "difference_seconds": -1.264,
+            "actual_duration_seconds": 7.728,
+            "difference_seconds": 0.728,
             "within_target": true,
-            "dialogue": "स्रोतों की जाँच से पता चलता है कि रामचरितमानस में सीता को 'पृथ्वी की पुत्री' कहा गया है।"
+            "dialogue": "इससे पता चलता है कि पांडवों के परिवार में सत्या जैसी बहनें भी थीं, जो युद्ध के दौरान रणनीतिक गठबंधन में महत्वपूर्ण थीं।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.424,
-            "difference_seconds": -1.576,
+            "actual_duration_seconds": 5.664,
+            "difference_seconds": -1.336,
             "within_target": true,
-            "dialogue": "वाल्मीकि रामायण में इस तरह का उल्लेख नहीं मिलता, जिससे यह स्पष्ट होता है कि यह बाद की रचना है।"
+            "dialogue": "हालाँकि, यह विवरण मुख्यतः एक पौराणिक कथा है, और ऐतिहासिक प्रमाण सीमित हैं।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.536,
-            "difference_seconds": -2.464,
+            "actual_duration_seconds": 6.216,
+            "difference_seconds": -0.784,
             "within_target": true,
-            "dialogue": "इसलिए, हमें पौराणिक कथाओं को पढ़ते समय स्रोत और समय का ध्यान रखना चाहिए।"
+            "dialogue": "तो अगली बार जब आप महाभारत पढ़ें, पांडवों की बहन सत्या को याद रखें और उसके महत्व पर विचार करें।"
         }
     ]
 }
