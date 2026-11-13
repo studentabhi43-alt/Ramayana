@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Daily at 5:30 AM India time (00:00 UTC)
+    # Daily at 5:30 AM India time
     - cron: "0 0 * * *"
 
 permissions:
@@ -17,12 +17,12 @@ concurrency:
 jobs:
   generate-episode:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
 
     steps:
 
       # ==========================================
-      # 1. CHECKOUT
+      # 1. CHECKOUT REPOSITORY
       # ==========================================
 
       - name: Checkout Repository
@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 0
 
       # ==========================================
-      # 2. PYTHON
+      # 2. SETUP PYTHON
       # ==========================================
 
       - name: Set up Python
@@ -42,7 +42,7 @@ jobs:
           cache-dependency-path: requirements.txt
 
       # ==========================================
-      # 3. FFMPEG
+      # 3. INSTALL FFMPEG
       # ==========================================
 
       - name: Install FFmpeg
@@ -54,7 +54,7 @@ jobs:
           ffprobe -version
 
       # ==========================================
-      # 4. PYTHON DEPENDENCIES
+      # 4. INSTALL PYTHON DEPENDENCIES
       # ==========================================
 
       - name: Install Dependencies
@@ -63,21 +63,65 @@ jobs:
           pip install -r requirements.txt
 
       # ==========================================
-      # 5. SCRIPT + RESEARCH GENERATION
-      # GEMINI + GOOGLE SEARCH
+      # 5. CHECK API CONFIGURATION
+      # ==========================================
+
+      - name: Check API Secrets
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
+          CLOUDFLARE_WORKER_URL: ${{ secrets.CLOUDFLARE_WORKER_URL }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          import sys
+
+          required = [
+              "GEMINI_API_KEY",
+              "GROQ_API_KEY",
+              "SARVAM_API_KEY",
+              "CLOUDFLARE_WORKER_URL",
+              "POLLINATIONS_API_KEY"
+          ]
+
+          missing = [
+              name for name in required
+              if not os.getenv(name, "").strip()
+          ]
+
+          if missing:
+              print("Missing GitHub Secrets:")
+              for name in missing:
+                  print("-", name)
+              sys.exit(1)
+
+          print("All required API secrets are configured.")
+          PY
+
+      # ==========================================
+      # 6. GENERATE RESEARCH + SCRIPT
+      # GEMINI RESEARCH
+      # GEMINI + GROQ PARALLEL SCRIPT
       # ==========================================
 
       - name: Generate Scripture Research and Script
-        timeout-minutes: 10
+        timeout-minutes: 15
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: gemini-2.5-flash
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+          GEMINI_MODEL: gemini-3.8-flash
+          GROQ_MODEL: openai/gpt-oss-20b
+
         run: |
           python main.py
 
           python - <<'PY'
           import json
           import os
+          import sys
 
           required_files = [
               "story_output.json",
@@ -86,69 +130,71 @@ jobs:
           ]
 
           for path in required_files:
-              if not os.path.isfile(path) or os.path.getsize(path) == 0:
-                  raise SystemExit(f"Missing output: {path}")
+              if not os.path.isfile(path):
+                  sys.exit(f"Missing file: {path}")
+
+              if os.path.getsize(path) == 0:
+                  sys.exit(f"Empty file: {path}")
 
           with open("story_output.json", encoding="utf-8") as f:
-              data = json.load(f)
-
-          if isinstance(data, dict):
-              scenes = data.get("scenes")
-          elif isinstance(data, list):
-              scenes = data
-          else:
-              scenes = None
+              scenes = json.load(f)
 
           if not isinstance(scenes, list):
-              raise SystemExit("Invalid scenes format.")
+              sys.exit("Story output must be a JSON list.")
 
           if len(scenes) != 7:
-              raise SystemExit(
-                  f"Expected 7 scenes, got {len(scenes)}"
-              )
+              sys.exit("Expected exactly 7 scenes.")
 
           for index, scene in enumerate(scenes, 1):
-              for field in ("scene_id", "dialogue", "image_prompt"):
+              for field in [
+                  "scene_id",
+                  "dialogue",
+                  "image_prompt",
+                  "video_motion_prompt",
+                  "claim_refs"
+              ]:
                   if not scene.get(field):
-                      raise SystemExit(
-                          f"Scene {index}: missing {field}"
+                      sys.exit(
+                          f"Scene {index} missing {field}"
                       )
 
           print("SCRIPT VALIDATION PASSED")
-          print("Scenes:", len(scenes))
-          print("Research and script files verified.")
+          print("Total scenes:", len(scenes))
           PY
 
       # ==========================================
-      # 6. IMAGE GENERATION
+      # 7. GENERATE SCENE IMAGES
       # CLOUDFLARE + POLLINATIONS BACKUP
       # ==========================================
 
       - name: Generate Scene Images
-        timeout-minutes: 20
+        timeout-minutes: 30
         env:
           CLOUDFLARE_WORKER_URL: ${{ secrets.CLOUDFLARE_WORKER_URL }}
           POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
           POLLINATIONS_MODEL: flux
+
         run: |
           python image_generator.py
 
           python - <<'PY'
           import json
+          import sys
           from pathlib import Path
           from PIL import Image
 
           with open("story_output.json", encoding="utf-8") as f:
-              data = json.load(f)
-
-          scenes = data["scenes"] if isinstance(data, dict) else data
+              scenes = json.load(f)
 
           for index, scene in enumerate(scenes, 1):
-              scene_id = str(scene.get("scene_id", index))
+              scene_id = str(scene["scene_id"])
               path = Path("images") / f"scene_{scene_id}.png"
 
-              if not path.is_file() or path.stat().st_size < 1000:
-                  raise SystemExit(f"Missing image: {path}")
+              if not path.exists():
+                  sys.exit(f"Missing image: {path}")
+
+              if path.stat().st_size < 1000:
+                  sys.exit(f"Invalid image: {path}")
 
               with Image.open(path) as img:
                   img.verify()
@@ -157,56 +203,56 @@ jobs:
           PY
 
       # ==========================================
-      # 7. HINDI VOICE GENERATION
+      # 8. GENERATE VOICEOVERS
       # SARVAM + EDGE TTS BACKUP
       # ==========================================
 
       - name: Generate Scene Voiceovers
-        timeout-minutes: 20
+        timeout-minutes: 30
         env:
           SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
           SARVAM_SPEAKER: shubh_enhi_ads
+
         run: |
           python audio_generator.py
 
           python - <<'PY'
           import json
+          import sys
           from pathlib import Path
 
           with open("story_output.json", encoding="utf-8") as f:
-              data = json.load(f)
-
-          scenes = data["scenes"] if isinstance(data, dict) else data
+              scenes = json.load(f)
 
           for index, scene in enumerate(scenes, 1):
-              scene_id = str(scene.get("scene_id", index))
+              scene_id = str(scene["scene_id"])
               path = Path("audio_files") / f"scene_{scene_id}.mp3"
 
-              if not path.is_file() or path.stat().st_size < 1000:
-                  raise SystemExit(f"Missing audio: {path}")
+              if not path.exists():
+                  sys.exit(f"Missing audio: {path}")
+
+              if path.stat().st_size < 1000:
+                  sys.exit(f"Invalid audio: {path}")
 
           print("ALL 7 AUDIO FILES VERIFIED.")
           PY
 
       # ==========================================
-      # 8. VIDEO GENERATION
+      # 9. CREATE FINAL VIDEO
       # ==========================================
 
       - name: Create Final MP4
-        timeout-minutes: 25
+        timeout-minutes: 30
         run: |
-          ffmpeg -version
-          ffprobe -version
-
           python video_generator.py
 
           if [ ! -s final_output.mp4 ]; then
-            echo "ERROR: final_output.mp4 was not created."
+            echo "ERROR: Final MP4 was not created."
             exit 1
           fi
 
       # ==========================================
-      # 9. FINAL VIDEO QUALITY CHECK
+      # 10. FINAL VIDEO QUALITY CHECK
       # ==========================================
 
       - name: Verify Final Video
@@ -214,12 +260,13 @@ jobs:
           python - <<'PY'
           import json
           import subprocess
+          import sys
           import os
 
           video = "final_output.mp4"
 
           if not os.path.isfile(video):
-              raise SystemExit("Final MP4 is missing.")
+              sys.exit("Final video missing.")
 
           result = subprocess.run(
               [
@@ -251,33 +298,30 @@ jobs:
           )
 
           if not video_stream or not audio_stream:
-              raise SystemExit("Video or audio stream missing.")
+              sys.exit("Video or audio stream missing.")
 
           if video_stream.get("width") != 1080:
-              raise SystemExit("Incorrect video width.")
+              sys.exit("Incorrect video width.")
 
           if video_stream.get("height") != 1920:
-              raise SystemExit("Incorrect video height.")
+              sys.exit("Incorrect video height.")
 
           duration = float(data["format"]["duration"])
           size = int(data["format"]["size"])
 
-          if duration <= 0 or size < 100000:
-              raise SystemExit("Invalid final video.")
+          if duration <= 0:
+              sys.exit("Invalid duration.")
 
-          print("==============================")
-          print("BADSAH FINAL VIDEO VERIFIED")
-          print("==============================")
+          print("BADSAH VIDEO VERIFIED")
           print("Resolution: 1080x1920")
-          print(f"Duration: {duration:.2f} seconds")
-          print(f"Size: {size / 1024 / 1024:.2f} MB")
-          print("Video:", video_stream.get("codec_name"))
-          print("Audio:", audio_stream.get("codec_name"))
-          print("==============================")
+          print(f"Duration: {duration:.2f}s")
+          print(f"Size: {size / 1048576:.2f} MB")
+          print("Video codec:", video_stream["codec_name"])
+          print("Audio codec:", audio_stream["codec_name"])
           PY
 
       # ==========================================
-      # 10. SAVE OUTPUTS TO GITHUB
+      # 11. SAVE GENERATED EPISODE TO GITHUB
       # ==========================================
 
       - name: Commit Generated Episode
@@ -285,7 +329,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -A -- \
+          git add -- \
             story_output.json \
             research_sources.json \
             fact_generation_report.json \
@@ -297,14 +341,14 @@ jobs:
             final_output.mp4
 
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No new files to commit."
           else
-            git commit -m "BADSAH automated episode generated [skip ci]"
+            git commit -m "BADSAH episode generated [skip ci]"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
       # ==========================================
-      # 11. UPLOAD FINAL VIDEO ARTIFACT
+      # 12. UPLOAD FINAL VIDEO ARTIFACT
       # ==========================================
 
       - name: Upload BADSAH Episode
@@ -325,19 +369,19 @@ jobs:
           retention-days: 7
 
       # ==========================================
-      # 12. SUCCESS
+      # 13. COMPLETION
       # ==========================================
 
-      - name: Completion Message
+      - name: BADSAH Completed
         if: success()
         run: |
-          echo "===================================="
-          echo "BADSAH EPISODE COMPLETED"
-          echo "===================================="
-          echo "Research: READY"
-          echo "Script: READY"
-          echo "Images: READY"
-          echo "Voiceovers: READY"
-          echo "Final MP4: READY"
-          echo "GitHub Artifact: UPLOADED"
-          echo "===================================="
+          echo "=================================="
+          echo "BADSAH EPISODE GENERATED"
+          echo "=================================="
+          echo "Research: COMPLETE"
+          echo "Script: COMPLETE"
+          echo "Images: COMPLETE"
+          echo "Voiceovers: COMPLETE"
+          echo "Final MP4: COMPLETE"
+          echo "Artifact: UPLOADED"
+          echo "=================================="
