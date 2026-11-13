@@ -1,4 +1,3 @@
-
 import os
 import re
 import json
@@ -7,17 +6,14 @@ import threading
 import requests
 
 from pathlib import Path
-from concurrent.futures import (
-    ThreadPoolExecutor,
-    wait,
-    FIRST_COMPLETED
-)
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 
-# =====================================================
-# BADSAH SCRIPTURE ENGINE V9
-# PARALLEL GEMINI + GROQ
-# AUTOMATIC RETRIES + JSON VALIDATION
-# =====================================================
+
+# ============================================================
+# BADSAH V10 — PARALLEL AI RACE ENGINE
+# GEMINI FAST MODELS + GROQ
+# FIRST VALID RESULT WINS
+# ============================================================
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -25,226 +21,51 @@ OUTPUT_FILE = BASE_DIR / "story_output.json"
 RESEARCH_FILE = BASE_DIR / "research_sources.json"
 REPORT_FILE = BASE_DIR / "fact_generation_report.json"
 
-GEMINI_API_KEY = os.getenv(
-    "GEMINI_API_KEY", ""
-).strip()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
 
-GROQ_API_KEY = os.getenv(
-    "GROQ_API_KEY", ""
-).strip()
-
-GEMINI_MODEL = os.getenv(
-    "GEMINI_MODEL",
-    "gemini-3.8-flash"
-).strip()
+# Fast Gemini models: try in this order.
+GEMINI_MODELS = [
+    item.strip()
+    for item in os.getenv(
+        "GEMINI_MODELS",
+        "gemini-3.8-flash,gemini-3.8-flash-lite"
+    ).split(",")
+    if item.strip()
+]
 
 GROQ_MODEL = os.getenv(
     "GROQ_MODEL",
     "openai/gpt-oss-20b"
 ).strip()
 
+GROQ_RETRY_WINDOW = 180
+GROQ_RETRY_INTERVAL = 5
+
+REQUEST_TIMEOUT = (15, 90)
+
 TOTAL_SCENES = 7
-
-MIN_WORDS = 95
-MAX_WORDS = 145
-
 MIN_SCENE_WORDS = 11
 MAX_SCENE_WORDS = 24
 
-REQUEST_TIMEOUT = (15, 90)
-RETRY_DELAY = 4
-PROVIDER_RETRY_SECONDS = 100
-
 winner_event = threading.Event()
 
-session = requests.Session()
 
-# =====================================================
-# SCRIPTURE TOPIC AREAS
-# =====================================================
+# ============================================================
+# HTTP
+# ============================================================
 
-TOPIC_AREAS = [
-    "Ramayana",
-    "Mahabharata",
-    "Bhagavad Gita",
-    "Puranas",
-    "Vedic literature",
-    "Radha Krishna traditions",
-    "Valmiki Ramayana and Ramcharitmanas",
-    "different regional versions of Indian epics"
-]
+def new_session():
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "BADSAH-V10/1.0"
+    })
+    return session
 
-# =====================================================
-# RESEARCH PROMPT
-# =====================================================
 
-RESEARCH_PROMPT = """
-You are BADSAH's scripture research assistant.
-
-Your task is to discover ONE interesting, lesser-known,
-well-supported topic from Indian scriptures and traditions.
-
-Possible areas:
-Ramayana, Mahabharata, Bhagavad Gita, Puranas,
-Vedic literature, Radha-Krishna traditions,
-regional retellings and differences between texts.
-
-RESEARCH RULES:
-
-1. Prefer primary scripture sources and reliable translations.
-2. Search for actual textual evidence.
-3. Never invent a verse, chapter, kand, parva or quotation.
-4. Clearly distinguish original text, later retelling,
-   regional tradition, interpretation and popular belief.
-5. Do not present folklore as universally accepted scripture.
-6. Do not make sensational claims without evidence.
-7. If two texts differ, identify both texts accurately.
-8. If evidence is uncertain, explain the uncertainty.
-9. Do not fabricate source URLs.
-10. Do not invent historical facts.
-
-Return JSON with this structure:
-
-{
-  "topic": "topic name",
-  "title": "short engaging title",
-  "central_question": "question answered by the video",
-  "topic_category": "comparison / hidden detail / textual fact",
-  "summary": "short factual summary",
-  "claims": [
-    {
-      "claim_id": "C1",
-      "claim": "factual statement",
-      "evidence_type": "primary text / later retelling / tradition / interpretation",
-      "source_urls": ["exact URL used"],
-      "limitations": "what this evidence does not establish"
-    }
-  ],
-  "important_distinction": "important clarification",
-  "conclusion": "balanced conclusion",
-  "research_warnings": []
-}
-
-Include at least 3 useful claims.
-
-Use Google Search for research.
-Return JSON only.
-"""
-
-# =====================================================
-# SCRIPT PROMPT
-# =====================================================
-
-def build_script_prompt(research):
-
-    research_text = json.dumps(
-        research,
-        ensure_ascii=False,
-        indent=2
-    )
-
-    return f"""
-You are the professional scriptwriter of BADSAH.
-
-Create a premium 7-scene vertical video script
-about the supplied scripture research.
-
-RESEARCH MATERIAL:
-{research_text}
-
-CONTENT STYLE:
-- Balanced cinematic + informative.
-- Natural Hindi narration with familiar English terms.
-- Write narration primarily in Devanagari.
-- Engaging, emotional and easy to understand.
-- Respectful treatment of all religious traditions.
-- No unnecessary exaggeration.
-- No fictional characters.
-- No recurring character requirement.
-
-FACTUAL RULES:
-1. Use ONLY the supplied research.
-2. Never invent scripture references or quotations.
-3. Never add claims not supported by the research.
-4. Clearly distinguish different texts and traditions.
-5. Never describe an interpretation as an explicit verse.
-6. Preserve important limitations and uncertainty.
-7. Do not create a fake mystery.
-8. Keep every scene connected to the topic.
-
-VIDEO STRUCTURE:
-Exactly 7 scenes.
-Target video length: approximately 40–55 seconds.
-Each scene should contain concise narration.
-Scene 1: strong but factual hook.
-Scenes 2–5: explain the evidence and details.
-Scene 6: explain the contrast or important distinction.
-Scene 7: thoughtful conclusion and memorable ending.
-
-TIMING:
-Scene 1: 00:00–00:07
-Scene 2: 00:07–00:14
-Scene 3: 00:14–00:21
-Scene 4: 00:21–00:28
-Scene 5: 00:28–00:35
-Scene 6: 00:35–00:42
-Scene 7: 00:42–00:49
-
-OUTPUT FORMAT:
-Return ONLY a valid JSON array containing exactly 7 objects.
-
-Each object MUST contain:
-
-scene_id
-start_time
-end_time
-target_duration_seconds
-scene_time_description
-visible_characters
-dialogue
-image_prompt
-video_motion_prompt
-claim_refs
-
-RULES FOR FIELDS:
-
-scene_id:
-Use 1 to 7.
-
-visible_characters:
-Always use an empty list [].
-No fixed characters are required.
-
-dialogue:
-Narration only.
-Use natural spoken Hindi in Devanagari.
-Keep each scene between 11 and 24 words.
-Do not use speaker labels.
-
-image_prompt:
-Describe a detailed, topic-specific documentary visual.
-Use manuscripts, historical locations, temples, objects,
-maps, illustrations and symbolic scenes where appropriate.
-Avoid unrelated fantasy characters.
-
-video_motion_prompt:
-Describe camera movement, environmental movement
-and cinematic visual progression.
-
-claim_refs:
-A list containing one or more exact claim_id values
-from the supplied research.
-
-Never invent claim IDs.
-
-Return valid JSON only.
-No markdown.
-No explanation.
-"""
-
-# =====================================================
-# JSON EXTRACTION
-# =====================================================
+# ============================================================
+# JSON UTILITIES
+# ============================================================
 
 def extract_json(raw):
 
@@ -260,135 +81,258 @@ def extract_json(raw):
         flags=re.IGNORECASE
     )
 
-    raw = re.sub(
-        r"\s*```$",
-        "",
-        raw
+    raw = re.sub(r"\s*```$", "", raw)
+
+    # Find a JSON object or array.
+    start_positions = [
+        position
+        for position in (
+            raw.find("{"),
+            raw.find("[")
+        )
+        if position >= 0
+    ]
+
+    if not start_positions:
+        raise ValueError("No JSON found.")
+
+    start = min(start_positions)
+
+    opening = raw[start]
+    closing = "}" if opening == "{" else "]"
+
+    depth = 0
+    in_string = False
+    escaped = False
+
+    for index in range(start, len(raw)):
+
+        char = raw[index]
+
+        if in_string:
+
+            if escaped:
+                escaped = False
+
+            elif char == "\\":
+                escaped = True
+
+            elif char == '"':
+                in_string = False
+
+            continue
+
+        if char == '"':
+            in_string = True
+
+        elif char == opening:
+            depth += 1
+
+        elif char == closing:
+            depth -= 1
+
+            if depth == 0:
+                return json.loads(raw[start:index + 1])
+
+    raise ValueError("Incomplete JSON response.")
+
+
+def save_json(path, data):
+
+    temporary = path.with_suffix(path.suffix + ".tmp")
+
+    temporary.write_text(
+        json.dumps(
+            data,
+            ensure_ascii=False,
+            indent=4
+        ),
+        encoding="utf-8"
     )
 
-    start = raw.find("[")
-    end = raw.rfind("]")
-
-    if start >= 0 and end > start:
-        return json.loads(raw[start:end + 1])
-
-    start = raw.find("{")
-    end = raw.rfind("}")
-
-    if start >= 0 and end > start:
-        return json.loads(raw[start:end + 1])
-
-    raise ValueError("No valid JSON found.")
+    temporary.replace(path)
 
 
-# =====================================================
-# WORD COUNT
-# =====================================================
+# ============================================================
+# SCRIPT PROMPT
+# ============================================================
 
-def count_words(text):
+SCRIPT_PROMPT = """
+You are BADSAH, a professional Indian scripture documentary
+researcher and short-video scriptwriter.
 
-    return len(
-        re.findall(r"\S+", text.strip())
-    )
+Generate ONE complete episode about a genuinely interesting
+lesser-known fact or contrast from Indian scriptures.
+
+Possible areas:
+- Ramayana
+- Mahabharata
+- Bhagavad Gita
+- Puranas
+- Vedic literature
+- Radha-Krishna traditions
+- Valmiki Ramayana vs Ramcharitmanas
+- Different regional retellings
+
+IMPORTANT FACTUAL RULES:
+
+1. Never invent a verse, chapter, kand, parva or quotation.
+2. Clearly distinguish primary scripture, later retelling,
+   regional tradition, popular belief and interpretation.
+3. Never present an unverified claim as confirmed fact.
+4. Never fabricate source URLs.
+5. If a precise reference is uncertain, say so.
+6. Keep the narration respectful.
+7. Do not create a fake mystery.
+8. Do not add unsupported claims for dramatic effect.
+
+VIDEO STYLE:
+- Balanced cinematic and informative.
+- Natural Hindi narration, mainly in Devanagari.
+- Easy-to-understand spoken language.
+- Strong opening hook.
+- Seven connected scenes.
+- Approximately 40–55 seconds overall.
+- Topic-specific documentary visuals.
+- No fixed fictional characters.
+
+RETURN ONLY THIS JSON OBJECT:
+
+{
+  "topic": "topic name",
+  "title": "engaging video title",
+  "central_question": "main question",
+  "topic_category": "comparison or hidden detail or textual fact",
+  "summary": "short factual summary",
+  "claims": [
+    {
+      "claim_id": "C1",
+      "claim": "specific factual statement",
+      "evidence_type": "primary text / later retelling / regional tradition / interpretation",
+      "scripture_reference": "exact reference if known, otherwise state uncertainty",
+      "limitations": "what the evidence does not establish"
+    }
+  ],
+  "sources": [
+    {
+      "source_name": "source name",
+      "source_url": "real URL if actually known",
+      "source_type": "primary text / translation / scholarly reference"
+    }
+  ],
+  "important_distinction": "important clarification",
+  "conclusion": "balanced conclusion",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "start_time": "00:00",
+      "end_time": "00:07",
+      "target_duration_seconds": 7,
+      "scene_time_description": "Scene 1",
+      "visible_characters": [],
+      "dialogue": "Hindi narration in Devanagari",
+      "image_prompt": "detailed documentary image description",
+      "video_motion_prompt": "camera and environmental movement",
+      "claim_refs": ["C1"]
+    }
+  ]
+}
+
+SCENE RULES:
+
+Exactly 7 scenes.
+
+Scene timings:
+1. 00:00–00:07
+2. 00:07–00:14
+3. 00:14–00:21
+4. 00:21–00:28
+5. 00:28–00:35
+6. 00:35–00:42
+7. 00:42–00:49
+
+Each dialogue must contain 11–24 words.
+
+Every scene must have:
+- scene_id
+- dialogue
+- image_prompt
+- video_motion_prompt
+- claim_refs
+
+Every claim_refs entry must refer to a claim_id in claims.
+
+Use [] for visible_characters.
+
+Do not add markdown or explanations.
+Return valid JSON only.
+"""
 
 
-# =====================================================
-# VALIDATE RESEARCH
-# =====================================================
+# ============================================================
+# VALIDATE AI RESULT
+# ============================================================
 
-def validate_research(research, grounding_urls):
+def word_count(text):
+    return len(re.findall(r"\S+", str(text).strip()))
 
-    if not isinstance(research, dict):
-        raise ValueError("Research must be a JSON object.")
+
+def validate_result(data, provider):
+
+    if not isinstance(data, dict):
+        raise ValueError("Response must be a JSON object.")
 
     required = [
         "topic",
         "title",
-        "central_question",
         "claims",
+        "sources",
+        "scenes",
         "important_distinction",
         "conclusion"
     ]
 
     for field in required:
 
-        if not research.get(field):
+        if not data.get(field):
             raise ValueError(
-                f"Research missing field: {field}"
+                f"Missing required field: {field}"
             )
 
-    claims = research["claims"]
+    claims = data["claims"]
+    scenes = data["scenes"]
 
-    if not isinstance(claims, list) or len(claims) < 3:
+    if not isinstance(claims, list) or not claims:
+        raise ValueError("No research claims returned.")
+
+    if not isinstance(scenes, list):
+        raise ValueError("Scenes must be a list.")
+
+    if len(scenes) != TOTAL_SCENES:
         raise ValueError(
-            "Research must contain at least 3 claims."
+            f"Expected 7 scenes, got {len(scenes)}."
         )
 
-    if not grounding_urls:
-        raise ValueError(
-            "Google Search returned no grounding URLs."
-        )
+    claim_ids = set()
 
-    verified_urls = set(grounding_urls)
-
-    for index, claim in enumerate(claims, start=1):
+    for claim in claims:
 
         if not isinstance(claim, dict):
-            raise ValueError(
-                f"Research claim {index} is invalid."
-            )
+            raise ValueError("Invalid claim object.")
 
         for field in (
             "claim_id",
             "claim",
             "evidence_type",
-            "source_urls"
+            "limitations"
         ):
 
             if not claim.get(field):
                 raise ValueError(
-                    f"Claim {index} missing {field}."
+                    f"Claim missing {field}."
                 )
 
-        if not isinstance(claim["source_urls"], list):
-            raise ValueError(
-                f"Claim {index} source_urls must be a list."
-            )
-
-        matched = [
-            url for url in claim["source_urls"]
-            if url in verified_urls
-        ]
-
-        if not matched:
-            raise ValueError(
-                f"Claim {index} has no URL matching "
-                "Google Search grounding."
-            )
-
-        claim["source_urls"] = matched
-
-    return research
-
-
-# =====================================================
-# VALIDATE SCRIPT
-# =====================================================
-
-def validate_story(story, research):
-
-    if not isinstance(story, list):
-        raise ValueError("Story must be a JSON array.")
-
-    if len(story) != TOTAL_SCENES:
-        raise ValueError(
-            f"Expected 7 scenes, received {len(story)}."
-        )
-
-    claims = {
-        str(item["claim_id"])
-        for item in research["claims"]
-    }
+        claim_ids.add(str(claim["claim_id"]))
 
     timings = [
         ("00:00", "00:07"),
@@ -400,171 +344,139 @@ def validate_story(story, research):
         ("00:42", "00:49")
     ]
 
+    cleaned_scenes = []
     total_words = 0
-    scene_counts = []
-    cleaned = []
 
-    for index, scene in enumerate(story):
-
-        number = index + 1
+    for index, scene in enumerate(scenes):
 
         if not isinstance(scene, dict):
-            raise ValueError(
-                f"Scene {number} is invalid."
-            )
+            raise ValueError("Invalid scene.")
 
-        required = [
+        required_scene_fields = [
             "dialogue",
             "image_prompt",
             "video_motion_prompt",
             "claim_refs"
         ]
 
-        for field in required:
+        for field in required_scene_fields:
 
             if not scene.get(field):
                 raise ValueError(
-                    f"Scene {number}: missing {field}."
+                    f"Scene {index + 1}: missing {field}."
                 )
 
-        dialogue = str(
-            scene["dialogue"]
-        ).strip()
-
-        image_prompt = str(
-            scene["image_prompt"]
-        ).strip()
-
-        motion_prompt = str(
-            scene["video_motion_prompt"]
-        ).strip()
-
-        words = count_words(dialogue)
+        dialogue = str(scene["dialogue"]).strip()
+        words = word_count(dialogue)
 
         if not MIN_SCENE_WORDS <= words <= MAX_SCENE_WORDS:
             raise ValueError(
-                f"Scene {number}: {words} words. "
-                f"Required {MIN_SCENE_WORDS}-{MAX_SCENE_WORDS}."
+                f"Scene {index + 1}: invalid word count {words}."
             )
 
-        if not image_prompt or not motion_prompt:
+        refs = scene["claim_refs"]
+
+        if not isinstance(refs, list) or not refs:
             raise ValueError(
-                f"Scene {number}: empty visual prompt."
+                f"Scene {index + 1}: missing claim references."
             )
 
-        claim_refs = scene["claim_refs"]
+        unknown_refs = set(
+            str(ref) for ref in refs
+        ) - claim_ids
 
-        if not isinstance(claim_refs, list) or not claim_refs:
+        if unknown_refs:
             raise ValueError(
-                f"Scene {number}: no claim references."
-            )
-
-        unknown = set(
-            map(str, claim_refs)
-        ) - claims
-
-        if unknown:
-            raise ValueError(
-                f"Scene {number}: unknown claims {unknown}."
+                f"Scene {index + 1}: unknown claims {unknown_refs}."
             )
 
         start, end = timings[index]
 
-        cleaned.append({
-            "scene_id": number,
+        cleaned_scenes.append({
+            "scene_id": index + 1,
             "start_time": start,
             "end_time": end,
-            "target_duration_seconds": 7.0,
+            "target_duration_seconds": 7,
             "scene_time_description": (
-                f"Scene {number}, approximately 7 seconds."
+                f"Scene {index + 1}, approximately 7 seconds"
             ),
             "visible_characters": [],
             "dialogue": dialogue,
-            "image_prompt": image_prompt,
-            "video_motion_prompt": motion_prompt,
-            "claim_refs": list(map(str, claim_refs))
+            "image_prompt": str(scene["image_prompt"]).strip(),
+            "video_motion_prompt": str(
+                scene["video_motion_prompt"]
+            ).strip(),
+            "claim_refs": [
+                str(ref) for ref in refs
+            ]
         })
 
         total_words += words
-        scene_counts.append(words)
 
-    if not MIN_WORDS <= total_words <= MAX_WORDS:
+    if not 80 <= total_words <= 168:
         raise ValueError(
-            f"Total dialogue words: {total_words}. "
-            f"Required {MIN_WORDS}-{MAX_WORDS}."
+            f"Total dialogue word count is {total_words}."
         )
 
-    return cleaned, total_words, scene_counts
+    data["scenes"] = cleaned_scenes
+    data["provider"] = provider
+
+    return data
 
 
-# =====================================================
-# GEMINI REQUEST
-# =====================================================
+# ============================================================
+# GEMINI API
+# ============================================================
 
-def request_gemini(prompt, use_search=False):
+def gemini_request(model):
 
-    if not GEMINI_API_KEY:
-        raise RuntimeError("Gemini API key missing.")
+    session = new_session()
 
     url = (
         "https://generativelanguage.googleapis.com/"
-        f"v1beta/models/{GEMINI_MODEL}:generateContent"
+        f"v1beta/models/{model}:generateContent"
     )
-
-    headers = {
-        "Content-Type": "application/json",
-        "x-goog-api-key": GEMINI_API_KEY
-    }
 
     payload = {
         "contents": [{
             "parts": [{
-                "text": prompt
+                "text": SCRIPT_PROMPT
             }]
         }],
+        "tools": [{
+            "google_search": {}
+        }],
         "generationConfig": {
-            "temperature": 0.35,
-            "responseMimeType": "application/json",
+            "temperature": 0.4,
             "maxOutputTokens": 12000
         }
     }
 
-    if use_search:
-        payload["tools"] = [{
-            "google_search": {}
-        }]
-
     response = session.post(
         url,
-        headers=headers,
+        headers={
+            "Content-Type": "application/json",
+            "x-goog-api-key": GEMINI_API_KEY
+        },
         json=payload,
         timeout=REQUEST_TIMEOUT
     )
 
     if response.status_code != 200:
 
-        if response.status_code in (400, 401, 403, 404):
-            raise RuntimeError(
-                f"PERMANENT HTTP {response.status_code}: "
-                f"{response.text[:1000]}"
-            )
-
-        raise ConnectionError(
+        raise RuntimeError(
             f"Gemini HTTP {response.status_code}: "
             f"{response.text[:700]}"
         )
 
-    data = response.json()
+    result = response.json()
 
-    candidates = data.get("candidates", [])
+    candidates = result.get("candidates", [])
 
     if not candidates:
         raise ValueError("Gemini returned no candidates.")
 
     candidate = candidates[0]
-
-    if candidate.get("finishReason") == "MAX_TOKENS":
-        raise ValueError("Gemini response was truncated.")
 
     parts = candidate.get(
         "content", {}
@@ -584,125 +496,88 @@ def request_gemini(prompt, use_search=False):
         "groundingMetadata", {}
     )
 
-    for chunk in metadata.get("groundingChunks", []):
+    for item in metadata.get("groundingChunks", []):
 
-        web_data = chunk.get("web", {})
-
-        uri = web_data.get("uri")
+        web = item.get("web", {})
+        uri = web.get("uri")
 
         if uri and uri not in grounding_urls:
             grounding_urls.append(uri)
 
-    return raw, grounding_urls
+    data = extract_json(raw)
+
+    if not grounding_urls:
+        raise ValueError(
+            "Gemini did not return Google Search grounding URLs."
+        )
+
+    data = validate_result(data, "GEMINI")
+
+    data["_grounding_urls"] = grounding_urls
+
+    return data
 
 
-# =====================================================
-# RESEARCH WORKER
-# =====================================================
+# ============================================================
+# GEMINI WORKER
+# Switch fast model on failure
+# ============================================================
 
-def research_worker():
+def gemini_worker():
 
-    print("\n[GEMINI] Starting scripture research.")
+    if not GEMINI_API_KEY:
+        print("[GEMINI] API key missing.")
+        return None
 
-    deadline = (
-        time.monotonic() + PROVIDER_RETRY_SECONDS
-    )
+    for model in GEMINI_MODELS:
 
-    attempt = 0
+        if winner_event.is_set():
+            return None
 
-    while time.monotonic() < deadline:
+        print(f"\n[GEMINI] Trying fast model: {model}")
 
-        attempt += 1
-
+        # Model errors cause a switch to the next fast model.
+        # Temporary errors also move to the next model.
         try:
 
-            print(
-                f"[GEMINI] Research attempt {attempt}"
-            )
+            result = gemini_request(model)
 
-            raw, grounding_urls = request_gemini(
-                RESEARCH_PROMPT,
-                use_search=True
-            )
+            if winner_event.is_set():
+                return None
 
-            research = json.loads(raw)
-
-            research = validate_research(
-                research,
-                grounding_urls
-            )
-
-            # Store only source URLs actually returned
-            # by Gemini Google Search grounding.
-            sources = []
-
-            for index, url in enumerate(
-                grounding_urls,
-                start=1
-            ):
-
-                sources.append({
-                    "source_id": f"S{index}",
-                    "url": url
-                })
-
-            research["grounded_sources"] = sources
+            result["_model"] = model
 
             print(
-                "[GEMINI] Research validated:",
-                research["topic"]
+                f"[GEMINI] VALID RESULT from {model}"
             )
 
-            return research
+            return result
 
         except Exception as error:
 
-            message = str(error)
-
             print(
-                "[GEMINI] Research failed:",
-                message[:700]
+                f"[GEMINI] {model} failed: "
+                f"{str(error)[:500]}"
             )
 
-            if (
-                "PERMANENT HTTP 401" in message
-                or "PERMANENT HTTP 403" in message
-                or "PERMANENT HTTP 404" in message
-            ):
-                raise
+            print("[GEMINI] Switching to next fast model.")
 
-            remaining = deadline - time.monotonic()
-
-            if remaining <= 0:
-                break
-
-            time.sleep(
-                min(RETRY_DELAY, remaining)
-            )
-
-    raise RuntimeError(
-        "Gemini research failed after retries."
-    )
+    print("[GEMINI] All configured fast models failed.")
+    return None
 
 
-# =====================================================
-# GROQ REQUEST
-# =====================================================
+# ============================================================
+# GROQ API
+# ============================================================
 
-def request_groq(prompt):
+def groq_request():
 
-    if not GROQ_API_KEY:
-        raise RuntimeError("Groq API key missing.")
+    session = new_session()
 
     url = (
         "https://api.groq.com/openai/v1/"
         "chat/completions"
     )
-
-    headers = {
-        "Authorization": f"Bearer {GROQ_API_KEY}",
-        "Content-Type": "application/json"
-    }
 
     payload = {
         "model": GROQ_MODEL,
@@ -710,43 +585,40 @@ def request_groq(prompt):
             {
                 "role": "system",
                 "content": (
-                    "You are BADSAH's professional "
-                    "scriptwriter. Follow the supplied "
-                    "research strictly. Return valid JSON only."
+                    "You are BADSAH's scripture documentary "
+                    "researcher and professional Hindi scriptwriter. "
+                    "Return valid JSON only. Never invent sources."
                 )
             },
             {
                 "role": "user",
-                "content": prompt
+                "content": SCRIPT_PROMPT
             }
         ],
-        "temperature": 0.5,
-        "max_completion_tokens": 8192
+        "temperature": 0.4,
+        "max_tokens": 12000
     }
 
     response = session.post(
         url,
-        headers=headers,
+        headers={
+            "Authorization": f"Bearer {GROQ_API_KEY}",
+            "Content-Type": "application/json"
+        },
         json=payload,
         timeout=REQUEST_TIMEOUT
     )
 
     if response.status_code != 200:
 
-        if response.status_code in (400, 401, 403, 404):
-            raise RuntimeError(
-                f"PERMANENT HTTP {response.status_code}: "
-                f"{response.text[:1000]}"
-            )
-
-        raise ConnectionError(
+        raise RuntimeError(
             f"Groq HTTP {response.status_code}: "
             f"{response.text[:700]}"
         )
 
-    data = response.json()
+    result = response.json()
 
-    choices = data.get("choices", [])
+    choices = result.get("choices", [])
 
     if not choices:
         raise ValueError("Groq returned no choices.")
@@ -754,241 +626,131 @@ def request_groq(prompt):
     choice = choices[0]
 
     if choice.get("finish_reason") == "length":
-        raise ValueError("Groq output was truncated.")
+        raise ValueError("Groq response was truncated.")
 
     raw = choice.get(
         "message", {}
     ).get("content", "")
 
-    if not raw:
-        raise ValueError("Groq returned empty content.")
+    data = extract_json(raw)
 
-    return raw
-
-
-# =====================================================
-# GEMINI SCRIPT WORKER
-# =====================================================
-
-def gemini_script_worker(prompt, research):
-
-    deadline = (
-        time.monotonic() + PROVIDER_RETRY_SECONDS
-    )
-
-    attempt = 0
-
-    print("\n[GEMINI] Script generation started.")
-
-    while time.monotonic() < deadline:
-
-        if winner_event.is_set():
-            return None
-
-        attempt += 1
-
-        try:
-
-            raw, _ = request_gemini(
-                prompt,
-                use_search=False
-            )
-
-            story = extract_json(raw)
-
-            clean, words, counts = validate_story(
-                story,
-                research
-            )
-
-            if winner_event.is_set():
-                return None
-
-            print(
-                f"[GEMINI] Valid script: {words} words."
-            )
-
-            return {
-                "provider": "GEMINI",
-                "model": GEMINI_MODEL,
-                "story": clean,
-                "word_count": words,
-                "scene_counts": counts,
-                "attempts": attempt
-            }
-
-        except Exception as error:
-
-            print(
-                f"[GEMINI] Script attempt {attempt} failed: "
-                f"{str(error)[:600]}"
-            )
-
-            message = str(error)
-
-            if (
-                "PERMANENT HTTP 401" in message
-                or "PERMANENT HTTP 403" in message
-                or "PERMANENT HTTP 404" in message
-            ):
-                return None
-
-            remaining = deadline - time.monotonic()
-
-            if remaining <= 0:
-                break
-
-            time.sleep(
-                min(RETRY_DELAY, remaining)
-            )
-
-    return None
+    return validate_result(data, "GROQ")
 
 
-# =====================================================
-# GROQ SCRIPT WORKER
-# =====================================================
+# ============================================================
+# GROQ WORKER
+# RETRY EVERY 5 SECONDS, MAX 3 MINUTES
+# ============================================================
 
-def groq_script_worker(prompt, research):
+def groq_worker():
 
     if not GROQ_API_KEY:
         print("[GROQ] API key missing.")
         return None
 
-    deadline = (
-        time.monotonic() + PROVIDER_RETRY_SECONDS
-    )
-
+    start = time.monotonic()
     attempt = 0
 
-    print("\n[GROQ] Script generation started in parallel.")
+    print(
+        f"\n[GROQ] Starting parallel race with {GROQ_MODEL}"
+    )
 
-    while time.monotonic() < deadline:
+    while (
+        time.monotonic() - start
+    ) < GROQ_RETRY_WINDOW:
 
         if winner_event.is_set():
             return None
 
         attempt += 1
 
+        elapsed = int(
+            time.monotonic() - start
+        )
+
+        print(
+            f"[GROQ] Attempt {attempt} | "
+            f"{elapsed}/{GROQ_RETRY_WINDOW} seconds"
+        )
+
         try:
 
-            raw = request_groq(prompt)
-
-            story = extract_json(raw)
-
-            clean, words, counts = validate_story(
-                story,
-                research
-            )
+            result = groq_request()
 
             if winner_event.is_set():
                 return None
 
+            result["_model"] = GROQ_MODEL
+
             print(
-                f"[GROQ] Valid script: {words} words."
+                "[GROQ] VALID RESULT RECEIVED."
             )
 
-            return {
-                "provider": "GROQ",
-                "model": GROQ_MODEL,
-                "story": clean,
-                "word_count": words,
-                "scene_counts": counts,
-                "attempts": attempt
-            }
+            return result
 
         except Exception as error:
 
-            message = str(error)
-
             print(
                 f"[GROQ] Attempt {attempt} failed: "
-                f"{message[:700]}"
+                f"{str(error)[:500]}"
             )
 
-            if (
-                "PERMANENT HTTP 401" in message
-                or "PERMANENT HTTP 403" in message
-                or "PERMANENT HTTP 404" in message
-            ):
-                return None
-
-            remaining = deadline - time.monotonic()
+            remaining = (
+                GROQ_RETRY_WINDOW
+                - (time.monotonic() - start)
+            )
 
             if remaining <= 0:
                 break
 
-            time.sleep(
-                min(RETRY_DELAY, remaining)
+            print(
+                f"[GROQ] Retrying in {GROQ_RETRY_INTERVAL} seconds."
             )
 
+            # Wait can be interrupted if another provider wins.
+            winner_event.wait(
+                min(GROQ_RETRY_INTERVAL, remaining)
+            )
+
+    print("[GROQ] Three-minute retry window completed.")
     return None
 
 
-# =====================================================
-# SAFE JSON SAVE
-# =====================================================
+# ============================================================
+# PARALLEL RACE
+# FIRST VALID RESULT WINS
+# ============================================================
 
-def save_json(path, data):
-
-    temporary = path.with_suffix(
-        path.suffix + ".tmp"
-    )
-
-    temporary.write_text(
-        json.dumps(
-            data,
-            ensure_ascii=False,
-            indent=4
-        ),
-        encoding="utf-8"
-    )
-
-    temporary.replace(path)
-
-
-# =====================================================
-# PARALLEL SCRIPT ENGINE
-# =====================================================
-
-def generate_parallel_script(research):
+def run_parallel_race():
 
     winner_event.clear()
 
-    prompt = build_script_prompt(research)
-
-    workers = {}
-
     executor = ThreadPoolExecutor(
         max_workers=2,
-        thread_name_prefix="BADSAH-SCRIPT"
+        thread_name_prefix="BADSAH"
     )
+
+    futures = {}
+
+    if GEMINI_API_KEY:
+        future = executor.submit(gemini_worker)
+        futures[future] = "GEMINI"
+
+    if GROQ_API_KEY:
+        future = executor.submit(groq_worker)
+        futures[future] = "GROQ"
+
+    if not futures:
+        executor.shutdown(wait=False)
+        raise RuntimeError(
+            "Neither Gemini nor Groq API key is configured."
+        )
 
     winner = None
 
     try:
 
-        if GEMINI_API_KEY:
-
-            future = executor.submit(
-                gemini_script_worker,
-                prompt,
-                research
-            )
-
-            workers[future] = "GEMINI"
-
-        if GROQ_API_KEY:
-
-            future = executor.submit(
-                groq_script_worker,
-                prompt,
-                research
-            )
-
-            workers[future] = "GROQ"
-
-        pending = set(workers)
+        pending = set(futures)
 
         while pending:
 
@@ -999,7 +761,7 @@ def generate_parallel_script(research):
 
             for future in completed:
 
-                provider = workers[future]
+                provider = futures[future]
 
                 try:
                     result = future.result()
@@ -1019,8 +781,9 @@ def generate_parallel_script(research):
                     winner_event.set()
 
                     print("\n" + "=" * 55)
-                    print("SCRIPT WINNER:", winner["provider"])
-                    print("MODEL:", winner["model"])
+                    print("FIRST VALID RESULT WINS")
+                    print("WINNER:", provider)
+                    print("MODEL:", result["_model"])
                     print("=" * 55)
 
                     break
@@ -1028,122 +791,99 @@ def generate_parallel_script(research):
             if winner:
                 break
 
-        if winner is None:
-
-            raise RuntimeError(
-                "Both Gemini and Groq failed to produce "
-                "a valid script."
-            )
-
     finally:
 
         winner_event.set()
 
-        for future in workers:
+        for future in futures:
+            future.cancel()
 
-            if not future.done():
-                future.cancel()
-
+        # Do not hold up the winning result waiting for the loser.
         executor.shutdown(
-            wait=True,
+            wait=False,
             cancel_futures=True
+        )
+
+    if winner is None:
+        raise RuntimeError(
+            "Both providers failed to produce a valid result."
         )
 
     return winner
 
 
-# =====================================================
-# MAIN
-# =====================================================
+# ============================================================
+# SAVE FINAL EPISODE
+# ============================================================
 
-def main():
+def save_episode(winner):
 
-    print("\n" + "=" * 60)
-    print("BADSAH SCRIPTURE HIDDEN FACTS ENGINE V9")
-    print("GEMINI RESEARCH + PARALLEL GEMINI/GROQ SCRIPT")
-    print("=" * 60)
+    scenes = winner["scenes"]
 
-    if not GEMINI_API_KEY:
-        raise RuntimeError(
-            "GEMINI_API_KEY is required for Google Search research."
-        )
+    # Compatible with image/audio/video generators:
+    # story_output.json contains a scene list.
+    save_json(
+        OUTPUT_FILE,
+        scenes
+    )
 
-    if not GROQ_API_KEY:
-        print(
-            "[WARNING] GROQ_API_KEY missing. "
-            "Only Gemini script generation will run."
-        )
+    if winner["provider"] == "GEMINI":
 
-    # -------------------------------------------------
-    # PHASE 1: RESEARCH
-    # -------------------------------------------------
+        sources = {
+            "provider": "GEMINI GOOGLE SEARCH",
+            "model": winner["_model"],
+            "verification_status": (
+                "Google Search grounding URLs returned; "
+                "scripture references still require manual verification."
+            ),
+            "sources": [
+                {
+                    "source_id": f"S{index}",
+                    "url": url
+                }
+                for index, url in enumerate(
+                    winner.get("_grounding_urls", []),
+                    start=1
+                )
+            ]
+        }
 
-    research = research_worker()
+    else:
+
+        sources = {
+            "provider": "GROQ",
+            "model": winner["_model"],
+            "verification_status": (
+                "AI-generated source suggestions; "
+                "not independently verified by Google Search."
+            ),
+            "sources": winner.get("sources", [])
+        }
 
     save_json(
         RESEARCH_FILE,
-        research
+        sources
     )
 
-    print(
-        "\nResearch saved:",
-        RESEARCH_FILE.name
-    )
-
-    # -------------------------------------------------
-    # PHASE 2: PARALLEL SCRIPT GENERATION
-    # -------------------------------------------------
-
-    winner = generate_parallel_script(
-        research
-    )
-
-    # -------------------------------------------------
-    # PHASE 3: FINAL VALIDATION
-    # -------------------------------------------------
-
-    story, word_count, counts = validate_story(
-        winner["story"],
-        research
-    )
-
-    # -------------------------------------------------
-    # PHASE 4: SAVE OUTPUT
-    # -------------------------------------------------
-
-    save_json(
-        OUTPUT_FILE,
-        story
+    total_words = sum(
+        word_count(scene["dialogue"])
+        for scene in scenes
     )
 
     report = {
-        "engine": "BADSAH SCRIPTURE ENGINE V9",
+        "engine": "BADSAH V10 PARALLEL RACE",
         "status": "SUCCESS",
-        "research_provider": "GEMINI GOOGLE SEARCH",
-        "script_strategy": "PARALLEL",
-        "winning_provider": winner["provider"],
-        "winning_model": winner["model"],
-        "gemini_model": GEMINI_MODEL,
-        "groq_model": GROQ_MODEL,
-        "topic": research["topic"],
-        "title": research["title"],
-        "total_scenes": TOTAL_SCENES,
-        "total_dialogue_words": word_count,
-        "scene_word_counts": counts,
-        "grounded_source_count": len(
-            research["grounded_sources"]
-        ),
-        "research_claim_count": len(
-            research["claims"]
-        ),
-        "winning_provider_attempts": winner["attempts"],
+        "winner": winner["provider"],
+        "winning_model": winner["_model"],
+        "topic": winner["topic"],
+        "title": winner["title"],
+        "total_scenes": len(scenes),
+        "total_dialogue_words": total_words,
+        "source_verification": sources[
+            "verification_status"
+        ],
         "output_file": OUTPUT_FILE.name,
-        "research_file": RESEARCH_FILE.name,
-        "verification_note": (
-            "Google Search grounding URLs were checked against "
-            "claim source URLs. This does not replace manual "
-            "verification of the original scripture editions."
-        )
+        "research_file": RESEARCH_FILE.name
     }
 
     save_json(
@@ -1151,56 +891,57 @@ def main():
         report
     )
 
-    # -------------------------------------------------
-    # PHASE 5: DISPLAY RESULT
-    # -------------------------------------------------
+    return report
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+def main():
+
+    print("\n" + "=" * 60)
+    print("BADSAH V10 — PARALLEL AI RACE")
+    print("=" * 60)
+
+    print("Gemini models:", GEMINI_MODELS)
+    print("Groq model:", GROQ_MODEL)
+    print("Groq retry window:", GROQ_RETRY_WINDOW, "seconds")
+    print("Groq retry interval:", GROQ_RETRY_INTERVAL, "seconds")
+
+    print("\nBoth providers are starting together.")
+
+    winner = run_parallel_race()
+
+    report = save_episode(winner)
 
     print("\n" + "=" * 60)
     print("BADSAH SCRIPT GENERATION SUCCESS")
     print("=" * 60)
 
-    print("Topic:", research["topic"])
-    print("Winner:", winner["provider"])
-    print("Model:", winner["model"])
-    print("Scenes:", TOTAL_SCENES)
-    print("Dialogue words:", word_count)
-    print(
-        "Grounded URLs:",
-        len(research["grounded_sources"])
-    )
+    print("Topic:", report["topic"])
+    print("Winner:", report["winner"])
+    print("Model:", report["winning_model"])
+    print("Scenes:", report["total_scenes"])
+    print("Dialogue words:", report["total_dialogue_words"])
 
     print("\nSCENE DIALOGUES")
 
-    for index, scene in enumerate(story):
+    for scene in winner["scenes"]:
 
         print(
-            f"\nScene {index + 1}: "
-            f"{counts[index]} words"
+            f"\nScene {scene['scene_id']}:"
         )
 
         print(scene["dialogue"])
 
-    print("\nFiles saved:")
+    print("\nSaved:")
     print(OUTPUT_FILE.name)
     print(RESEARCH_FILE.name)
     print(REPORT_FILE.name)
 
-    print("\nBADSAH SCRIPT ENGINE COMPLETED.")
-    print("=" * 60)
+    print("\nBADSAH V10 COMPLETED.")
 
-
-# =====================================================
-# ENTRY POINT
-# =====================================================
 
 if __name__ == "__main__":
-
-    try:
-        main()
-
-    except Exception as error:
-
-        print("\nBADSAH ENGINE FAILED:")
-        print(str(error))
-
-        raise
+    main()
