@@ -1,0 +1,13 @@
+{
+    "engine": "BADSAH V10 PARALLEL RACE",
+    "status": "SUCCESS",
+    "winner": "GROQ",
+    "winning_model": "openai/gpt-oss-20b",
+    "topic": "Ramcharitmanas vs Valmiki Ramayana: Sita as daughter of Earth",
+    "title": "सीता की असली पहचान: रामचरितमानस बनाम वाल्मीकि रामायण",
+    "total_scenes": 7,
+    "total_dialogue_words": 110,
+    "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
+    "output_file": "story_output.json",
+    "research_file": "research_sources.json"
+}

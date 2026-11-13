@@ -1,0 +1,17 @@
+{
+    "provider": "GROQ",
+    "model": "openai/gpt-oss-20b",
+    "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
+    "sources": [
+        {
+            "source_name": "Ramcharitmanas (Digital Edition)",
+            "source_url": "https://www.sacred-texts.com/hin/rcm/index.htm",
+            "source_type": "primary text"
+        },
+        {
+            "source_name": "Valmiki Ramayana (Digital Edition)",
+            "source_url": "https://www.sacred-texts.com/hin/ram/index.htm",
+            "source_type": "primary text"
+        }
+    ]
+}

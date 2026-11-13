@@ -1,0 +1,42 @@
+{
+    "file": "final_output.mp4",
+    "resolution": "1080x1920",
+    "fps": 30,
+    "duration_seconds": 35.096,
+    "size_bytes": 9764445,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "has_video": true,
+    "has_audio": true,
+    "scene_count": 7,
+    "scene_durations": [
+        {
+            "scene_id": "1",
+            "duration_seconds": 3.984
+        },
+        {
+            "scene_id": "2",
+            "duration_seconds": 4.848
+        },
+        {
+            "scene_id": "3",
+            "duration_seconds": 4.368
+        },
+        {
+            "scene_id": "4",
+            "duration_seconds": 6.216
+        },
+        {
+            "scene_id": "5",
+            "duration_seconds": 5.736
+        },
+        {
+            "scene_id": "6",
+            "duration_seconds": 5.424
+        },
+        {
+            "scene_id": "7",
+            "duration_seconds": 4.536
+        }
+    ]
+}

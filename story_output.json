@@ -1,0 +1,100 @@
+[
+    {
+        "scene_id": 1,
+        "start_time": "00:00",
+        "end_time": "00:07",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 1, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "क्या आप जानते हैं कि रामचरितमानस में सीता को पृथ्वी की पुत्री कहा गया है?",
+        "image_prompt": "A close-up of an ancient manuscript page of Ramcharitmanas with Devanagari script, illuminated by soft candlelight.",
+        "video_motion_prompt": "Slow pan across the manuscript, subtle flicker of candle flame.",
+        "claim_refs": [
+            "C1"
+        ]
+    },
+    {
+        "scene_id": 2,
+        "start_time": "00:07",
+        "end_time": "00:14",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 2, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "यह विवरण वाल्मीकि रामायण में नहीं मिलता, जहाँ सीता केवल राजा जनक की पुत्री है।",
+        "image_prompt": "An open page of Valmiki Ramayana showing the verse about Sita as daughter of King Janaka, with a faint watermark.",
+        "video_motion_prompt": "Gentle zoom in on the text, with a soft focus shift.",
+        "claim_refs": [
+            "C1"
+        ]
+    },
+    {
+        "scene_id": 3,
+        "start_time": "00:14",
+        "end_time": "00:21",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 3, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "रामचरितमानस का यह कथन 16वीं शताब्दी के तुर्सिदास द्वारा लिखा गया है।",
+        "image_prompt": "Portrait of Tulsidas in traditional attire, surrounded by scrolls and a small temple setting.",
+        "video_motion_prompt": "Slow dolly in, slight tilt to emphasize the portrait.",
+        "claim_refs": [
+            "C1"
+        ]
+    },
+    {
+        "scene_id": 4,
+        "start_time": "00:21",
+        "end_time": "00:28",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 4, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "यह भिन्नता हमें दर्शाती है कि कैसे क्षेत्रीय परंपराएँ पौराणिक कथाओं को नया अर्थ देती हैं।",
+        "image_prompt": "A map of ancient India highlighting the regions of Awadh and Mithila, with arrows indicating cultural diffusion.",
+        "video_motion_prompt": "Pan across the map, arrows moving to show spread.",
+        "claim_refs": [
+            "C1"
+        ]
+    },
+    {
+        "scene_id": 5,
+        "start_time": "00:28",
+        "end_time": "00:35",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 5, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "स्रोतों की जाँच से पता चलता है कि रामचरितमानस में सीता को 'पृथ्वी की पुत्री' कहा गया है।",
+        "image_prompt": "Digital screen displaying the Ramcharitmanas verse with highlighted text 'पृथ्वी की पुत्री'.",
+        "video_motion_prompt": "Zoom on highlighted phrase, subtle glow effect.",
+        "claim_refs": [
+            "C1"
+        ]
+    },
+    {
+        "scene_id": 6,
+        "start_time": "00:35",
+        "end_time": "00:42",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 6, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "वाल्मीकि रामायण में इस तरह का उल्लेख नहीं मिलता, जिससे यह स्पष्ट होता है कि यह बाद की रचना है।",
+        "image_prompt": "A side-by-side comparison of the two verses from Ramcharitmanas and Valmiki Ramayana.",
+        "video_motion_prompt": "Split-screen with a smooth transition between the two texts.",
+        "claim_refs": [
+            "C1"
+        ]
+    },
+    {
+        "scene_id": 7,
+        "start_time": "00:42",
+        "end_time": "00:49",
+        "target_duration_seconds": 7,
+        "scene_time_description": "Scene 7, approximately 7 seconds",
+        "visible_characters": [],
+        "dialogue": "इसलिए, हमें पौराणिक कथाओं को पढ़ते समय स्रोत और समय का ध्यान रखना चाहिए।",
+        "image_prompt": "A scholar in a library, holding a book, looking contemplatively at a window with sunrise.",
+        "video_motion_prompt": "Slow pan from the scholar to the window, capturing the morning light.",
+        "claim_refs": [
+            "C1"
+        ]
+    }
+]
