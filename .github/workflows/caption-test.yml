@@ -52,12 +52,10 @@ jobs:
       - name: Generate Hindi Word Captions
         run: python caption_test.py
 
-      - name: Upload Caption Preview
+      - name: Upload Caption Diagnostic Report
         uses: actions/upload-artifact@v4
         with:
-          name: BADSAH-Hindi-Caption-Test
-          path: |
-            captions_test.mp4
-            caption_test_report.json
+          name: BADSAH-Caption-Diagnostic-V3
+          path: caption_test_report.json
           if-no-files-found: error
           retention-days: 3
