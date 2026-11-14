@@ -16,25 +16,19 @@ OUTPUT = Path("captions_test.mp4")
 REPORT = Path("caption_test_report_v6.json")
 
 FPS = 24
-FONT_NAME = "Noto Sans Devanagari"
 NORMAL_SIZE = 39
 ACTIVE_SIZE = 47
-GAP = 13
+WORD_GAP = 13
 CAPTION_Y = 0.81
-
 
 
 def run_cmd(args):
     p = subprocess.run(
-        args,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True
+        args, stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, text=True
     )
-
     if p.returncode:
         raise RuntimeError(p.stderr[-3000:])
-
     return p.stdout.strip()
 
 
@@ -52,6 +46,109 @@ def normalize(word):
         r"[^\w]", "", str(word).lower(),
         flags=re.UNICODE
     )
+
+
+def align_words(script_words, heard_words, duration):
+    script = [normalize(w) for w in script_words]
+    heard = [normalize(w["text"]) for w in heard_words]
+    anchors = {}
+
+    matcher = SequenceMatcher(
+        None, script, heard, autojunk=False
+    )
+
+    for block in matcher.get_matching_blocks():
+        for k in range(block.size):
+            i = block.a + k
+            j = block.b + k
+            anchors[i] = (
+                heard_words[j]["start"],
+                heard_words[j]["end"]
+            )
+
+    used = set()
+
+    for i, word in enumerate(script):
+        if i in anchors or not word:
+            continue
+
+        best_score = 0.0
+        best_index = None
+
+        for j, heard_word in enumerate(heard):
+            if j in used or not heard_word:
+                continue
+
+            score = SequenceMatcher(
+                None, word, heard_word
+            ).ratio()
+
+            if score > best_score:
+                best_score = score
+                best_index = j
+
+        if best_index is not None and best_score >= 0.68:
+            anchors[i] = (
+                heard_words[best_index]["start"],
+                heard_words[best_index]["end"]
+            )
+            used.add(best_index)
+
+    result = [None] * len(script_words)
+
+    for i, timing in anchors.items():
+        result[i] = timing
+
+    anchor_ids = sorted(anchors)
+
+    boundaries = (
+        [(-1, 0.0)]
+        + [(i, anchors[i][0]) for i in anchor_ids]
+        + [(len(script_words), duration)]
+    )
+
+    for (left_i, left_t), (right_i, right_t) in zip(
+        boundaries, boundaries[1:]
+    ):
+        missing = list(range(left_i + 1, right_i))
+
+        if not missing:
+            continue
+
+        if left_i >= 0 and result[left_i]:
+            left_t = max(left_t, result[left_i][1])
+
+        span = max(0.04 * len(missing), right_t - left_t)
+
+        weights = [
+            max(1, len(normalize(script_words[k])))
+            for k in missing
+        ]
+
+        total = sum(weights)
+        cursor = left_t
+
+        for k, weight in zip(missing, weights):
+            step = span * weight / total
+            result[k] = (
+                cursor,
+                min(duration, cursor + step)
+            )
+            cursor += step
+
+    fixed = []
+
+    for item in result:
+        if item is None:
+            start, end = 0.0, duration
+        else:
+            start, end = item
+
+        start = max(0.0, min(duration, float(start)))
+        end = max(start + 0.04, min(duration, float(end)))
+        fixed.append((start, end))
+
+    return fixed
 
 
 def get_font_path():
@@ -86,108 +183,6 @@ def get_font_path():
     )
 
 
-def align_words(script_words, heard_words, duration):
-    script = [normalize(w) for w in script_words]
-    heard = [normalize(w["text"]) for w in heard_words]
-    anchors = {}
-
-    matcher = SequenceMatcher(
-        None, script, heard, autojunk=False
-    )
-
-    for block in matcher.get_matching_blocks():
-        for k in range(block.size):
-            i = block.a + k
-            j = block.b + k
-
-            anchors[i] = (
-                heard_words[j]["start"],
-                heard_words[j]["end"]
-            )
-
-    used = set()
-
-    for i, word in enumerate(script):
-        if i in anchors or not word:
-            continue
-
-        best_score = 0
-        best_index = None
-
-        for j, heard in enumerate(heard):
-            if j in used or not heard:
-                continue
-
-            score = SequenceMatcher(
-                None, word, heard
-            ).ratio()
-
-            if score > best_score:
-                best_score = score
-                best_index = j
-
-        if best_index is not None and best_score >= 0.68:
-            anchors[i] = (
-                heard_words[best_index]["start"],
-                heard_words[best_index]["end"]
-            )
-            used.add(best_index)
-
-    result = [None] * len(script_words)
-
-    for i, timing in anchors.items():
-        result[i] = timing
-
-    ids = sorted(anchors)
-
-    boundaries = (
-        [(-1, 0.0)]
-        + [(i, anchors[i][0]) for i in ids]
-        + [(len(script_words), duration)]
-    )
-
-    for (left_i, left_t), (right_i, right_t) in zip(
-        boundaries, boundaries[1:]
-    ):
-        missing = list(range(left_i + 1, right_i))
-
-        if not missing:
-            continue
-
-        if left_i >= 0 and result[left_i]:
-            left_t = max(left_t, result[left_i][1])
-
-        span = max(
-            0.04 * len(missing),
-            right_t - left_t
-        )
-
-        weights = [
-            max(1, len(normalize(script_words[k])))
-            for k in missing
-        ]
-
-        total = sum(weights)
-        cursor = left_t
-
-        for k, weight in zip(missing, weights):
-            step = span * weight / total
-            result[k] = (
-                cursor,
-                min(duration, cursor + step)
-            )
-            cursor += step
-
-    fixed = []
-
-    for start, end in result:
-        start = max(0.0, min(duration, start))
-        end = max(start + 0.04, min(duration, end))
-        fixed.append((start, end))
-
-    return fixed
-
-
 def get_video_size():
     data = json.loads(run_cmd([
         "ffprobe", "-v", "error",
@@ -215,7 +210,7 @@ def make_track(words, font):
         distance = (
             widths[i - 1] / 2
             + widths[i] / 2
-            + GAP
+            + WORD_GAP
         )
         centers.append(centers[-1] + distance)
 
@@ -225,12 +220,9 @@ def make_track(words, font):
 def get_progress(t, words):
     starts = [w["start"] for w in words]
 
-    if t < starts[0]:
+    if not starts or t < starts[0]:
         return None, None
 
-    i = 0
-
-    # Find the currently active word
     lo, hi = 0, len(starts)
 
     while lo < hi:
@@ -241,19 +233,16 @@ def get_progress(t, words):
         else:
             hi = mid
 
-    i = max(0, lo - 1)
+    active = max(0, lo - 1)
 
-    if i >= len(words):
-        return None, None
+    if active >= len(words) - 1:
+        return active, float(active)
 
-    if i == len(words) - 1:
-        return i, float(i)
-
-    current_start = words[i]["start"]
-    next_start = words[i + 1]["start"]
+    current_start = words[active]["start"]
+    next_start = words[active + 1]["start"]
 
     if next_start <= current_start:
-        return i, float(i)
+        return active, float(active)
 
     fraction = (
         (t - current_start)
@@ -262,35 +251,25 @@ def get_progress(t, words):
 
     fraction = max(0.0, min(1.0, fraction))
 
-    return i, i + fraction
+    return active, active + fraction
 
 
 def render_frame(
     width, height, t, words,
     font_normal, font_active, track
 ):
-    # Half-resolution transparent canvas
     canvas = Image.new(
-        "RGBA",
-        (width, height),
-        (0, 0, 0, 0)
+        "RGBA", (width, height), (0, 0, 0, 0)
     )
-
-    if not words:
-        return canvas
 
     active, progress = get_progress(t, words)
 
     if active is None:
         return canvas
 
-    # Four-word moving window
-    center_index = int(progress)
+    first = max(0, active - 1)
+    last = min(len(words), active + 3)
 
-    first = max(0, center_index - 1)
-    last = min(len(words), center_index + 3)
-
-    # Smoothly move the complete word train left
     if active >= len(track) - 1:
         track_position = track[-1]
     else:
@@ -304,7 +283,6 @@ def render_frame(
 
     center_x = width / 2
     y = int(height * CAPTION_Y)
-
     draw = ImageDraw.Draw(canvas)
 
     for i in range(first, last):
@@ -314,7 +292,6 @@ def render_frame(
             continue
 
         is_active = (i == active)
-
         font = font_active if is_active else font_normal
 
         color = (
@@ -323,8 +300,6 @@ def render_frame(
             else (255, 255, 255, 255)
         )
 
-        # Bubble-like thick rounded lettering.
-        # Stroke uses the same color; no text box or background.
         draw.text(
             (int(x), y),
             words[i]["word"],
@@ -351,35 +326,35 @@ def main():
 
     if isinstance(scenes, dict):
         scenes = scenes.get(
-            "scenes",
-            scenes.get("story", [])
+            "scenes", scenes.get("story", [])
         )
 
     if not scenes:
-        raise ValueError("No scenes found")
+        raise ValueError("No scenes found in story_output.json")
 
     print("Loading Hindi speech model...")
 
     model = WhisperModel(
-        "small",
-        device="cpu",
-        compute_type="int8"
+        "small", device="cpu", compute_type="int8"
     )
 
     all_words = []
-    timeline = 0.0
     scene_report = []
+    timeline = 0.0
 
     for number, scene in enumerate(scenes, 1):
         scene_id = str(scene.get("scene_id", number))
         audio = AUDIO / f"scene_{scene_id}.mp3"
 
         if not audio.exists():
-            raise FileNotFoundError(f"Missing {audio}")
+            raise FileNotFoundError(f"Missing audio: {audio}")
 
         script_words = str(
             scene.get("dialogue", "")
         ).split()
+
+        if not script_words:
+            continue
 
         audio_duration = get_duration(audio)
 
@@ -405,14 +380,10 @@ def main():
                     })
 
         timings = align_words(
-            script_words,
-            heard_words,
-            audio_duration
+            script_words, heard_words, audio_duration
         )
 
-        for word, (start, end) in zip(
-            script_words, timings
-        ):
+        for word, (start, end) in zip(script_words, timings):
             all_words.append({
                 "word": word,
                 "start": timeline + start,
@@ -433,16 +404,14 @@ def main():
 
     video_width, video_height = get_video_size()
 
-    # Render at half resolution to reduce processing load.
-    width = video_width // 2
-    height = video_height // 2
+    width = max(2, video_width // 2)
+    height = max(2, video_height // 2)
 
     font_path = get_font_path()
 
     font_normal = ImageFont.truetype(
         font_path, NORMAL_SIZE
     )
-
     font_active = ImageFont.truetype(
         font_path, ACTIVE_SIZE
     )
@@ -455,13 +424,18 @@ def main():
     video_duration = get_duration(VIDEO)
     total_frames = int(video_duration * FPS)
 
-    print("Creating smooth transparent caption animation...")
+    if total_frames <= 0:
+        raise ValueError("Invalid video duration")
+
+    print("Creating moving transparent captions...")
 
     OUTPUT.unlink(missing_ok=True)
 
+    # Stream generated transparent frames into FFmpeg.
+    # Popen is required here; do not replace with run_cmd().
     ffmpeg = subprocess.Popen(
         [
-            "ffmpeg", "-y",
+            "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
             "-i", str(VIDEO),
             "-f", "rawvideo",
             "-pix_fmt", "rgba",
@@ -478,8 +452,13 @@ def main():
             "-map", "0:a?",
             "-c:v", "libx264",
             "-preset", "veryfast",
-            "-crf", "19",
-            "-c:a", "copy",
+            "-crf", "20",
+            "-pix_fmt", "yuv420p",
+            "-profile:v", "high",
+            "-level:v", "4.1",
+            "-c:a", "aac",
+            "-b:a", "192k",
+            "-ar", "44100",
             "-movflags", "+faststart",
             str(OUTPUT)
         ],
@@ -492,13 +471,8 @@ def main():
             t = frame_number / FPS
 
             frame = render_frame(
-                width,
-                height,
-                t,
-                all_words,
-                font_normal,
-                font_active,
-                track
+                width, height, t, all_words,
+                font_normal, font_active, track
             )
 
             ffmpeg.stdin.write(frame.tobytes())
@@ -509,9 +483,11 @@ def main():
                 )
 
         ffmpeg.stdin.close()
+
         error = ffmpeg.stderr.read().decode(
             "utf-8", errors="replace"
         )
+
         return_code = ffmpeg.wait()
 
         if return_code != 0:
@@ -523,11 +499,14 @@ def main():
             ffmpeg.wait()
         raise
 
+    if not OUTPUT.exists() or OUTPUT.stat().st_size == 0:
+        raise RuntimeError("Caption video was not created")
+
     report = {
         "version": "V6",
         "status": "video_generated",
         "output_video": str(OUTPUT),
-        "caption_video_generated": OUTPUT.exists(),
+        "caption_video_generated": True,
         "animation": "Continuous right-to-left word train",
         "normal_text": "White",
         "active_text": "Golden, enlarged and bold",
@@ -535,6 +514,9 @@ def main():
         "font_style": "Rounded bold Devanagari",
         "visible_words": "Up to four",
         "fps": FPS,
+        "video_codec": "H.264",
+        "pixel_format": "yuv420p",
+        "audio_codec": "AAC",
         "scenes": scene_report
     }
 
