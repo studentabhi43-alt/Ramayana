@@ -2,10 +2,10 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 43.368,
+    "actual_total_audio_seconds": 31.44,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
-    "all_scenes_within_target": false,
+    "all_scenes_within_target": true,
     "final_duration_within_target": true,
     "scenes": [
         {
@@ -13,10 +13,10 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.464,
-            "difference_seconds": -2.536,
+            "actual_duration_seconds": 4.056,
+            "difference_seconds": -2.944,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि महाभारत में पांडवों की एक बहन का नाम सत्या है?"
+            "dialogue": "क्या आपने सुना है कि विष्मित्र एक बार राजकुमार थे, इससे पहले कि वे ऋषि बने?"
         },
         {
             "scene_id": "2",
@@ -26,57 +26,57 @@
             "actual_duration_seconds": 5.328,
             "difference_seconds": -1.672,
             "within_target": true,
-            "dialogue": "यह कहानी वान पर्व में मिलती है, जहाँ पांडवों के परिवार के बारे में विस्तृत वर्णन है।"
+            "dialogue": "शान्ति परवा के अध्याय 5, श्लोक 12 में यह उल्लेख है कि विष्मित्र राजकुमार थे।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.424,
-            "difference_seconds": -1.576,
+            "actual_duration_seconds": 4.224,
+            "difference_seconds": -2.776,
             "within_target": true,
-            "dialogue": "सत्या का विवाह विदर्भ के राजा से हुआ, जिससे पांडवों और विदर्भ के बीच गठबंधन बना।"
+            "dialogue": "विष्मित्र ने अपने कshatriya वंश के गौरव को पीछे छोड़कर तपस्या शुरू की।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 8.544,
-            "difference_seconds": 1.544,
-            "within_target": false,
-            "dialogue": "यह विवरण महाभारत वान पर्व, अध्याय 12, श्लोक 4 में मिलता है, पर कुछ विद्वान इसे परंपरागत जोड़ मानते हैं।"
+            "actual_duration_seconds": 5.184,
+            "difference_seconds": -1.816,
+            "within_target": true,
+            "dialogue": "विष्मित्र ने तीव्र तपस्या की, जिससे वे ऋषि के रूप में मान्यता प्राप्त हुए।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 7.728,
-            "difference_seconds": 0.728,
+            "actual_duration_seconds": 4.128,
+            "difference_seconds": -2.872,
             "within_target": true,
-            "dialogue": "इससे पता चलता है कि पांडवों के परिवार में सत्या जैसी बहनें भी थीं, जो युद्ध के दौरान रणनीतिक गठबंधन में महत्वपूर्ण थीं।"
+            "dialogue": "पहले राजकुमार, बाद में ऋषि – यह परिवर्तन प्राचीन कथाओं में दुर्लभ है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.664,
-            "difference_seconds": -1.336,
+            "actual_duration_seconds": 5.184,
+            "difference_seconds": -1.816,
             "within_target": true,
-            "dialogue": "हालाँकि, यह विवरण मुख्यतः एक पौराणिक कथा है, और ऐतिहासिक प्रमाण सीमित हैं।"
+            "dialogue": "शास्त्रज्ञ कहते हैं कि यह श्लोक विष्मित्र के कshatriya मूल को स्पष्ट करता है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.216,
-            "difference_seconds": -0.784,
+            "actual_duration_seconds": 3.336,
+            "difference_seconds": -3.664,
             "within_target": true,
-            "dialogue": "तो अगली बार जब आप महाभारत पढ़ें, पांडवों की बहन सत्या को याद रखें और उसके महत्व पर विचार करें।"
+            "dialogue": "इस कहानी से हमें मिलता है कि तपस्या से परिवर्तन संभव है।"
         }
     ]
 }
