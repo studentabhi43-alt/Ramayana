@@ -15,7 +15,10 @@ jobs:
   caption-test:
     runs-on: ubuntu-latest
     timeout-minutes: 45
-
+    
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
