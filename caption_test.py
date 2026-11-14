@@ -1,288 +1,317 @@
-#!/usr/bin/env python3
-"""
-BADSAH PREMIUM HINDI CAPTION DIAGNOSTIC V3
-
-Text source: story_output.json
-Audio source: audio_files/scene_<id>.mp3
-Output: caption_test_report.json
-
-Checks all scenes, even when alignment is weak.
-Original files are never modified.
-"""
 
 import json
 import re
-import shutil
 import subprocess
-import unicodedata
+import sys
 from pathlib import Path
 from difflib import SequenceMatcher
+from faster_whisper import WhisperModel
 
-BASE = Path(__file__).resolve().parent
-STORY = BASE / "story_output.json"
-AUDIO_DIR = BASE / "audio_files"
-REPORT = BASE / "caption_test_report.json"
+VIDEO = Path("final_output.mp4")
+STORY = Path("story_output.json")
+AUDIO = Path("audio_files")
+OUT = Path("captions_test.mp4")
+TEMP = Path("caption_test_temp")
+FONT = "Noto Sans Devanagari"
 
-MODEL_NAME = "small"
-LANGUAGE = "hi"
 
-
-def duration(path):
-    result = subprocess.run(
-        [
-            "ffprobe", "-v", "error",
-            "-show_entries", "format=duration",
-            "-of", "default=noprint_wrappers=1:nokey=1",
-            str(path)
-        ],
-        capture_output=True,
-        text=True,
-        check=True
+def cmd(args):
+    p = subprocess.run(
+        args, stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, text=True
     )
-    return float(result.stdout.strip())
+    if p.returncode:
+        raise RuntimeError(p.stderr[-2500:])
+    return p.stdout.strip()
 
 
-def normalize_word(word):
-    word = unicodedata.normalize("NFKC", str(word))
-    word = word.lower()
-    word = re.sub(r"[^\w\u0900-\u097F]", "", word)
-    return word.strip()
+def duration(p):
+    return float(cmd([
+        "ffprobe", "-v", "error",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        str(p)
+    ]))
 
 
-def get_script_words(dialogue):
-    return re.findall(r"\S+", str(dialogue).strip())
+def norm(s):
+    return re.sub(r"[^\w]", "", str(s).lower(), flags=re.UNICODE)
 
 
-def transcribe(audio_path, model):
-    print(f"Transcribing {audio_path.name}...")
+def ts(t):
+    c = max(0, round(t * 100))
+    h, c = divmod(c, 360000)
+    m, c = divmod(c, 6000)
+    s, c = divmod(c, 100)
+    return f"{h}:{m:02}:{s:02}.{c:02}"
 
-    segments, info = model.transcribe(
-        str(audio_path),
-        language=LANGUAGE,
-        word_timestamps=True,
-        beam_size=5,
-        vad_filter=False
-    )
 
-    words = []
+def fit_times(words, heard, dur):
+    a = [norm(x) for x in words]
+    b = [norm(x["text"]) for x in heard]
+    anchors = {}
 
-    for segment in segments:
-        if not segment.words:
+    sm = SequenceMatcher(None, a, b, autojunk=False)
+
+    for block in sm.get_matching_blocks():
+        for k in range(block.size):
+            i, j = block.a + k, block.b + k
+            anchors[i] = (
+                heard[j]["start"],
+                heard[j]["end"]
+            )
+
+    # Fuzzy spelling anchors for Hindi ASR variations
+    used = set()
+
+    for i, x in enumerate(a):
+        if i in anchors or not x:
             continue
 
-        for word in segment.words:
-            text = str(word.word).strip()
+        best = (0, None)
 
-            if not normalize_word(text):
+        for j, y in enumerate(b):
+            if j in used or not y:
                 continue
 
-            words.append({
-                "text": text,
-                "start": round(float(word.start), 3),
-                "end": round(float(word.end), 3)
-            })
+            score = SequenceMatcher(None, x, y).ratio()
 
-    return words
+            if score > best[0]:
+                best = (score, j)
 
+        if best[0] >= 0.68:
+            j = best[1]
+            anchors[i] = (
+                heard[j]["start"],
+                heard[j]["end"]
+            )
+            used.add(j)
 
-def compare_words(script, detected):
-    script_norm = [normalize_word(w) for w in script]
-    audio_norm = [normalize_word(w["text"]) for w in detected]
+    # Fit unmatched script words between Whisper anchors
+    out = [None] * len(words)
 
-    matcher = SequenceMatcher(
-        None,
-        script_norm,
-        audio_norm,
-        autojunk=False
+    for i, (s, e) in anchors.items():
+        out[i] = (max(0, s), min(dur, e))
+
+    ids = sorted(anchors)
+
+    bounds = (
+        [(-1, 0.0)]
+        + [(i, anchors[i][0]) for i in ids]
+        + [(len(words), dur)]
     )
 
-    matched_script = set()
-    matched_audio = set()
-    matching_pairs = []
+    for (li, lt), (ri, rt) in zip(bounds, bounds[1:]):
+        miss = list(range(li + 1, ri))
 
-    for block in matcher.get_matching_blocks():
-        for offset in range(block.size):
-            si = block.a + offset
-            ai = block.b + offset
+        if not miss:
+            continue
 
-            matched_script.add(si)
-            matched_audio.add(ai)
+        if li >= 0 and out[li]:
+            lt = max(lt, out[li][1])
 
-            matching_pairs.append({
-                "script_index": si,
-                "audio_index": ai,
-                "script_word": script[si],
-                "whisper_word": detected[ai]["text"],
-                "audio_start": detected[ai]["start"],
-                "audio_end": detected[ai]["end"]
-            })
+        span = max(0.03 * len(miss), rt - lt)
 
-    ratio = len(matched_script) / max(1, len(script))
+        weights = [
+            max(1, len(norm(words[k])))
+            for k in miss
+        ]
 
-    missing_script = [
-        {
-            "index": i,
-            "word": word
-        }
-        for i, word in enumerate(script)
-        if i not in matched_script
+        total = sum(weights)
+        cur = lt
+
+        for k, w in zip(miss, weights):
+            step = span * w / total
+            out[k] = (cur, min(dur, cur + step))
+            cur += step
+
+    return [
+        (max(0, s), min(dur, max(s + 0.04, e)))
+        for s, e in out
     ]
-
-    extra_audio = [
-        {
-            "index": i,
-            "word": word["text"],
-            "start": word["start"],
-            "end": word["end"]
-        }
-        for i, word in enumerate(detected)
-        if i not in matched_audio
-    ]
-
-    return {
-        "match_ratio": round(ratio, 3),
-        "match_percent": round(ratio * 100, 1),
-        "matched_count": len(matched_script),
-        "script_count": len(script),
-        "whisper_count": len(detected),
-        "matching_pairs": matching_pairs,
-        "unmatched_script_words": missing_script,
-        "unmatched_whisper_words": extra_audio
-    }
 
 
 def main():
-    print("=" * 55)
-    print("BADSAH CAPTION DIAGNOSTIC V3")
-    print("=" * 55)
+    if not VIDEO.exists() or not STORY.exists():
+        raise FileNotFoundError(
+            "Need final_output.mp4 and story_output.json "
+            "in repository root."
+        )
 
-    for tool in ("ffprobe",):
-        if not shutil.which(tool):
-            raise RuntimeError(f"{tool} is not installed.")
+    scenes = json.loads(
+        STORY.read_text(encoding="utf-8")
+    )
 
-    if not STORY.is_file():
-        raise FileNotFoundError("story_output.json missing.")
-
-    story = json.loads(STORY.read_text(encoding="utf-8"))
-
-    if not isinstance(story, list) or not story:
-        raise RuntimeError("Story must be a non-empty JSON list.")
-
-    from faster_whisper import WhisperModel
-
-    print("\nLoading Whisper Hindi model...")
+    if isinstance(scenes, dict):
+        scenes = scenes.get(
+            "scenes",
+            scenes.get("story", [])
+        )
 
     model = WhisperModel(
-        MODEL_NAME,
+        "small",
         device="cpu",
         compute_type="int8"
     )
 
-    scene_reports = []
-    total_script = 0
-    total_matched = 0
+    allw = []
+    report = []
+    offset = 0.0
 
-    for index, scene in enumerate(story, start=1):
-        scene_id = str(
-            scene.get("scene_id")
-            or scene.get("scene_number")
-            or index
+    for n, sc in enumerate(scenes, 1):
+        sid = str(sc.get("scene_id", n))
+        ap = AUDIO / f"scene_{sid}.mp3"
+
+        if not ap.exists():
+            raise FileNotFoundError(f"Missing {ap}")
+
+        words = str(sc.get("dialogue", "")).split()
+        dur = duration(ap)
+
+        segs, _ = model.transcribe(
+            str(ap),
+            language="hi",
+            word_timestamps=True,
+            beam_size=5,
+            vad_filter=False
         )
 
-        dialogue = str(scene.get("dialogue", "")).strip()
-        audio_path = AUDIO_DIR / f"scene_{scene_id}.mp3"
+        heard = []
 
-        print(f"\nChecking Scene {scene_id}")
+        for seg in segs:
+            for w in (seg.words or []):
+                if w.start is not None and w.end is not None:
+                    heard.append({
+                        "text": w.word.strip(),
+                        "start": float(w.start),
+                        "end": float(w.end)
+                    })
 
-        if not dialogue:
-            scene_reports.append({
-                "scene_id": scene_id,
-                "status": "error",
-                "error": "Empty dialogue"
-            })
-            continue
+        times = fit_times(words, heard, dur)
 
-        if not audio_path.is_file():
-            scene_reports.append({
-                "scene_id": scene_id,
-                "status": "error",
-                "error": f"Missing audio: {audio_path.name}"
-            })
-            continue
-
-        try:
-            audio_duration = duration(audio_path)
-            script = get_script_words(dialogue)
-            detected = transcribe(audio_path, model)
-
-            comparison = compare_words(script, detected)
-
-            total_script += comparison["script_count"]
-            total_matched += comparison["matched_count"]
-
-            scene_reports.append({
-                "scene_id": scene_id,
-                "status": "checked",
-                "dialogue": dialogue,
-                "audio_file": audio_path.name,
-                "audio_duration": round(audio_duration, 3),
-                "script_words": script,
-                "whisper_words": detected,
-                **comparison
+        for word, (s, e) in zip(words, times):
+            allw.append({
+                "word": word,
+                "start": offset + s,
+                "end": offset + e
             })
 
-            print(
-                f"Scene {scene_id}: "
-                f"{comparison['match_percent']}% matched "
-                f"({comparison['matched_count']}/"
-                f"{comparison['script_count']})"
+        report.append({
+            "scene_id": sid,
+            "script_words": len(words),
+            "whisper_words": len(heard),
+            "duration": dur
+        })
+
+        offset += dur
+
+    probe = json.loads(cmd([
+        "ffprobe", "-v", "error",
+        "-select_streams", "v:0",
+        "-show_entries", "stream=width,height",
+        "-of", "json", str(VIDEO)
+    ]))
+
+    width = int(probe["streams"][0]["width"])
+    height = int(probe["streams"][0]["height"])
+
+    TEMP.mkdir(exist_ok=True)
+    ass = TEMP / "captions.ass"
+
+    header = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {width}
+PlayResY: {height}
+ScaledBorderAndShadow: yes
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,{FONT},58,&H00FFFFFF,&H00FFFFFF,&H00000000,&H66FFFFFF,0,0,0,0,100,100,0,0,3,10,0,2,70,70,300,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+
+    events = []
+
+    for i, w in enumerate(allw):
+        shown = allw[
+            max(0, i - 1):min(len(allw), i + 3)
+        ]
+
+        parts = []
+
+        for j, x in enumerate(shown, start=max(0, i - 1)):
+            t = (
+                x["word"]
+                .replace("{", r"\{")
+                .replace("}", r"\}")
             )
 
-            if comparison["unmatched_script_words"]:
-                print("Unmatched script words:")
-                print(
-                    ", ".join(
-                        x["word"]
-                        for x in comparison["unmatched_script_words"]
-                    )
+            if j == i:
+                parts.append(
+                    r"{\c&H0033CCFF&\b1\fscx112\fscy112}"
+                    + t + r"{\rCap}"
                 )
+            else:
+                parts.append(t)
 
-        except Exception as error:
-            scene_reports.append({
-                "scene_id": scene_id,
-                "status": "error",
-                "error": str(error)
-            })
-            print(f"Scene {scene_id} error: {error}")
+        line = "   ".join(parts)
 
-    overall = total_matched / max(1, total_script)
+        events.append(
+            f"Dialogue: 0,{ts(w['start'])},"
+            f"{ts(w['end'])},Cap,,0,0,0,,"
+            f"{{\\fad(45,55)}}{line}"
+        )
 
-    report = {
-        "version": "V3",
-        "status": "diagnostic_complete",
-        "language": LANGUAGE,
-        "model": MODEL_NAME,
-        "purpose": "Hindi script versus Whisper word comparison",
-        "overall_match_percent": round(overall * 100, 1),
-        "total_script_words": total_script,
-        "total_matched_words": total_matched,
-        "scenes_checked": len(scene_reports),
-        "scenes": scene_reports,
-        "caption_video_generated": False,
-        "original_files_modified": False
+    ass.write_text(
+        header + "\n".join(events) + "\n",
+        encoding="utf-8-sig"
+    )
+
+    assarg = (
+        str(ass.resolve())
+        .replace("\\", "/")
+        .replace(":", r"\:")
+    )
+
+    cmd([
+        "ffmpeg", "-y",
+        "-i", str(VIDEO),
+        "-vf", f"subtitles='{assarg}'",
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "19",
+        "-c:a", "copy",
+        "-movflags", "+faststart",
+        str(OUT)
+    ])
+
+    reportdata = {
+        "version": "V4",
+        "status": "video_generated",
+        "output": str(OUT),
+        "caption_video_generated": OUT.exists(),
+        "caption_words": len(allw),
+        "timing": (
+            "Whisper word timestamps; unmatched words "
+            "fitted between anchors"
+        ),
+        "scenes": report
     }
 
-    REPORT.write_text(
-        json.dumps(report, ensure_ascii=False, indent=2),
+    Path("caption_test_report_v4.json").write_text(
+        json.dumps(reportdata, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
 
-    print("\n" + "=" * 55)
-    print("DIAGNOSTIC COMPLETE")
-    print("=" * 55)
-    print(f"Overall match: {overall * 100:.1f}%")
-    print(f"Report: {REPORT.name}")
+    print("SUCCESS:", OUT)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print("ERROR:", e, file=sys.stderr)
+        sys.exit(1)
