@@ -1,30 +1,37 @@
 
 #!/usr/bin/env python3
 """
-BADSAH Hindi Word-by-Word Caption Test
+BADSAH Premium Hindi Caption Test V2
 
-Input : final_output.mp4
+Text source: story_output.json
+Timing source: individual scene MP3 files
 Output: captions_test.mp4
 
-- Original video/audio are never overwritten.
-- Hindi transcription with word timestamps.
-- Current spoken word turns GOLD.
-- Other words remain BLACK.
-- White caption background.
+Normal words: White
+Active word: Golden + enlarged
+Caption background: translucent white
+Visible words: rolling 3-4 word window
+
+Original files are never overwritten.
 """
 
 import json
+import re
 import shutil
 import subprocess
 import sys
+import unicodedata
+from difflib import SequenceMatcher
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
 
-SOURCE = BASE / "final_output.mp4"
+VIDEO = BASE / "final_output.mp4"
+STORY = BASE / "story_output.json"
+AUDIO_DIR = BASE / "audio_files"
+
 OUTPUT = BASE / "captions_test.mp4"
 WORK = BASE / "caption_test_temp"
-
 ASS_FILE = WORK / "captions.ass"
 REPORT = BASE / "caption_test_report.json"
 
@@ -34,17 +41,16 @@ HEIGHT = 1920
 MODEL_NAME = "small"
 LANGUAGE = "hi"
 
-# Caption appearance
 FONT_NAME = "Noto Sans Devanagari"
-FONT_SIZE = 58
-MAX_WORDS_PER_LINE = 5
+FONT_SIZE = 52
 
-# Caption position: leaves room for Hanuman progress bar.
-BOTTOM_MARGIN = 330
+CAPTION_Y = 1535
+ACTIVE_SCALE = 112
+BOX_ALPHA = "55"
 
 
 def run(command):
-    print("+", " ".join(map(str, command)))
+    print("+", " ".join(map(str, command)), flush=True)
 
     result = subprocess.run(
         command,
@@ -54,23 +60,167 @@ def run(command):
 
     if result.returncode != 0:
         raise RuntimeError(
-            "Command failed:\n"
-            + result.stderr[-5000:]
+            "Command failed:\n" + result.stderr[-5000:]
         )
 
     return result
 
 
-def get_duration(path):
+def duration(path):
     result = run([
-        "ffprobe",
-        "-v", "error",
+        "ffprobe", "-v", "error",
         "-show_entries", "format=duration",
         "-of", "default=noprint_wrappers=1:nokey=1",
         str(path)
     ])
 
     return float(result.stdout.strip())
+
+
+def normalize_word(word):
+    word = unicodedata.normalize("NFKC", str(word))
+    word = word.lower()
+    word = re.sub(r"[^\w\u0900-\u097F]", "", word)
+    return word.strip()
+
+
+def script_words(dialogue):
+    return re.findall(r"\S+", str(dialogue).strip())
+
+
+def whisper_words(audio_path, model):
+    print(f"\nTranscribing: {audio_path.name}")
+
+    segments, info = model.transcribe(
+        str(audio_path),
+        language=LANGUAGE,
+        word_timestamps=True,
+        beam_size=5,
+        vad_filter=False
+    )
+
+    detected = []
+
+    for segment in segments:
+        if not segment.words:
+            continue
+
+        for word in segment.words:
+            if word.start is None or word.end is None:
+                continue
+
+            text = str(word.word).strip()
+
+            if not normalize_word(text):
+                continue
+
+            detected.append({
+                "text": text,
+                "start": max(0.0, float(word.start)),
+                "end": max(0.0, float(word.end))
+            })
+
+    return detected
+
+
+def align_script_to_audio(dialogue, detected, audio_duration):
+    """
+    Keep exact spelling from the script.
+    Whisper is used only to locate matching word timestamps.
+    Unmatched word times are interpolated between matched anchors.
+    """
+
+    original = script_words(dialogue)
+
+    if not original:
+        raise RuntimeError("Empty scene dialogue.")
+
+    script_norm = [normalize_word(w) for w in original]
+    audio_norm = [normalize_word(w["text"]) for w in detected]
+
+    matcher = SequenceMatcher(
+        None,
+        script_norm,
+        audio_norm,
+        autojunk=False
+    )
+
+    matched = {}
+
+    for block in matcher.get_matching_blocks():
+        for offset in range(block.size):
+            script_index = block.a + offset
+            audio_index = block.b + offset
+
+            matched[script_index] = {
+                "start": detected[audio_index]["start"],
+                "end": detected[audio_index]["end"]
+            }
+
+    match_ratio = len(matched) / max(1, len(original))
+
+    if match_ratio < 0.45:
+        raise RuntimeError(
+            f"Scene alignment too weak: {match_ratio:.0%}. "
+            "Refusing to create unreliable captions."
+        )
+
+    anchors = [(-1, 0.0)]
+
+    for index, timing in sorted(matched.items()):
+        anchors.append((index, timing["start"]))
+
+    anchors.append((len(original), audio_duration))
+
+    timings = [None] * len(original)
+
+    for index, timing in matched.items():
+        timings[index] = timing
+
+    for anchor_pos in range(len(anchors) - 1):
+        left_index, left_time = anchors[anchor_pos]
+        right_index, right_time = anchors[anchor_pos + 1]
+
+        missing = list(range(left_index + 1, right_index))
+
+        if not missing:
+            continue
+
+        weights = [
+            max(1, len(normalize_word(original[i])))
+            for i in missing
+        ]
+
+        total_weight = sum(weights)
+        available = max(0.05, right_time - left_time)
+
+        cursor = left_time
+
+        for i, weight in zip(missing, weights):
+            word_duration = available * weight / total_weight
+
+            timings[i] = {
+                "start": cursor,
+                "end": cursor + word_duration
+            }
+
+            cursor += word_duration
+
+    final = []
+
+    for index, word in enumerate(original):
+        timing = timings[index]
+
+        start = max(0.0, min(audio_duration, timing["start"]))
+        end = max(start + 0.04, min(audio_duration, timing["end"]))
+
+        final.append({
+            "text": word,
+            "start": start,
+            "end": end
+        })
+
+    return final, match_ratio
 
 
 def ass_time(seconds):
@@ -80,187 +230,139 @@ def ass_time(seconds):
     minutes = int((seconds % 3600) // 60)
     secs = seconds % 60
 
-    return (
-        f"{hours}:"
-        f"{minutes:02d}:"
-        f"{secs:05.2f}"
-    )
+    return f"{hours}:{minutes:02d}:{secs:05.2f}"
 
 
-def clean_ass_text(text):
-    """
-    Escape special ASS characters.
-    """
-
-    text = str(text or "")
-
+def safe_ass_text(text):
+    text = str(text)
     text = text.replace("\\", "")
-    text = text.replace("{", "")
-    text = text.replace("}", "")
-    text = text.replace("\n", " ")
-
-    return text.strip()
+    text = text.replace("{", "(")
+    text = text.replace("}", ")")
+    return text
 
 
 def make_ass_header():
     return f"""[Script Info]
-Title: BADSAH Hindi Word Captions
+Title: BADSAH Premium Hindi Captions
 ScriptType: v4.00+
-WrapStyle: 2
-ScaledBorderAndShadow: yes
 PlayResX: {WIDTH}
 PlayResY: {HEIGHT}
+WrapStyle: 2
+ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: BADSAH,{FONT_NAME},{FONT_SIZE},&H0000BFFF,&H00000000,&H00FFFFFF,&H00FFFFFF,-1,0,0,0,100,100,0,0,3,18,0,2,65,65,{BOTTOM_MARGIN},1
+Style: BADSAH,{FONT_NAME},{FONT_SIZE},&H00FFFFFF,&H00FFFFFF,&H00000000,&H{BOX_ALPHA}FFFFFF,-1,0,0,0,100,100,0,0,3,16,2,5,45,45,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
 
-def group_words(words):
-    """
-    Divide transcript into short caption lines.
-    Punctuation can end a line early.
-    """
-
-    groups = []
-    current = []
-
-    for word in words:
-        text = clean_ass_text(word["text"])
-
-        if not text:
-            continue
-
-        current.append({
-            "text": text,
-            "start": float(word["start"]),
-            "end": float(word["end"])
-        })
-
-        punctuation_end = text.endswith(
-            ("।", "?", "!", ".", "…")
-        )
-
-        if (
-            len(current) >= MAX_WORDS_PER_LINE
-            or punctuation_end
-        ):
-            groups.append(current)
-            current = []
-
-    if current:
-        groups.append(current)
-
-    return groups
-
-
-def make_dialogue(group):
-    """
-    ASS karaoke:
-    Black = upcoming words.
-    Gold = currently spoken word.
-    """
-
-    parts = []
-
-    for word in group:
-        duration = max(
-            0.05,
-            word["end"] - word["start"]
-        )
-
-        centiseconds = max(
-            1,
-            round(duration * 100)
-        )
-
-        text = clean_ass_text(word["text"])
-
-        parts.append(
-            f"{{\\k{centiseconds}}}{text}"
-        )
-
-    return " ".join(parts)
-
-
-def create_ass(words):
-    groups = group_words(words)
-
-    if not groups:
-        raise RuntimeError(
-            "No usable Hindi words were detected."
-        )
-
+def build_ass(all_words):
     lines = [make_ass_header()]
 
-    for group in groups:
-        start = group[0]["start"]
-        end = group[-1]["end"]
+    for index, word in enumerate(all_words):
 
-        # Avoid zero-duration subtitles.
+        start = word["start"]
+        end = word["end"]
+
         if end <= start:
-            end = start + 0.2
+            continue
 
-        dialogue = make_dialogue(group)
+        # Previous word + active word + next two words
+        first = max(0, index - 1)
+        last = min(len(all_words), index + 3)
 
-        lines.append(
+        visible = all_words[first:last]
+        parts = []
+
+        for visible_index, item in enumerate(visible):
+            actual_index = first + visible_index
+            text = safe_ass_text(item["text"])
+
+            if actual_index == index:
+                parts.append(
+                    "{\\c&H0000BFFF&"
+                    f"\\fscx{ACTIVE_SCALE}"
+                    f"\\fscy{ACTIVE_SCALE}"
+                    "\\bord3\\3c&H000000&}"
+                    + text
+                    + "{\\rBADSAH}"
+                )
+            else:
+                parts.append(
+                    "{\\c&H00FFFFFF&"
+                    "\\fscx100\\fscy100"
+                    "\\bord3\\3c&H000000&}"
+                    + text
+                    + "{\\rBADSAH}"
+                )
+
+        caption_text = " ".join(parts)
+
+        event = (
             "Dialogue: 0,"
             + ass_time(start)
             + ","
             + ass_time(end)
             + ",BADSAH,,0,0,0,,"
-            + dialogue
+            + "{\\an5\\move(600,"
+            + str(CAPTION_Y)
+            + ",540,"
+            + str(CAPTION_Y)
+            + ",0,130)}"
+            + caption_text
+            + "\n"
         )
 
+        lines.append(event)
+
     ASS_FILE.write_text(
-        "\n".join(lines) + "\n",
+        "\n".join(lines),
         encoding="utf-8-sig"
     )
-
-    return len(groups)
 
 
 def main():
 
     print("=" * 55)
-    print("BADSAH WORD-BY-WORD HINDI CAPTION TEST")
+    print("BADSAH PREMIUM CAPTION TEST V2")
     print("=" * 55)
 
-    if not SOURCE.is_file():
-        sys.exit(
-            "ERROR: final_output.mp4 not found in repository root."
-        )
+    for tool in ("ffmpeg", "ffprobe"):
+        if not shutil.which(tool):
+            sys.exit(f"Missing required tool: {tool}")
 
-    for program in ("ffmpeg", "ffprobe"):
-        if not shutil.which(program):
-            sys.exit(
-                f"ERROR: {program} is not installed."
-            )
+    for path in (VIDEO, STORY):
+        if not path.is_file():
+            sys.exit(f"Missing required file: {path.name}")
 
     try:
         from faster_whisper import WhisperModel
     except ImportError:
-        sys.exit(
-            "ERROR: faster-whisper is missing. "
-            "Install it before running this script."
+        sys.exit("Install faster-whisper before running this script.")
+
+    story = json.loads(
+        STORY.read_text(encoding="utf-8")
+    )
+
+    if not isinstance(story, list) or not story:
+        raise RuntimeError(
+            "story_output.json must contain a non-empty scene list."
         )
 
-    WORK.mkdir(
-        parents=True,
-        exist_ok=True
-    )
+    WORK.mkdir(parents=True, exist_ok=True)
 
     if OUTPUT.exists():
         OUTPUT.unlink()
 
-    source_duration = get_duration(SOURCE)
+    video_duration = duration(VIDEO)
 
-    print(f"\nSource duration: {source_duration:.2f} seconds")
-    print(f"Loading Whisper model: {MODEL_NAME}")
+    print(f"Video duration: {video_duration:.3f}s")
+    print(f"Total scenes: {len(story)}")
+
+    print("\nLoading Hindi speech model...")
 
     model = WhisperModel(
         MODEL_NAME,
@@ -268,70 +370,95 @@ def main():
         compute_type="int8"
     )
 
-    print("\nTranscribing Hindi audio...")
-    print("Word timestamps are enabled.")
-
-    segments, info = model.transcribe(
-        str(SOURCE),
-        language=LANGUAGE,
-        word_timestamps=True,
-        beam_size=5,
-        vad_filter=False
-    )
-
     all_words = []
+    scene_reports = []
+    timeline = 0.0
 
-    for segment in segments:
+    for index, scene in enumerate(story, start=1):
 
-        if not segment.words:
-            continue
-
-        for word in segment.words:
-
-            if word.start is None or word.end is None:
-                continue
-
-            text = str(word.word).strip()
-
-            if not text:
-                continue
-
-            all_words.append({
-                "text": text,
-                "start": max(0.0, float(word.start)),
-                "end": max(0.0, float(word.end))
-            })
-
-    if not all_words:
-        raise RuntimeError(
-            "Whisper did not detect any usable words."
+        scene_id = str(
+            scene.get("scene_id")
+            or scene.get("scene_number")
+            or index
         )
 
-    print(f"\nDetected words: {len(all_words)}")
+        dialogue = str(scene.get("dialogue", "")).strip()
 
-    caption_count = create_ass(all_words)
+        audio_path = AUDIO_DIR / f"scene_{scene_id}.mp3"
 
-    print(f"Caption lines: {caption_count}")
+        if not dialogue:
+            raise RuntimeError(
+                f"Scene {scene_id} has empty dialogue."
+            )
 
-    # FFmpeg subtitles filter.
-    # ASS path is escaped for FFmpeg filter syntax.
+        if not audio_path.is_file():
+            raise FileNotFoundError(
+                f"Missing scene audio: {audio_path}"
+            )
+
+        audio_duration = duration(audio_path)
+
+        detected = whisper_words(audio_path, model)
+
+        if not detected:
+            raise RuntimeError(
+                f"No speech detected in scene {scene_id}."
+            )
+
+        aligned, match_ratio = align_script_to_audio(
+            dialogue,
+            detected,
+            audio_duration
+        )
+
+        for word in aligned:
+            all_words.append({
+                "text": word["text"],
+                "start": timeline + word["start"],
+                "end": timeline + word["end"]
+            })
+
+        scene_reports.append({
+            "scene_id": scene_id,
+            "audio_duration": round(audio_duration, 3),
+            "script_words": len(aligned),
+            "whisper_words": len(detected),
+            "matched_ratio": round(match_ratio, 3)
+        })
+
+        print(
+            f"Scene {scene_id}: "
+            f"{len(aligned)} script words, "
+            f"match {match_ratio:.0%}, "
+            f"{audio_duration:.2f}s"
+        )
+
+        timeline += audio_duration
+
+    drift = abs(timeline - video_duration)
+
+    if drift > 1.0:
+        raise RuntimeError(
+            f"Audio/video duration mismatch: "
+            f"scene audio={timeline:.2f}s, "
+            f"video={video_duration:.2f}s. "
+            "Refusing to create drifting captions."
+        )
+
+    build_ass(all_words)
+
     ass_path = str(ASS_FILE.resolve())
     ass_path = ass_path.replace("\\", "/")
     ass_path = ass_path.replace(":", r"\:")
     ass_path = ass_path.replace("'", r"\'")
 
-    subtitle_filter = (
-        f"subtitles='{ass_path}':"
-        "fontsdir='/usr/share/fonts/truetype/noto'"
-    )
+    subtitle_filter = f"subtitles='{ass_path}'"
 
-    print("\nRendering caption test video...")
+    print("\nRendering premium caption preview...")
 
     run([
-        "ffmpeg",
-        "-hide_banner",
-        "-y",
-        "-i", str(SOURCE),
+        "ffmpeg", "-hide_banner", "-y",
+        "-i", str(VIDEO),
         "-vf", subtitle_filter,
         "-map", "0:v:0",
         "-map", "0:a:0?",
@@ -341,36 +468,34 @@ def main():
         "-pix_fmt", "yuv420p",
         "-c:a", "copy",
         "-movflags", "+faststart",
-        "-t", f"{source_duration:.6f}",
+        "-t", f"{video_duration:.6f}",
         str(OUTPUT)
     ])
 
-    output_duration = get_duration(OUTPUT)
+    output_duration = duration(OUTPUT)
 
-    if abs(output_duration - source_duration) > 0.20:
-        raise RuntimeError(
-            "Output duration differs from original. "
-            "Original video remains untouched."
-        )
-
-    if OUTPUT.stat().st_size < 50000:
-        raise RuntimeError(
-            "Output video is unexpectedly small."
-        )
+    if abs(output_duration - video_duration) > 0.20:
+        raise RuntimeError("Output duration validation failed.")
 
     report = {
         "status": "success",
-        "source": SOURCE.name,
         "output": OUTPUT.name,
+        "source": VIDEO.name,
         "language": LANGUAGE,
-        "model": MODEL_NAME,
-        "detected_language": getattr(info, "language", None),
+        "text_source": STORY.name,
+        "timing_source": "individual scene MP3 files",
+        "alignment": "Whisper timestamps matched to original script",
+        "normal_word_color": "white",
+        "active_word_color": "gold",
+        "active_word_scale_percent": ACTIVE_SCALE,
+        "visible_word_window": "up to 4 words",
         "word_count": len(all_words),
-        "caption_lines": caption_count,
-        "source_duration": round(source_duration, 3),
+        "source_duration": round(video_duration, 3),
+        "scene_audio_total": round(timeline, 3),
         "output_duration": round(output_duration, 3),
-        "word_timestamps": True,
-        "original_modified": False
+        "scene_alignment": scene_reports,
+        "original_video_modified": False,
+        "original_audio_modified": False
     }
 
     REPORT.write_text(
@@ -383,14 +508,15 @@ def main():
     )
 
     print("\n" + "=" * 55)
-    print("CAPTION TEST COMPLETED")
+    print("CAPTION PREVIEW SUCCESS")
     print("=" * 55)
     print(f"Output: {OUTPUT.name}")
     print(f"Words: {len(all_words)}")
-    print(f"Caption lines: {caption_count}")
-    print(f"Duration: {output_duration:.2f} seconds")
-    print("Original video was not modified.")
-    print(f"Report: {REPORT.name}")
+    print(f"Duration: {output_duration:.2f}s")
+    print("Normal text: WHITE")
+    print("Active word: GOLD + enlarged")
+    print("Caption box: translucent white")
+    print("Original files: unchanged")
 
 
 if __name__ == "__main__":
