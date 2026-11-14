@@ -7,18 +7,14 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: badsah-caption-test
-  cancel-in-progress: false
-
 jobs:
   caption-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    
+    timeout-minutes: 40
+
     env:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -33,32 +29,38 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg fonts-noto-core fontconfig
-          ffmpeg -version
-          ffprobe -version
           fc-cache -f
-          fc-match "Noto Sans Devanagari"
 
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install faster-whisper
+          pip install faster-whisper Pillow
 
       - name: Verify Required Files
         run: |
-          test -s final_output.mp4
-          test -s caption_test.py
-          test -s /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+          test -f final_output.mp4
+          test -f story_output.json
+          test -f caption_test.py
+          test -d audio_files
+          ls audio_files/scene_*.mp3
+          fc-match "Noto Sans Devanagari:style=Bold"
 
-      - name: Generate Hindi Word Captions
-        run: python caption_test.py
+      - name: Generate V6 Moving Captions
+        run: |
+          python caption_test.py
 
-      
-      - name: Upload Captioned Video and Report
+      - name: Verify Generated Video
+        run: |
+          test -f captions_test.mp4
+          test -f caption_test_report_v6.json
+          ls -lh captions_test.mp4
+
+      - name: Upload V6 Captioned Video
         uses: actions/upload-artifact@v4
         with:
-          name: BADSAH-Caption-Video-V4
+          name: BADSAH-Caption-Video-V6
           path: |
             captions_test.mp4
-            caption_test_report_v4.json
+            caption_test_report_v6.json
           if-no-files-found: error
           retention-days: 3
