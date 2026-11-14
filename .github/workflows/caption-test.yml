@@ -1,0 +1,60 @@
+
+name: BADSAH - Hindi Caption Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: badsah-caption-test
+  cancel-in-progress: false
+
+jobs:
+  caption-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install FFmpeg and Hindi Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-core fontconfig
+          ffmpeg -version
+          ffprobe -version
+          fc-cache -f
+          fc-match "Noto Sans Devanagari"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install faster-whisper
+
+      - name: Verify Required Files
+        run: |
+          test -s final_output.mp4
+          test -s caption_test.py
+          test -s /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+
+      - name: Generate Hindi Word Captions
+        run: python caption_test.py
+
+      - name: Upload Caption Preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: BADSAH-Hindi-Caption-Test
+          path: |
+            captions_test.mp4
+            caption_test_report.json
+          if-no-files-found: error
+          retention-days: 3
