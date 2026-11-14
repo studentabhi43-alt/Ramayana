@@ -1,0 +1,44 @@
+name: BADSAH - Progress Overlay Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: badsah-progress-overlay-test
+  cancel-in-progress: false
+
+jobs:
+  progress-overlay-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+          ffprobe -version
+
+      - name: Check Required Files
+        run: |
+          test -s final_output.mp4 || { echo "Missing final_output.mp4 in repository root."; exit 1; }
+          test -s assets/hanuman_flight.png || { echo "Missing assets/hanuman_flight.png."; exit 1; }
+          test -s progress_test.py || { echo "Missing progress_test.py in repository root."; exit 1; }
+
+      - name: Create Progress Overlay Preview
+        run: python3 progress_test.py
+
+      - name: Upload Preview MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: badsah-progress-test
+          path: progress_test.mp4
+          if-no-files-found: error
+          retention-days: 3
