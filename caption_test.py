@@ -23,6 +23,7 @@ GAP = 13
 CAPTION_Y = 0.81
 
 
+
 def run_cmd(args):
     p = subprocess.run(
         args,
@@ -30,8 +31,10 @@ def run_cmd(args):
         stderr=subprocess.PIPE,
         text=True
     )
+
     if p.returncode:
         raise RuntimeError(p.stderr[-3000:])
+
     return p.stdout.strip()
 
 
