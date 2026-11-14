@@ -1,44 +1,157 @@
-name: BADSAH - Progress Overlay Test
+#!/usr/bin/env python3
+"""BADSAH Progress Overlay Test
+Hanuman PNG 30% larger.
+White line appears ONLY behind Hanuman.
+Original video and audio remain protected.
+"""
 
-on:
-  workflow_dispatch:
+import json
+import shutil
+import subprocess
+import sys
+from pathlib import Path
 
-permissions:
-  contents: read
+BASE_DIR = Path(__file__).resolve().parent
+VIDEO = BASE_DIR / "final_output.mp4"
+HANUMAN = BASE_DIR / "assets" / "hanuman_flight.png"
+OUTPUT = BASE_DIR / "progress_test.mp4"
 
-concurrency:
-  group: badsah-progress-overlay-test
-  cancel-in-progress: false
+WIDTH = 1080
+HEIGHT = 1920
+FPS = 30
 
-jobs:
-  progress-overlay-test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+def run(command):
+    print("+", " ".join(map(str, command)))
+    return subprocess.run(
+        command,
+        check=True,
+        text=True,
+        capture_output=True
+    )
 
-      - name: Install FFmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-          ffmpeg -version
-          ffprobe -version
 
-      - name: Check Required Files
-        run: |
-          test -s final_output.mp4 || { echo "Missing final_output.mp4 in repository root."; exit 1; }
-          test -s assets/hanuman_flight.png || { echo "Missing assets/hanuman_flight.png."; exit 1; }
-          test -s progress_test.py || { echo "Missing progress_test.py in repository root."; exit 1; }
+def probe(path):
+    result = run([
+        "ffprobe", "-v", "error",
+        "-show_entries",
+        "format=duration:stream=codec_type,width,height",
+        "-of", "json", str(path)
+    ])
 
-      - name: Create Progress Overlay Preview
-        run: python3 progress_test.py
+    data = json.loads(result.stdout)
+    streams = data.get("streams", [])
 
-      - name: Upload Preview MP4
-        uses: actions/upload-artifact@v4
-        with:
-          name: badsah-progress-test
-          path: progress_test.mp4
-          if-no-files-found: error
-          retention-days: 3
+    video = next(
+        (s for s in streams if s.get("codec_type") == "video"),
+        None
+    )
+    audio = next(
+        (s for s in streams if s.get("codec_type") == "audio"),
+        None
+    )
+
+    if not video or not audio:
+        raise RuntimeError("Video and audio streams are required.")
+
+    if (video.get("width"), video.get("height")) != (WIDTH, HEIGHT):
+        raise RuntimeError("Expected 1080x1920 video.")
+
+    return float(data["format"]["duration"])
+
+
+def main():
+
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        sys.exit("FFmpeg/FFprobe not installed.")
+
+    if not VIDEO.is_file():
+        sys.exit("Missing final_output.mp4.")
+
+    if not HANUMAN.is_file():
+        sys.exit("Missing assets/hanuman_flight.png.")
+
+    if OUTPUT.exists():
+        OUTPUT.unlink()
+
+    duration = probe(VIDEO)
+
+    # Progress design
+    track_x = 90
+    travel_width = 900
+    line_y = 1770
+
+    # Previous size 180px; increased by 30%
+    avatar_width = 234
+    avatar_y = 1685
+
+    movement = travel_width - avatar_width
+
+    # Hanuman moves from left to right
+    x_expr = (
+        f"{track_x}+{movement}*t/{duration:.6f}"
+    )
+
+    # Line exists ONLY behind Hanuman
+    line_width_expr = (
+        f"max(0,min({movement},"
+        f"{movement}*t/{duration:.6f}))"
+    )
+
+    filters = (
+        f"[1:v]scale={avatar_width}:-1,"
+        "format=rgba[hanuman];"
+
+        f"[0:v]drawbox="
+        f"x={track_x}:y={line_y}:"
+        f"w='{line_width_expr}':h=3:"
+        "color=white@0.78:t=fill[base];"
+
+        f"[base][hanuman]overlay="
+        f"x='{x_expr}':y={avatar_y}:"
+        "eval=frame:eof_action=repeat:format=auto[v]"
+    )
+
+    run([
+        "ffmpeg", "-hide_banner", "-y",
+        "-i", str(VIDEO),
+        "-loop", "1",
+        "-framerate", str(FPS),
+        "-i", str(HANUMAN),
+
+        "-filter_complex", filters,
+
+        "-map", "[v]",
+        "-map", "0:a:0",
+        "-t", f"{duration:.6f}",
+
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "20",
+        "-pix_fmt", "yuv420p",
+
+        "-c:a", "copy",
+        "-movflags", "+faststart",
+
+        str(OUTPUT)
+    ])
+
+    output_duration = probe(OUTPUT)
+
+    if abs(output_duration - duration) > 0.15:
+        raise RuntimeError("Unexpected video duration change.")
+
+    if OUTPUT.stat().st_size < 50_000:
+        raise RuntimeError("Output file is unexpectedly small.")
+
+    print("\nSUCCESS: progress_test.mp4 created")
+    print(f"Original duration: {duration:.3f}s")
+    print(f"Test duration: {output_duration:.3f}s")
+    print("Hanuman width: 234px")
+    print("Line: ONLY behind Hanuman")
+    print("Original audio: copied")
+    print("Original video: unchanged")
+
+
+if __name__ == "__main__":
+    main()
