@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आपने सुना है कि विष्मित्र एक बार राजकुमार थे, इससे पहले कि वे ऋषि बने?",
-        "image_prompt": "Ancient Sanskrit manuscript page with a stylized illustration of a prince in regal attire, surrounded by Vedic symbols.",
-        "video_motion_prompt": "Slow zoom into the manuscript page, gentle pan left to right.",
+        "dialogue": "क्या आप जानते हैं कि कृष्ण के सबसे करीबी दोस्त सुदामा को महाभारत में क्यों नहीं मिलते?",
+        "image_prompt": "A dramatic close-up of ancient Sanskrit manuscript pages with faded ink, hinting at hidden stories.",
+        "video_motion_prompt": "Slow zoom in on the manuscript, subtle lighting to create a mysterious atmosphere.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "शान्ति परवा के अध्याय 5, श्लोक 12 में यह उल्लेख है कि विष्मित्र राजकुमार थे।",
-        "image_prompt": "Open page of Mahabharata Shanti Parva, highlighting the verse in Sanskrit script.",
-        "video_motion_prompt": "Camera pans across the highlighted verse, then zooms in on the Sanskrit words.",
+        "dialogue": "सुदामा, एक गरीब ब्राह्मण, गोखुल के एक छोटे से गाँव से, कृष्ण के बचपन के साथी थे।",
+        "image_prompt": "Illustration of a young Brahmin boy, modest clothing, standing beside a rustic hut in Gokul.",
+        "video_motion_prompt": "Pan from left to right following the boy, gentle camera tilt upward.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "विष्मित्र ने अपने कshatriya वंश के गौरव को पीछे छोड़कर तपस्या शुरू की।",
-        "image_prompt": "Illustration of Vishwamitra in princely garb, turning away from a royal court, beginning austerities.",
-        "video_motion_prompt": "Camera follows his movement from palace to forest, showing transition.",
+        "dialogue": "श्रीमद्भगवद् पुराण 10.1.1-3 में सुदामा की कहानी का वर्णन है, यह स्पष्ट है।",
+        "image_prompt": "Page from Bhagavata Purana with Sanskrit verses, illuminated with gold leaf, showing the text of 10.1.1-3.",
+        "video_motion_prompt": "Camera pans across the page, focusing on the highlighted verses, with soft focus.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "विष्मित्र ने तीव्र तपस्या की, जिससे वे ऋषि के रूप में मान्यता प्राप्त हुए।",
-        "image_prompt": "Vishwamitra meditating in a forest, surrounded by fire and celestial beings.",
-        "video_motion_prompt": "Soft focus, slow rotation around him, highlighting the aura.",
+        "dialogue": "महाभारत में सुदामा का कोई उल्लेख नहीं मिलता, जिससे पाठकों को आश्चर्य होता है।",
+        "image_prompt": "A blank scroll or an empty page of Mahabharata, symbolizing absence of Sudama.",
+        "video_motion_prompt": "Camera slowly pans across the empty page, slight fade to emphasize emptiness.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "पहले राजकुमार, बाद में ऋषि – यह परिवर्तन प्राचीन कथाओं में दुर्लभ है।",
-        "image_prompt": "Split-screen: left side a prince, right side a sage, with a timeline arrow.",
-        "video_motion_prompt": "Fade transition between the two images, with a subtle arrow animation.",
+        "dialogue": "यह अंतर हमें यह सिखाता है कि पौराणिक कथाएँ अलग-अलग परंपराओं में भिन्न हो सकती हैं।",
+        "image_prompt": "A collage of different manuscript styles: Puranic, Epic, and regional scripts, showing textual diversity.",
+        "video_motion_prompt": "Camera rotates slowly around the collage, highlighting each script.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "शास्त्रज्ञ कहते हैं कि यह श्लोक विष्मित्र के कshatriya मूल को स्पष्ट करता है।",
-        "image_prompt": "A scholar in a library, pointing to the Mahabharata text on a desk.",
-        "video_motion_prompt": "Camera pans from the scholar's hand to the highlighted verse.",
+        "dialogue": "सुदामा की कहानी से हमें विनम्रता और मित्रता का महत्व याद आता है।",
+        "image_prompt": "A serene depiction of Krishna with Sudama, sharing a humble meal, symbolizing friendship.",
+        "video_motion_prompt": "Soft dolly in towards the figures, gentle lighting to evoke warmth.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस कहानी से हमें मिलता है कि तपस्या से परिवर्तन संभव है।",
-        "image_prompt": "A serene sunrise over a forest, symbolizing new beginnings.",
-        "video_motion_prompt": "Slow upward pan, revealing sunrise, with soft light.",
+        "dialogue": "इसलिए, सुदामा की कहानी हमें याद दिलाती है कि भारतीय शास्त्रों की विविधता कितनी समृद्ध है।",
+        "image_prompt": "A panoramic view of ancient Indian temples and scrolls, representing the richness of scriptures.",
+        "video_motion_prompt": "Wide aerial shot, slowly zooming out to show the vastness of cultural heritage.",
         "claim_refs": [
             "C1"
         ]

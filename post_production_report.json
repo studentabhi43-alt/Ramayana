@@ -1,0 +1,11 @@
+{
+  "output": "badsah_final.mp4",
+  "original_duration_seconds": 34.842,
+  "final_duration_seconds": 41.854,
+  "intro_seconds": 3.0,
+  "outro_seconds": 4.0,
+  "original_episode_preserved": true,
+  "word_highlighting": "Estimated from text character weights; not exact forced alignment.",
+  "narrator_overlay": "Static portrait; speaking animation not implemented.",
+  "hanuman_progress": "Golden track enabled; Hanuman asset missing."
+}
