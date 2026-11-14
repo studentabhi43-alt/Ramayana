@@ -1,5 +1,4 @@
-
-name: BADSAH - Hindi Caption Test
+name: BADSAH - Premium Breath Group Captions V7
 
 on:
   workflow_dispatch:
@@ -45,7 +44,7 @@ jobs:
           ls audio_files/scene_*.mp3
           fc-match "Noto Sans Devanagari:style=Bold"
 
-      - name: Generate V6 Moving Captions
+      - name: Generate V7 Premium Breath Group Captions
         run: |
           python caption_test.py
 
@@ -55,10 +54,10 @@ jobs:
           test -f caption_test_report_v6.json
           ls -lh captions_test.mp4
 
-      - name: Upload V6 Captioned Video
+      - name: Upload V7 Captioned Video
         uses: actions/upload-artifact@v4
         with:
-          name: BADSAH-Caption-Video-V6
+          name: BADSAH-Premium-Captions-V7
           path: |
             captions_test.mp4
             caption_test_report_v6.json
