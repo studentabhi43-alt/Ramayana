@@ -2,81 +2,81 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 34.872,
+    "actual_total_audio_seconds": 23.04,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
-    "final_duration_within_target": true,
+    "final_duration_within_target": false,
     "scenes": [
         {
             "scene_id": "1",
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.016,
-            "difference_seconds": -1.984,
+            "actual_duration_seconds": 0.696,
+            "difference_seconds": -6.304,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि कृष्ण के सबसे करीबी दोस्त सुदामा को महाभारत में क्यों नहीं मिलते?"
+            "dialogue": "क्या आप जानते हैं कि महाभारत में पुखराज के नाम से भी जाना जाने वाला पुखराज शहर का उल्लेख है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.424,
-            "difference_seconds": -1.576,
+            "actual_duration_seconds": 5.016,
+            "difference_seconds": -1.984,
             "within_target": true,
-            "dialogue": "सुदामा, एक गरीब ब्राह्मण, गोखुल के एक छोटे से गाँव से, कृष्ण के बचपन के साथी थे।"
+            "dialogue": "शान्ति परवा के अध्याय बारह में, पुखराज को उटकाल के रूप में वर्णित किया गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.048,
-            "difference_seconds": -0.952,
+            "actual_duration_seconds": 5.328,
+            "difference_seconds": -1.672,
             "within_target": true,
-            "dialogue": "श्रीमद्भगवद् पुराण 10.1.1-3 में सुदामा की कहानी का वर्णन है, यह स्पष्ट है।"
+            "dialogue": "पुत्रों ने वहाँ एक यज्ञ किया, ताकि जनता की भलाई और समृद्धि सुनिश्चित हो सके।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.704,
-            "difference_seconds": -2.296,
+            "actual_duration_seconds": 5.664,
+            "difference_seconds": -1.336,
             "within_target": true,
-            "dialogue": "महाभारत में सुदामा का कोई उल्लेख नहीं मिलता, जिससे पाठकों को आश्चर्य होता है।"
+            "dialogue": "यह तथ्य पुखराज के ऐतिहासिक महत्व को दर्शाता है, जिसे अन्य ग्रंथों में नहीं पाया जाता।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.464,
-            "difference_seconds": -2.536,
+            "actual_duration_seconds": 5.568,
+            "difference_seconds": -1.432,
             "within_target": true,
-            "dialogue": "यह अंतर हमें यह सिखाता है कि पौराणिक कथाएँ अलग-अलग परंपराओं में भिन्न हो सकती हैं।"
+            "dialogue": "धर्मग्रंथों में पुखराज का उल्लेख दुर्लभ है, परंतु महाभारत में यह स्पष्ट रूप से मिलता है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.408,
-            "difference_seconds": -3.592,
+            "actual_duration_seconds": 0.624,
+            "difference_seconds": -6.376,
             "within_target": true,
-            "dialogue": "सुदामा की कहानी से हमें विनम्रता और मित्रता का महत्व याद आता है।"
+            "dialogue": "इस पुखराज के यज्ञ का वर्णन शान्ति परवा के 12वें अध्याय में मिलता है, जो एक प्राचीन ऐतिहासिक दस्तावेज है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.808,
-            "difference_seconds": -1.192,
+            "actual_duration_seconds": 0.144,
+            "difference_seconds": -6.856,
             "within_target": true,
-            "dialogue": "इसलिए, सुदामा की कहानी हमें याद दिलाती है कि भारतीय शास्त्रों की विविधता कितनी समृद्ध है।"
+            "dialogue": "इसलिए, पुखराज की कहानी हमें महाभारत के गहरे ऐतिहासिक संदर्भ को समझने में मदद करती है।"
         }
     ]
 }
