@@ -4,8 +4,13 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Mahabharata (Shanti Parva)",
-            "source_url": "https://www.sacred-texts.com/hin/mh/mh001.htm",
+            "source_name": "Valmiki Ramayana (Sanskrit)",
+            "source_url": "https://www.sacred-texts.com/hin/ram/ram.htm",
+            "source_type": "primary text"
+        },
+        {
+            "source_name": "Ramcharitmanas (Tulsidas)",
+            "source_url": "https://www.sacred-texts.com/hin/ramcharitmanas/ramcharitmanas.htm",
             "source_type": "primary text"
         }
     ]
