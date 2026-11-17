@@ -2,10 +2,10 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 33.192,
+    "actual_total_audio_seconds": 34.128,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
-    "all_scenes_within_target": true,
+    "all_scenes_within_target": false,
     "final_duration_within_target": true,
     "scenes": [
         {
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.056,
-            "difference_seconds": -2.944,
+            "actual_duration_seconds": 2.688,
+            "difference_seconds": -4.312,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि शुर्पणखा को दो अलग-अलग रूपों में देखा जाता है?"
+            "dialogue": "क्या आप जानते हैं कि महाभारत में काली का उल्लेख है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.648,
-            "difference_seconds": -3.352,
+            "actual_duration_seconds": 4.056,
+            "difference_seconds": -2.944,
             "within_target": true,
-            "dialogue": "वैल्मिकी रामायण में शुर्पणखा को राक्षसी के रूप में दिखाया गया है।"
+            "dialogue": "शान्ति परव के पहले अध्याय में एक पंक्ति में काली को आह्वान किया गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.536,
-            "difference_seconds": -2.464,
-            "within_target": true,
-            "dialogue": "वह राम पर हमला करने की कोशिश करती है, जिससे रावण की उत्पत्ति होती है।"
+            "actual_duration_seconds": 9.888,
+            "difference_seconds": 2.888,
+            "within_target": false,
+            "dialogue": "कालीं चिरंजीविनं चिरकालं चिरस्थायिनं चिरसुखं चिरवृत्तं, तेनैव सर्वं निवार्यते, सभी बाधाओं को दूर करती है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.328,
-            "difference_seconds": -1.672,
+            "actual_duration_seconds": 4.224,
+            "difference_seconds": -2.776,
             "within_target": true,
-            "dialogue": "तुलसीदास के रामचरितमानस में शुर्पणखा को गलत समझे गए स्त्री के रूप में दिखाया गया है।"
+            "dialogue": "यह पंक्ति दर्शाती है कि काली को युद्ध के बीच में भी रक्षा के लिए बुलाया गया।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.464,
-            "difference_seconds": -2.536,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "वह अपनी अपमानित स्थिति के लिए शोक व्यक्त करती है, न कि दुष्टता के लिए।"
+            "dialogue": "अक्सर माना जाता है कि काली केवल शाक्तिक ग्रन्थों में है, पर महाभारत में भी है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.704,
-            "difference_seconds": -2.296,
+            "actual_duration_seconds": 3.888,
+            "difference_seconds": -3.112,
             "within_target": true,
-            "dialogue": "दोनों ग्रंथों में शुर्पणखा के चरित्र का चित्रण अलग है, पर घटनाएँ समान रहती हैं।"
+            "dialogue": "यह पंक्ति महाभारत के मूल शास्त्र में है, न कि बाद के व्याख्यान में।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.456,
-            "difference_seconds": -0.544,
+            "actual_duration_seconds": 4.776,
+            "difference_seconds": -2.224,
             "within_target": true,
-            "dialogue": "इससे हमें मिलता है कि साहित्य में दृष्टिकोण के अनुसार पात्रों की व्याख्या बदलती है।"
+            "dialogue": "इस अनोखे उल्लेख से हमें महाभारत के धार्मिक दृष्टिकोण का नया आयाम मिलता है।"
         }
     ]
 }
