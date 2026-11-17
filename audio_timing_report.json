@@ -2,10 +2,10 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 35.232,
+    "actual_total_audio_seconds": 32.304,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
-    "all_scenes_within_target": false,
+    "all_scenes_within_target": true,
     "final_duration_within_target": true,
     "scenes": [
         {
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.648,
-            "difference_seconds": -3.352,
+            "actual_duration_seconds": 3.816,
+            "difference_seconds": -3.184,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि प्राचीन वेदों में यमुना को देवी के रूप में पूजा जाता था?"
+            "dialogue": "क्या आप जानते हैं कि कृष्ण और बलराम एक ही गर्भ से जन्मे थे?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.496,
-            "difference_seconds": -1.504,
+            "actual_duration_seconds": 3.576,
+            "difference_seconds": -3.424,
             "within_target": true,
-            "dialogue": "रिगवेद के दसवें सूक्त में यमुना को एक दिव्य स्त्री के रूप में वर्णित किया गया है।"
+            "dialogue": "ब्रह्माण्ड कथा में यह विवरण नहीं मिलता, पर भगवद् पुराण में मिलता है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 8.208,
-            "difference_seconds": 1.208,
-            "within_target": false,
-            "dialogue": "यह सूक्त 10.90 के रूप में जाना जाता है, जहाँ यमुना को 'सागर' और 'सागर' के रूप में भी संबोधित किया गया है।"
+            "actual_duration_seconds": 5.904,
+            "difference_seconds": -1.096,
+            "within_target": true,
+            "dialogue": "भगवद् पुराण 10.5.1 में लिखा है, 'कृष्ण और बलराम एक ही गर्भ से उत्पन्न हुए।'"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.056,
-            "difference_seconds": -2.944,
+            "actual_duration_seconds": 5.328,
+            "difference_seconds": -1.672,
             "within_target": true,
-            "dialogue": "परंतु बाद के पुराणों में यमुना को केवल एक नदी के रूप में माना गया।"
+            "dialogue": "महाभारत में इस कथा का उल्लेख नहीं है, जिससे हमें मिलता है दो अलग दृष्टिकोण।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.128,
-            "difference_seconds": -2.872,
+            "actual_duration_seconds": 6.216,
+            "difference_seconds": -0.784,
             "within_target": true,
-            "dialogue": "इस बदलाव का कारण सांस्कृतिक और धार्मिक परिप्रेक्ष्य के विकास से जुड़ा है।"
+            "dialogue": "यह भिन्नता हमें बताती है कि पुराणों ने दिव्य पहलुओं पर जोर दिया, जबकि महाभारत युद्ध पर।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.088,
-            "difference_seconds": -1.912,
+            "actual_duration_seconds": 3.576,
+            "difference_seconds": -3.424,
             "within_target": true,
-            "dialogue": "इसलिए, आज भी यमुना को नदी और देवी दोनों रूपों में सम्मानित किया जाता है।"
+            "dialogue": "शोधकर्ताओं का मानना है कि यह भेद धार्मिक परिप्रेक्ष्य के कारण है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.608,
-            "difference_seconds": -2.392,
+            "actual_duration_seconds": 3.888,
+            "difference_seconds": -3.112,
             "within_target": true,
-            "dialogue": "आइए, इस प्राचीन ज्ञान को फिर से खोजें और अपने सांस्कृतिक धरोहर को समृद्ध करें।"
+            "dialogue": "तो अगली बार जब आप पुराण पढ़ें, तो इस अनोखे विवरण को याद रखें।"
         }
     ]
 }

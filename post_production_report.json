@@ -1,60 +1,24 @@
 {
   "status": "success",
   "output": "badsah_final.mp4",
-  "source_duration_seconds": 38.222,
-  "removed_opening_seconds": 2.99,
-  "narration_duration_seconds": 35.232,
-  "final_duration_seconds": 39.291,
-  "caption_engine": "V7 Faster-Whisper Hindi word timestamps",
-  "caption_style": "Premium maroon-and-gold rounded breath-group bubble",
-  "caption_groups": 27,
-  "active_word": "Gold; remaining words white",
-  "logo": "assets/logo.png; 85px wide; top-right from first story frame to last narration frame",
-  "hanuman_progress": true,
-  "outro_seconds": 4.0,
-  "original_narration_audio_preserved": true,
-  "scenes": [
-    {
-      "scene_id": "1",
-      "audio_duration": 3.648,
-      "script_words": 17,
-      "whisper_words": 15
-    },
-    {
-      "scene_id": "2",
-      "audio_duration": 5.496,
-      "script_words": 17,
-      "whisper_words": 16
-    },
-    {
-      "scene_id": "3",
-      "audio_duration": 8.208,
-      "script_words": 23,
-      "whisper_words": 25
-    },
-    {
-      "scene_id": "4",
-      "audio_duration": 4.056,
-      "script_words": 15,
-      "whisper_words": 14
-    },
-    {
-      "scene_id": "5",
-      "audio_duration": 4.128,
-      "script_words": 13,
-      "whisper_words": 13
-    },
-    {
-      "scene_id": "6",
-      "audio_duration": 5.088,
-      "script_words": 15,
-      "whisper_words": 14
-    },
-    {
-      "scene_id": "7",
-      "audio_duration": 4.608,
-      "script_words": 15,
-      "whisper_words": 16
-    }
-  ]
+  "duration_seconds": 35.283,
+  "resolution": "1080x1920",
+  "caption_design": "Original caption_test.py V7",
+  "caption_grouping": "Maximum 5 words",
+  "caption_active_word": "Gold",
+  "caption_other_words": "White",
+  "caption_background": "Maroon and gold rounded bubble",
+  "caption_timing": "Whisper word timestamps with interpolation for unmatched words",
+  "caption_animation": "Original V7 fade and scale",
+  "hanuman_asset": "assets/hanuman_flight.png",
+  "hanuman_width": 234,
+  "hanuman_position": "Original progress_test.py geometry",
+  "hanuman_movement": "Left to right",
+  "progress_trail": "Thin white trail behind Hanuman only",
+  "logo_asset": "assets/logo.png",
+  "logo_width": 780,
+  "logo_position": "Top center",
+  "narrator_portrait": false,
+  "original_video_preserved": true,
+  "audio": "Copied from captioned video without another encode"
 }

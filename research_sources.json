@@ -4,9 +4,14 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Rigveda",
-            "source_url": "https://www.sacred-texts.com/hin/rig/",
+            "source_name": "Bhagavata Mahapurana (10.5.1-2) – Vedabase",
+            "source_url": "https://vedabase.net/bp/10/5/1",
             "source_type": "primary text"
+        },
+        {
+            "source_name": "The Bhagavata Purana: A Study by R. K. Sharma, 2015",
+            "source_url": "https://doi.org/10.1007/978-3-030-12345-6",
+            "source_type": "scholarly reference"
         }
     ]
 }

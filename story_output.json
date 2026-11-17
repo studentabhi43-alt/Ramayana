@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि प्राचीन वेदों में यमुना को देवी के रूप में पूजा जाता था?",
-        "image_prompt": "Ancient Vedic manuscript with stylized river depiction and divine symbols.",
-        "video_motion_prompt": "Slow zoom into the manuscript, gentle panning across the text.",
+        "dialogue": "क्या आप जानते हैं कि कृष्ण और बलराम एक ही गर्भ से जन्मे थे?",
+        "image_prompt": "Ancient manuscript pages of Bhagavata Purana, close-up of Sanskrit text.",
+        "video_motion_prompt": "Slow pan across the manuscript, soft lighting.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रिगवेद के दसवें सूक्त में यमुना को एक दिव्य स्त्री के रूप में वर्णित किया गया है।",
-        "image_prompt": "Close-up of Rigveda 10.90 with highlighted verses and ancient calligraphy.",
-        "video_motion_prompt": "Track the highlighted verses, subtle tilt to reveal surrounding text.",
+        "dialogue": "ब्रह्माण्ड कथा में यह विवरण नहीं मिलता, पर भगवद् पुराण में मिलता है।",
+        "image_prompt": "Illustration of Krishna and Balarama as infants.",
+        "video_motion_prompt": "Camera zooms into illustration.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह सूक्त 10.90 के रूप में जाना जाता है, जहाँ यमुना को 'सागर' और 'सागर' के रूप में भी संबोधित किया गया है।",
-        "image_prompt": "Illustration of Yamuna as a goddess with oceanic motifs, ancient Vedic art style.",
-        "video_motion_prompt": "Slow rotation around the illustration, highlighting symbolic elements.",
+        "dialogue": "भगवद् पुराण 10.5.1 में लिखा है, 'कृष्ण और बलराम एक ही गर्भ से उत्पन्न हुए।'",
+        "image_prompt": "Sanskrit verse with transliteration.",
+        "video_motion_prompt": "Text appears with calligraphy.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "परंतु बाद के पुराणों में यमुना को केवल एक नदी के रूप में माना गया।",
-        "image_prompt": "Page from a Puranic text showing a simple river illustration, no divine attributes.",
-        "video_motion_prompt": "Pan across the page, focusing on the river depiction.",
+        "dialogue": "महाभारत में इस कथा का उल्लेख नहीं है, जिससे हमें मिलता है दो अलग दृष्टिकोण।",
+        "image_prompt": "Mahabharata manuscript page.",
+        "video_motion_prompt": "Page turns slowly.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस बदलाव का कारण सांस्कृतिक और धार्मिक परिप्रेक्ष्य के विकास से जुड़ा है।",
-        "image_prompt": "Timeline graphic showing evolution from Vedic to Puranic era with cultural icons.",
-        "video_motion_prompt": "Fade in timeline, subtle scroll effect along the timeline.",
+        "dialogue": "यह भिन्नता हमें बताती है कि पुराणों ने दिव्य पहलुओं पर जोर दिया, जबकि महाभारत युद्ध पर।",
+        "image_prompt": "Illustration of battlefield vs divine scene.",
+        "video_motion_prompt": "Split-screen transition.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसलिए, आज भी यमुना को नदी और देवी दोनों रूपों में सम्मानित किया जाता है।",
-        "image_prompt": "Modern festival scene with devotees offering flowers to a riverbank and a shrine.",
-        "video_motion_prompt": "Wide shot of festival, slow dolly to focus on offerings.",
+        "dialogue": "शोधकर्ताओं का मानना है कि यह भेद धार्मिक परिप्रेक्ष्य के कारण है।",
+        "image_prompt": "Academic book cover.",
+        "video_motion_prompt": "Camera pans over book.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "आइए, इस प्राचीन ज्ञान को फिर से खोजें और अपने सांस्कृतिक धरोहर को समृद्ध करें।",
-        "image_prompt": "Closing montage of Vedic manuscripts, river footage, and cultural celebrations.",
-        "video_motion_prompt": "Fade to black with gentle overlay of flowing water sounds.",
+        "dialogue": "तो अगली बार जब आप पुराण पढ़ें, तो इस अनोखे विवरण को याद रखें।",
+        "image_prompt": "Open ancient book with light.",
+        "video_motion_prompt": "Soft fade out.",
         "claim_refs": [
             "C1"
         ]
