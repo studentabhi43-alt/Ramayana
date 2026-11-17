@@ -1,13 +1,13 @@
 {
   "status": "success",
   "output": "badsah_final.mp4",
-  "source_duration_seconds": 35.094,
-  "removed_opening_seconds": 3.006,
-  "narration_duration_seconds": 32.088,
-  "final_duration_seconds": 36.166,
+  "source_duration_seconds": 38.222,
+  "removed_opening_seconds": 2.99,
+  "narration_duration_seconds": 35.232,
+  "final_duration_seconds": 39.291,
   "caption_engine": "V7 Faster-Whisper Hindi word timestamps",
   "caption_style": "Premium maroon-and-gold rounded breath-group bubble",
-  "caption_groups": 26,
+  "caption_groups": 27,
   "active_word": "Gold; remaining words white",
   "logo": "assets/logo.png; 85px wide; top-right from first story frame to last narration frame",
   "hanuman_progress": true,
@@ -16,45 +16,45 @@
   "scenes": [
     {
       "scene_id": "1",
-      "audio_duration": 3.096,
-      "script_words": 14,
-      "whisper_words": 14
+      "audio_duration": 3.648,
+      "script_words": 17,
+      "whisper_words": 15
     },
     {
       "scene_id": "2",
-      "audio_duration": 5.424,
-      "script_words": 14,
-      "whisper_words": 14
+      "audio_duration": 5.496,
+      "script_words": 17,
+      "whisper_words": 16
     },
     {
       "scene_id": "3",
-      "audio_duration": 5.496,
-      "script_words": 18,
-      "whisper_words": 17
+      "audio_duration": 8.208,
+      "script_words": 23,
+      "whisper_words": 25
     },
     {
       "scene_id": "4",
-      "audio_duration": 5.904,
-      "script_words": 16,
-      "whisper_words": 15
-    },
-    {
-      "scene_id": "5",
-      "audio_duration": 3.576,
-      "script_words": 16,
+      "audio_duration": 4.056,
+      "script_words": 15,
       "whisper_words": 14
     },
     {
+      "scene_id": "5",
+      "audio_duration": 4.128,
+      "script_words": 13,
+      "whisper_words": 13
+    },
+    {
       "scene_id": "6",
-      "audio_duration": 4.224,
+      "audio_duration": 5.088,
       "script_words": 15,
-      "whisper_words": 15
+      "whisper_words": 14
     },
     {
       "scene_id": "7",
-      "audio_duration": 4.368,
-      "script_words": 12,
-      "whisper_words": 11
+      "audio_duration": 4.608,
+      "script_words": 15,
+      "whisper_words": 16
     }
   ]
 }

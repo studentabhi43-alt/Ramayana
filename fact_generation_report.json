@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "Hidden detail in Rigveda about Saraswati",
-    "title": "ऋग्वेद में सरस्वती का अनोखा वर्णन",
+    "topic": "Rigveda's Personification of Yamuna as a Goddess",
+    "title": "यमुना: प्राचीन वेदों में देवी और नदी के बीच का रहस्य",
     "total_scenes": 7,
-    "total_dialogue_words": 105,
+    "total_dialogue_words": 115,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

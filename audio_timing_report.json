@@ -2,10 +2,10 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 32.088,
+    "actual_total_audio_seconds": 35.232,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
-    "all_scenes_within_target": true,
+    "all_scenes_within_target": false,
     "final_duration_within_target": true,
     "scenes": [
         {
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.096,
-            "difference_seconds": -3.904,
+            "actual_duration_seconds": 3.648,
+            "difference_seconds": -3.352,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि ऋग्वेद में सरस्वती देवी का एक अनोखा वर्णन है?"
+            "dialogue": "क्या आप जानते हैं कि प्राचीन वेदों में यमुना को देवी के रूप में पूजा जाता था?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.424,
-            "difference_seconds": -1.576,
+            "actual_duration_seconds": 5.496,
+            "difference_seconds": -1.504,
             "within_target": true,
-            "dialogue": "यह श्लोक 10.121 में मिलता है, जहाँ उसे 'मन की गुरु' कहा गया है।"
+            "dialogue": "रिगवेद के दसवें सूक्त में यमुना को एक दिव्य स्त्री के रूप में वर्णित किया गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.496,
-            "difference_seconds": -1.504,
-            "within_target": true,
-            "dialogue": "सामान्यतः सरस्वती को ज्ञान की देवी माना जाता है, पर यहाँ उसे मन की शिक्षिका बताया गया है।"
+            "actual_duration_seconds": 8.208,
+            "difference_seconds": 1.208,
+            "within_target": false,
+            "dialogue": "यह सूक्त 10.90 के रूप में जाना जाता है, जहाँ यमुना को 'सागर' और 'सागर' के रूप में भी संबोधित किया गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.904,
-            "difference_seconds": -1.096,
+            "actual_duration_seconds": 4.056,
+            "difference_seconds": -2.944,
             "within_target": true,
-            "dialogue": "यह विवरण हमें यह सिखाता है कि प्राचीन ऋषियों ने मन को सबसे बड़ा उपहार माना।"
+            "dialogue": "परंतु बाद के पुराणों में यमुना को केवल एक नदी के रूप में माना गया।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.576,
-            "difference_seconds": -3.424,
+            "actual_duration_seconds": 4.128,
+            "difference_seconds": -2.872,
             "within_target": true,
-            "dialogue": "ध्यान दें कि यह श्लोक केवल एक ही बार प्रकट होता है, अतः यह अनोखा है।"
+            "dialogue": "इस बदलाव का कारण सांस्कृतिक और धार्मिक परिप्रेक्ष्य के विकास से जुड़ा है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.224,
-            "difference_seconds": -2.776,
+            "actual_duration_seconds": 5.088,
+            "difference_seconds": -1.912,
             "within_target": true,
-            "dialogue": "इससे हमें यह समझ आता है कि ऋग्वेद में ज्ञान के विभिन्न पहलू समाहित हैं।"
+            "dialogue": "इसलिए, आज भी यमुना को नदी और देवी दोनों रूपों में सम्मानित किया जाता है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.368,
-            "difference_seconds": -2.632,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "अंत में, यह श्लोक हमें प्राचीन भारतीय दर्शन की गहराई दिखाता है।"
+            "dialogue": "आइए, इस प्राचीन ज्ञान को फिर से खोजें और अपने सांस्कृतिक धरोहर को समृद्ध करें।"
         }
     ]
 }

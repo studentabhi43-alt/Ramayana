@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि ऋग्वेद में सरस्वती देवी का एक अनोखा वर्णन है?",
-        "image_prompt": "Ancient Sanskrit manuscript of Rigveda with a faded illustration of Saraswati, holding a veena.",
-        "video_motion_prompt": "Slow zoom into the manuscript page, gentle panning across the illustration.",
+        "dialogue": "क्या आप जानते हैं कि प्राचीन वेदों में यमुना को देवी के रूप में पूजा जाता था?",
+        "image_prompt": "Ancient Vedic manuscript with stylized river depiction and divine symbols.",
+        "video_motion_prompt": "Slow zoom into the manuscript, gentle panning across the text.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह श्लोक 10.121 में मिलता है, जहाँ उसे 'मन की गुरु' कहा गया है।",
-        "image_prompt": "Close-up of the Rigveda verse 10.121 in Devanagari script, with a subtle glow.",
-        "video_motion_prompt": "Camera slowly rotates around the page, highlighting the verse.",
+        "dialogue": "रिगवेद के दसवें सूक्त में यमुना को एक दिव्य स्त्री के रूप में वर्णित किया गया है।",
+        "image_prompt": "Close-up of Rigveda 10.90 with highlighted verses and ancient calligraphy.",
+        "video_motion_prompt": "Track the highlighted verses, subtle tilt to reveal surrounding text.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "सामान्यतः सरस्वती को ज्ञान की देवी माना जाता है, पर यहाँ उसे मन की शिक्षिका बताया गया है।",
-        "image_prompt": "Illustration of Saraswati as a serene woman with a book, surrounded by swirling thoughts.",
-        "video_motion_prompt": "Soft pan across the illustration, showing the book and swirling thoughts.",
+        "dialogue": "यह सूक्त 10.90 के रूप में जाना जाता है, जहाँ यमुना को 'सागर' और 'सागर' के रूप में भी संबोधित किया गया है।",
+        "image_prompt": "Illustration of Yamuna as a goddess with oceanic motifs, ancient Vedic art style.",
+        "video_motion_prompt": "Slow rotation around the illustration, highlighting symbolic elements.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह विवरण हमें यह सिखाता है कि प्राचीन ऋषियों ने मन को सबसे बड़ा उपहार माना।",
-        "image_prompt": "Ancient sages seated in a forest, meditating, with a subtle aura of knowledge.",
-        "video_motion_prompt": "Camera moves from the sages to the forest canopy, creating a sense of depth.",
+        "dialogue": "परंतु बाद के पुराणों में यमुना को केवल एक नदी के रूप में माना गया।",
+        "image_prompt": "Page from a Puranic text showing a simple river illustration, no divine attributes.",
+        "video_motion_prompt": "Pan across the page, focusing on the river depiction.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "ध्यान दें कि यह श्लोक केवल एक ही बार प्रकट होता है, अतः यह अनोखा है।",
-        "image_prompt": "A single scroll of Rigveda lying open, with a highlighted verse.",
-        "video_motion_prompt": "Slow zoom in on the highlighted verse, then a gentle tilt.",
+        "dialogue": "इस बदलाव का कारण सांस्कृतिक और धार्मिक परिप्रेक्ष्य के विकास से जुड़ा है।",
+        "image_prompt": "Timeline graphic showing evolution from Vedic to Puranic era with cultural icons.",
+        "video_motion_prompt": "Fade in timeline, subtle scroll effect along the timeline.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इससे हमें यह समझ आता है कि ऋग्वेद में ज्ञान के विभिन्न पहलू समाहित हैं।",
-        "image_prompt": "A collage of various Vedic hymns, each with different themes, arranged in a circle.",
-        "video_motion_prompt": "Camera rotates around the collage, showing each hymn.",
+        "dialogue": "इसलिए, आज भी यमुना को नदी और देवी दोनों रूपों में सम्मानित किया जाता है।",
+        "image_prompt": "Modern festival scene with devotees offering flowers to a riverbank and a shrine.",
+        "video_motion_prompt": "Wide shot of festival, slow dolly to focus on offerings.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "अंत में, यह श्लोक हमें प्राचीन भारतीय दर्शन की गहराई दिखाता है।",
-        "image_prompt": "A modern scholar in a library, reading the Rigveda, with a contemplative expression.",
-        "video_motion_prompt": "Camera pans across the scholar, then zooms out to show the library shelves.",
+        "dialogue": "आइए, इस प्राचीन ज्ञान को फिर से खोजें और अपने सांस्कृतिक धरोहर को समृद्ध करें।",
+        "image_prompt": "Closing montage of Vedic manuscripts, river footage, and cultural celebrations.",
+        "video_motion_prompt": "Fade to black with gentle overlay of flowing water sounds.",
         "claim_refs": [
             "C1"
         ]
