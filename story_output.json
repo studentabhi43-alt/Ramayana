@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि महाभारत में काली का उल्लेख है?",
-        "image_prompt": "पारंपरिक भारतीय पांडुलिपि के पन्ने पर शान्ति परव के पहले अध्याय का दृश्य, हल्की रोशनी में प्राचीन श्लोक लिखे हुए।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पन्ने पर ज़ूम करता है, पृष्ठभूमि में हल्की धुंधली ध्वनि।",
+        "dialogue": "क्या आपने सुना है कि वैदिक ग्रंथों में सरस्वती को वैदिक ज्ञान की माता कहा गया है?",
+        "image_prompt": "Ancient Vedic scrolls lying on a wooden table, illuminated by soft lamplight, with a hand tracing the text.",
+        "video_motion_prompt": "Slow pan from left to right across the scrolls, then a gentle zoom into the text.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "शान्ति परव के पहले अध्याय में एक पंक्ति में काली को आह्वान किया गया है।",
-        "image_prompt": "क्लोज़‑अप श्लोक का दृश्य, जहाँ काली का नाम स्पष्ट रूप से लिखा हुआ है, पृष्ठ पर हल्की परछाइयाँ।",
-        "video_motion_prompt": "कैमरा श्लोक के ऊपर धीरे-धीरे पैन करता है, पृष्ठभूमि में हल्की संगीत।",
+        "dialogue": "रिगवेद के दसवें सूक्त में एक सुंदर स्तुति है, जो सरस्वती को ज्ञान की माता के रूप में वर्णित करती है।",
+        "image_prompt": "Close-up of a Vedic manuscript showing the 10th mandala, with the 90th hymn highlighted.",
+        "video_motion_prompt": "Zoom in on the manuscript, then a slight tilt to reveal the highlighted hymn.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "कालीं चिरंजीविनं चिरकालं चिरस्थायिनं चिरसुखं चिरवृत्तं, तेनैव सर्वं निवार्यते, सभी बाधाओं को दूर करती है।",
-        "image_prompt": "श्लोक का विस्तृत दृश्य, जहाँ शब्दों के बीच में काली के प्रतीकात्मक चित्रण के रूप में एक चमकती हुई आकृति दिखाई देती है।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे श्लोक के चारों ओर घूमता है, पृष्ठभूमि में हल्की ध्वनि।",
+        "dialogue": "यह सूक्त 10.90 है, जिसे प्राचीन वैदिक कवियों ने लिखा था, और यह आज भी अध्ययन किया जाता है।",
+        "image_prompt": "A scholar in traditional attire, holding a printed copy of Rigveda 10.90, pointing to the verse.",
+        "video_motion_prompt": "Camera follows the scholar's hand as it points, then pans to the book cover.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह पंक्ति दर्शाती है कि काली को युद्ध के बीच में भी रक्षा के लिए बुलाया गया।",
-        "image_prompt": "महाभारत के युद्ध के दृश्य का पैनोरमिक चित्र, जहाँ एक पंक्ति में काली का आह्वान दिखाई देता है।",
-        "video_motion_prompt": "कैमरा युद्ध के दृश्य पर ज़ूम करता है, पृष्ठभूमि में युद्ध की आवाज़।",
+        "dialogue": "सरस्वती को अक्सर 'सर्वसाक्षी' कहा जाता है, जिसका अर्थ है सभी ज्ञान की साक्षी।",
+        "image_prompt": "Illustration of Saraswati with a veena, surrounded by symbols of knowledge, rendered in classical Indian art.",
+        "video_motion_prompt": "Camera circles the illustration, focusing on Saraswati's veena, then zooms out to show surrounding symbols.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "अक्सर माना जाता है कि काली केवल शाक्तिक ग्रन्थों में है, पर महाभारत में भी है।",
-        "image_prompt": "शाक्तिक ग्रन्थों और महाभारत के पन्नों का तुलना दृश्य, दोनों पर काली के चित्रण।",
-        "video_motion_prompt": "कैमरा दोनों पन्नों के बीच स्विच करता है, पृष्ठभूमि में हल्की संगीत।",
+        "dialogue": "लेकिन यह वर्णन प्रतीकात्मक है; यह किसी वास्तविक मातृत्व संबंध को नहीं दर्शाता।",
+        "image_prompt": "A contemplative monk in a monastery, reflecting on the symbolic meaning of the hymn.",
+        "video_motion_prompt": "Camera slowly pans across the monk's face, then fades to black.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह पंक्ति महाभारत के मूल शास्त्र में है, न कि बाद के व्याख्यान में।",
-        "image_prompt": "पारंपरिक पांडुलिपि के पन्ने पर श्लोक का दृश्य, पृष्ठ पर हल्की परछाइयाँ।",
-        "video_motion_prompt": "कैमरा पन्ने पर धीरे-धीरे पैन करता है, पृष्ठभूमि में हल्की ध्वनि।",
+        "dialogue": "वैदिक साहित्य में यह एक गहरी आध्यात्मिक रूपक है, जो ज्ञान की उत्पत्ति को दर्शाता है।",
+        "image_prompt": "A montage of ancient temples with inscriptions of Vedic hymns, showing the spread of the metaphor.",
+        "video_motion_prompt": "Wide shot of temples, then a slow zoom into an inscription.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस अनोखे उल्लेख से हमें महाभारत के धार्मिक दृष्टिकोण का नया आयाम मिलता है।",
-        "image_prompt": "सूर्यास्त के समय महाभारत के पन्ने पर श्लोक का दृश्य, पृष्ठ पर हल्की रोशनी।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पन्ने से दूर जाता है, पृष्ठभूमि में शांत संगीत।",
+        "dialogue": "इसलिए, सरस्वती को वैदिक ज्ञान की माता के रूप में देखना एक सुंदर, परंतु प्रतीकात्मक दृष्टिकोण है।",
+        "image_prompt": "A serene sunrise over a Vedic study, with a scholar closing a book, symbolizing the end of the episode.",
+        "video_motion_prompt": "Camera pulls back from the scholar to the sunrise, then fades to title.",
         "claim_refs": [
             "C1"
         ]

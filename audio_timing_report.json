@@ -2,10 +2,10 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 34.128,
+    "actual_total_audio_seconds": 37.176,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
-    "all_scenes_within_target": false,
+    "all_scenes_within_target": true,
     "final_duration_within_target": true,
     "scenes": [
         {
@@ -13,40 +13,40 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 2.688,
-            "difference_seconds": -4.312,
+            "actual_duration_seconds": 3.816,
+            "difference_seconds": -3.184,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि महाभारत में काली का उल्लेख है?"
+            "dialogue": "क्या आपने सुना है कि वैदिक ग्रंथों में सरस्वती को वैदिक ज्ञान की माता कहा गया है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.056,
-            "difference_seconds": -2.944,
+            "actual_duration_seconds": 5.568,
+            "difference_seconds": -1.432,
             "within_target": true,
-            "dialogue": "शान्ति परव के पहले अध्याय में एक पंक्ति में काली को आह्वान किया गया है।"
+            "dialogue": "रिगवेद के दसवें सूक्त में एक सुंदर स्तुति है, जो सरस्वती को ज्ञान की माता के रूप में वर्णित करती है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 9.888,
-            "difference_seconds": 2.888,
-            "within_target": false,
-            "dialogue": "कालीं चिरंजीविनं चिरकालं चिरस्थायिनं चिरसुखं चिरवृत्तं, तेनैव सर्वं निवार्यते, सभी बाधाओं को दूर करती है।"
+            "actual_duration_seconds": 6.384,
+            "difference_seconds": -0.616,
+            "within_target": true,
+            "dialogue": "यह सूक्त 10.90 है, जिसे प्राचीन वैदिक कवियों ने लिखा था, और यह आज भी अध्ययन किया जाता है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.224,
-            "difference_seconds": -2.776,
+            "actual_duration_seconds": 5.496,
+            "difference_seconds": -1.504,
             "within_target": true,
-            "dialogue": "यह पंक्ति दर्शाती है कि काली को युद्ध के बीच में भी रक्षा के लिए बुलाया गया।"
+            "dialogue": "सरस्वती को अक्सर 'सर्वसाक्षी' कहा जाता है, जिसका अर्थ है सभी ज्ञान की साक्षी।"
         },
         {
             "scene_id": "5",
@@ -56,27 +56,27 @@
             "actual_duration_seconds": 4.608,
             "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "अक्सर माना जाता है कि काली केवल शाक्तिक ग्रन्थों में है, पर महाभारत में भी है।"
+            "dialogue": "लेकिन यह वर्णन प्रतीकात्मक है; यह किसी वास्तविक मातृत्व संबंध को नहीं दर्शाता।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.888,
-            "difference_seconds": -3.112,
+            "actual_duration_seconds": 5.976,
+            "difference_seconds": -1.024,
             "within_target": true,
-            "dialogue": "यह पंक्ति महाभारत के मूल शास्त्र में है, न कि बाद के व्याख्यान में।"
+            "dialogue": "वैदिक साहित्य में यह एक गहरी आध्यात्मिक रूपक है, जो ज्ञान की उत्पत्ति को दर्शाता है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.776,
-            "difference_seconds": -2.224,
+            "actual_duration_seconds": 5.328,
+            "difference_seconds": -1.672,
             "within_target": true,
-            "dialogue": "इस अनोखे उल्लेख से हमें महाभारत के धार्मिक दृष्टिकोण का नया आयाम मिलता है।"
+            "dialogue": "इसलिए, सरस्वती को वैदिक ज्ञान की माता के रूप में देखना एक सुंदर, परंतु प्रतीकात्मक दृष्टिकोण है।"
         }
     ]
 }

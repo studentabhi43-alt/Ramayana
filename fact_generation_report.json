@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "गौरी और काली: महाभारत में देवी-देवियों का अनोखा उल्लेख",
-    "title": "महाभारत में काली की अनदेखी भूमिका: एक रहस्यमय सत्य",
+    "topic": "सर्वसाक्षी: वैदिक स्त्री, सरस्वती, और वैदिक ज्ञान",
+    "title": "सर्वसाक्षी: वैदिक ग्रंथों में सरस्वती को वैदिक ज्ञान की माता के रूप में",
     "total_scenes": 7,
-    "total_dialogue_words": 102,
+    "total_dialogue_words": 117,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

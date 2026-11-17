@@ -4,9 +4,9 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Mahabharata (Sacred-Texts.com)",
-            "source_url": "https://www.sacred-texts.com/hin/mh/index.htm",
-            "source_type": "primary text"
+            "source_name": "Rigveda (translated by Ralph T. H. Griffith)",
+            "source_url": "https://www.sacred-texts.com/hin/rig/rig.htm",
+            "source_type": "primary text / translation"
         }
     ]
 }
