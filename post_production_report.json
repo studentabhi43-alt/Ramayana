@@ -1,11 +1,13 @@
 {
   "output": "badsah_final.mp4",
-  "original_duration_seconds": 40.163,
-  "final_duration_seconds": 47.184,
-  "intro_seconds": 3.0,
+  "original_duration_seconds": 37.652,
+  "narration_duration_seconds": 34.704,
+  "opening_logo_intro_removed_seconds": 2.948,
+  "final_duration_seconds": 38.733,
   "outro_seconds": 4.0,
-  "original_episode_preserved": true,
-  "word_highlighting": "Estimated from text character weights; not exact forced alignment.",
-  "narrator_overlay": "Static portrait; speaking animation not implemented.",
-  "hanuman_progress": "Golden track enabled; Hanuman asset missing."
+  "logo_watermark": "assets/logo.png, top-right corner throughout narration",
+  "hanuman_progress": "assets/hanuman_flight.png overlay enabled",
+  "captions": "Hindi word-by-word karaoke timing estimated from text",
+  "original_scene_audio_preserved": true,
+  "workflow_yaml_change_required": false
 }

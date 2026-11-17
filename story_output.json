@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आपने सुना है कि वैदिक ग्रंथों में सरस्वती को वैदिक ज्ञान की माता कहा गया है?",
-        "image_prompt": "Ancient Vedic scrolls lying on a wooden table, illuminated by soft lamplight, with a hand tracing the text.",
-        "video_motion_prompt": "Slow pan from left to right across the scrolls, then a gentle zoom into the text.",
+        "dialogue": "क्या आप जानते हैं कि कर्ण पांडवों का मित्र था? यह तथ्य अक्सर अनदेखा रहता है।",
+        "image_prompt": "A dramatic illustration of a scholar in a library, holding a scroll, looking intrigued.",
+        "video_motion_prompt": "Camera pans slowly from the scholar's face to the open scroll, subtle lighting.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रिगवेद के दसवें सूक्त में एक सुंदर स्तुति है, जो सरस्वती को ज्ञान की माता के रूप में वर्णित करती है।",
-        "image_prompt": "Close-up of a Vedic manuscript showing the 10th mandala, with the 90th hymn highlighted.",
-        "video_motion_prompt": "Zoom in on the manuscript, then a slight tilt to reveal the highlighted hymn.",
+        "dialogue": "महालाभ के सभा परवा में यह उल्लेख मिलता है। कर्ण के साथ पांडवों की मित्रता की कहानी।",
+        "image_prompt": "An ancient manuscript of Mahabharata with a highlighted passage.",
+        "video_motion_prompt": "Close-up of the manuscript, zooming in on the highlighted text.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह सूक्त 10.90 है, जिसे प्राचीन वैदिक कवियों ने लिखा था, और यह आज भी अध्ययन किया जाता है।",
-        "image_prompt": "A scholar in traditional attire, holding a printed copy of Rigveda 10.90, pointing to the verse.",
-        "video_motion_prompt": "Camera follows the scholar's hand as it points, then pans to the book cover.",
+        "dialogue": "सभा परवा, अध्याय 12, श्लोक 20 में लिखा है कि कर्ण पांडवों का मित्र है, पर वह स्वयं पांडव नहीं है।",
+        "image_prompt": "A stylized depiction of the Sabha Parva scene with characters in discussion.",
+        "video_motion_prompt": "Camera slowly circles the central figures, focusing on the verse reference.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "सरस्वती को अक्सर 'सर्वसाक्षी' कहा जाता है, जिसका अर्थ है सभी ज्ञान की साक्षी।",
-        "image_prompt": "Illustration of Saraswati with a veena, surrounded by symbols of knowledge, rendered in classical Indian art.",
-        "video_motion_prompt": "Camera circles the illustration, focusing on Saraswati's veena, then zooms out to show surrounding symbols.",
+        "dialogue": "इस तथ्य से कर्ण की भावनात्मक गहराई स्पष्ट होती है। परंतु वह परिवार का हिस्सा नहीं था।",
+        "image_prompt": "Karna in a contemplative pose, with a backdrop of the battlefield.",
+        "video_motion_prompt": "Camera slowly tilts upward to reveal the vast battlefield.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "लेकिन यह वर्णन प्रतीकात्मक है; यह किसी वास्तविक मातृत्व संबंध को नहीं दर्शाता।",
-        "image_prompt": "A contemplative monk in a monastery, reflecting on the symbolic meaning of the hymn.",
-        "video_motion_prompt": "Camera slowly pans across the monk's face, then fades to black.",
+        "dialogue": "लोकप्रिय कथाओं में कर्ण को अक्सर शत्रु के रूप में देखा जाता है।",
+        "image_prompt": "A montage of popular depictions of Karna as a villain.",
+        "video_motion_prompt": "Quick cuts between different artistic styles, showing the villainous portrayal.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वैदिक साहित्य में यह एक गहरी आध्यात्मिक रूपक है, जो ज्ञान की उत्पत्ति को दर्शाता है।",
-        "image_prompt": "A montage of ancient temples with inscriptions of Vedic hymns, showing the spread of the metaphor.",
-        "video_motion_prompt": "Wide shot of temples, then a slow zoom into an inscription.",
+        "dialogue": "महालाभ हमें यह सिखाता है कि मित्रता परिभाषा से परे है।",
+        "image_prompt": "A symbolic representation of friendship, two hands clasped.",
+        "video_motion_prompt": "Camera zooms in on the clasped hands, soft focus.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसलिए, सरस्वती को वैदिक ज्ञान की माता के रूप में देखना एक सुंदर, परंतु प्रतीकात्मक दृष्टिकोण है।",
-        "image_prompt": "A serene sunrise over a Vedic study, with a scholar closing a book, symbolizing the end of the episode.",
-        "video_motion_prompt": "Camera pulls back from the scholar to the sunrise, then fades to title.",
+        "dialogue": "और जानें, पांडवों के साथ कर्ण की कहानी के और भी रहस्य।",
+        "image_prompt": "An open book with the Mahabharata title, surrounded by ancient artifacts.",
+        "video_motion_prompt": "Camera pans around the book, then zooms out to reveal the artifacts.",
         "claim_refs": [
             "C1"
         ]

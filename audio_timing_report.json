@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 37.176,
+    "actual_total_audio_seconds": 34.704,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.816,
-            "difference_seconds": -3.184,
+            "actual_duration_seconds": 5.016,
+            "difference_seconds": -1.984,
             "within_target": true,
-            "dialogue": "क्या आपने सुना है कि वैदिक ग्रंथों में सरस्वती को वैदिक ज्ञान की माता कहा गया है?"
+            "dialogue": "क्या आप जानते हैं कि कर्ण पांडवों का मित्र था? यह तथ्य अक्सर अनदेखा रहता है।"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.568,
-            "difference_seconds": -1.432,
+            "actual_duration_seconds": 5.664,
+            "difference_seconds": -1.336,
             "within_target": true,
-            "dialogue": "रिगवेद के दसवें सूक्त में एक सुंदर स्तुति है, जो सरस्वती को ज्ञान की माता के रूप में वर्णित करती है।"
+            "dialogue": "महालाभ के सभा परवा में यह उल्लेख मिलता है। कर्ण के साथ पांडवों की मित्रता की कहानी।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.384,
-            "difference_seconds": -0.616,
+            "actual_duration_seconds": 7.416,
+            "difference_seconds": 0.416,
             "within_target": true,
-            "dialogue": "यह सूक्त 10.90 है, जिसे प्राचीन वैदिक कवियों ने लिखा था, और यह आज भी अध्ययन किया जाता है।"
+            "dialogue": "सभा परवा, अध्याय 12, श्लोक 20 में लिखा है कि कर्ण पांडवों का मित्र है, पर वह स्वयं पांडव नहीं है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.496,
-            "difference_seconds": -1.504,
+            "actual_duration_seconds": 5.808,
+            "difference_seconds": -1.192,
             "within_target": true,
-            "dialogue": "सरस्वती को अक्सर 'सर्वसाक्षी' कहा जाता है, जिसका अर्थ है सभी ज्ञान की साक्षी।"
+            "dialogue": "इस तथ्य से कर्ण की भावनात्मक गहराई स्पष्ट होती है। परंतु वह परिवार का हिस्सा नहीं था।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.608,
-            "difference_seconds": -2.392,
+            "actual_duration_seconds": 3.576,
+            "difference_seconds": -3.424,
             "within_target": true,
-            "dialogue": "लेकिन यह वर्णन प्रतीकात्मक है; यह किसी वास्तविक मातृत्व संबंध को नहीं दर्शाता।"
+            "dialogue": "लोकप्रिय कथाओं में कर्ण को अक्सर शत्रु के रूप में देखा जाता है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.976,
-            "difference_seconds": -1.024,
+            "actual_duration_seconds": 3.648,
+            "difference_seconds": -3.352,
             "within_target": true,
-            "dialogue": "वैदिक साहित्य में यह एक गहरी आध्यात्मिक रूपक है, जो ज्ञान की उत्पत्ति को दर्शाता है।"
+            "dialogue": "महालाभ हमें यह सिखाता है कि मित्रता परिभाषा से परे है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.328,
-            "difference_seconds": -1.672,
+            "actual_duration_seconds": 3.576,
+            "difference_seconds": -3.424,
             "within_target": true,
-            "dialogue": "इसलिए, सरस्वती को वैदिक ज्ञान की माता के रूप में देखना एक सुंदर, परंतु प्रतीकात्मक दृष्टिकोण है।"
+            "dialogue": "और जानें, पांडवों के साथ कर्ण की कहानी के और भी रहस्य।"
         }
     ]
 }
