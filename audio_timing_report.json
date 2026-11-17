@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 34.704,
+    "actual_total_audio_seconds": 32.088,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,40 +13,40 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.016,
-            "difference_seconds": -1.984,
+            "actual_duration_seconds": 3.096,
+            "difference_seconds": -3.904,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि कर्ण पांडवों का मित्र था? यह तथ्य अक्सर अनदेखा रहता है।"
+            "dialogue": "क्या आप जानते हैं कि ऋग्वेद में सरस्वती देवी का एक अनोखा वर्णन है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.664,
-            "difference_seconds": -1.336,
+            "actual_duration_seconds": 5.424,
+            "difference_seconds": -1.576,
             "within_target": true,
-            "dialogue": "महालाभ के सभा परवा में यह उल्लेख मिलता है। कर्ण के साथ पांडवों की मित्रता की कहानी।"
+            "dialogue": "यह श्लोक 10.121 में मिलता है, जहाँ उसे 'मन की गुरु' कहा गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 7.416,
-            "difference_seconds": 0.416,
+            "actual_duration_seconds": 5.496,
+            "difference_seconds": -1.504,
             "within_target": true,
-            "dialogue": "सभा परवा, अध्याय 12, श्लोक 20 में लिखा है कि कर्ण पांडवों का मित्र है, पर वह स्वयं पांडव नहीं है।"
+            "dialogue": "सामान्यतः सरस्वती को ज्ञान की देवी माना जाता है, पर यहाँ उसे मन की शिक्षिका बताया गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.808,
-            "difference_seconds": -1.192,
+            "actual_duration_seconds": 5.904,
+            "difference_seconds": -1.096,
             "within_target": true,
-            "dialogue": "इस तथ्य से कर्ण की भावनात्मक गहराई स्पष्ट होती है। परंतु वह परिवार का हिस्सा नहीं था।"
+            "dialogue": "यह विवरण हमें यह सिखाता है कि प्राचीन ऋषियों ने मन को सबसे बड़ा उपहार माना।"
         },
         {
             "scene_id": "5",
@@ -56,27 +56,27 @@
             "actual_duration_seconds": 3.576,
             "difference_seconds": -3.424,
             "within_target": true,
-            "dialogue": "लोकप्रिय कथाओं में कर्ण को अक्सर शत्रु के रूप में देखा जाता है।"
+            "dialogue": "ध्यान दें कि यह श्लोक केवल एक ही बार प्रकट होता है, अतः यह अनोखा है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.648,
-            "difference_seconds": -3.352,
+            "actual_duration_seconds": 4.224,
+            "difference_seconds": -2.776,
             "within_target": true,
-            "dialogue": "महालाभ हमें यह सिखाता है कि मित्रता परिभाषा से परे है।"
+            "dialogue": "इससे हमें यह समझ आता है कि ऋग्वेद में ज्ञान के विभिन्न पहलू समाहित हैं।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.576,
-            "difference_seconds": -3.424,
+            "actual_duration_seconds": 4.368,
+            "difference_seconds": -2.632,
             "within_target": true,
-            "dialogue": "और जानें, पांडवों के साथ कर्ण की कहानी के और भी रहस्य।"
+            "dialogue": "अंत में, यह श्लोक हमें प्राचीन भारतीय दर्शन की गहराई दिखाता है।"
         }
     ]
 }

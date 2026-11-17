@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि कर्ण पांडवों का मित्र था? यह तथ्य अक्सर अनदेखा रहता है।",
-        "image_prompt": "A dramatic illustration of a scholar in a library, holding a scroll, looking intrigued.",
-        "video_motion_prompt": "Camera pans slowly from the scholar's face to the open scroll, subtle lighting.",
+        "dialogue": "क्या आप जानते हैं कि ऋग्वेद में सरस्वती देवी का एक अनोखा वर्णन है?",
+        "image_prompt": "Ancient Sanskrit manuscript of Rigveda with a faded illustration of Saraswati, holding a veena.",
+        "video_motion_prompt": "Slow zoom into the manuscript page, gentle panning across the illustration.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "महालाभ के सभा परवा में यह उल्लेख मिलता है। कर्ण के साथ पांडवों की मित्रता की कहानी।",
-        "image_prompt": "An ancient manuscript of Mahabharata with a highlighted passage.",
-        "video_motion_prompt": "Close-up of the manuscript, zooming in on the highlighted text.",
+        "dialogue": "यह श्लोक 10.121 में मिलता है, जहाँ उसे 'मन की गुरु' कहा गया है।",
+        "image_prompt": "Close-up of the Rigveda verse 10.121 in Devanagari script, with a subtle glow.",
+        "video_motion_prompt": "Camera slowly rotates around the page, highlighting the verse.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "सभा परवा, अध्याय 12, श्लोक 20 में लिखा है कि कर्ण पांडवों का मित्र है, पर वह स्वयं पांडव नहीं है।",
-        "image_prompt": "A stylized depiction of the Sabha Parva scene with characters in discussion.",
-        "video_motion_prompt": "Camera slowly circles the central figures, focusing on the verse reference.",
+        "dialogue": "सामान्यतः सरस्वती को ज्ञान की देवी माना जाता है, पर यहाँ उसे मन की शिक्षिका बताया गया है।",
+        "image_prompt": "Illustration of Saraswati as a serene woman with a book, surrounded by swirling thoughts.",
+        "video_motion_prompt": "Soft pan across the illustration, showing the book and swirling thoughts.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस तथ्य से कर्ण की भावनात्मक गहराई स्पष्ट होती है। परंतु वह परिवार का हिस्सा नहीं था।",
-        "image_prompt": "Karna in a contemplative pose, with a backdrop of the battlefield.",
-        "video_motion_prompt": "Camera slowly tilts upward to reveal the vast battlefield.",
+        "dialogue": "यह विवरण हमें यह सिखाता है कि प्राचीन ऋषियों ने मन को सबसे बड़ा उपहार माना।",
+        "image_prompt": "Ancient sages seated in a forest, meditating, with a subtle aura of knowledge.",
+        "video_motion_prompt": "Camera moves from the sages to the forest canopy, creating a sense of depth.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "लोकप्रिय कथाओं में कर्ण को अक्सर शत्रु के रूप में देखा जाता है।",
-        "image_prompt": "A montage of popular depictions of Karna as a villain.",
-        "video_motion_prompt": "Quick cuts between different artistic styles, showing the villainous portrayal.",
+        "dialogue": "ध्यान दें कि यह श्लोक केवल एक ही बार प्रकट होता है, अतः यह अनोखा है।",
+        "image_prompt": "A single scroll of Rigveda lying open, with a highlighted verse.",
+        "video_motion_prompt": "Slow zoom in on the highlighted verse, then a gentle tilt.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "महालाभ हमें यह सिखाता है कि मित्रता परिभाषा से परे है।",
-        "image_prompt": "A symbolic representation of friendship, two hands clasped.",
-        "video_motion_prompt": "Camera zooms in on the clasped hands, soft focus.",
+        "dialogue": "इससे हमें यह समझ आता है कि ऋग्वेद में ज्ञान के विभिन्न पहलू समाहित हैं।",
+        "image_prompt": "A collage of various Vedic hymns, each with different themes, arranged in a circle.",
+        "video_motion_prompt": "Camera rotates around the collage, showing each hymn.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "और जानें, पांडवों के साथ कर्ण की कहानी के और भी रहस्य।",
-        "image_prompt": "An open book with the Mahabharata title, surrounded by ancient artifacts.",
-        "video_motion_prompt": "Camera pans around the book, then zooms out to reveal the artifacts.",
+        "dialogue": "अंत में, यह श्लोक हमें प्राचीन भारतीय दर्शन की गहराई दिखाता है।",
+        "image_prompt": "A modern scholar in a library, reading the Rigveda, with a contemplative expression.",
+        "video_motion_prompt": "Camera pans across the scholar, then zooms out to show the library shelves.",
         "claim_refs": [
             "C1"
         ]
