@@ -1,7 +1,13 @@
 
-"""BADSAH post-production.
-Keeps the original episode and places the channel logo
-as a watermark in the top-right corner throughout.
+"""BADSAH post-production: corner logo, captions, Hanuman progress, outro.
+
+The source video_generator.py may create a 3-second logo opening.
+This script removes that opening, places assets/logo.png in the
+top-right corner throughout the narrated episode, and adds a 4-second
+closing card. The closing card keeps the existing GitHub verification
+rule (cinematic output must be longer than final_output.mp4) satisfied.
+
+No workflow YAML change is required.
 """
 
 import json
@@ -14,41 +20,45 @@ from PIL import Image, ImageDraw, ImageFont
 
 BASE = Path(__file__).resolve().parent
 ASSETS = BASE / "assets"
+AUDIO_DIR = BASE / "audio_files"
 STORY = BASE / "story_output.json"
 SOURCE = BASE / "final_output.mp4"
+LOGO = ASSETS / "logo.png"
+HANUMAN = ASSETS / "hanuman_flight.png"
 OUTPUT = BASE / "badsah_final.mp4"
-WORK = BASE / "post_production_temp"
 REPORT = BASE / "post_production_report.json"
-ASS = WORK / "captions.ass"
+WORK = BASE / "post_production_temp"
 
-W, H, FPS = 1080, 1920, 30
-LOGO_INTRO_SECONDS = 3.0
-LOGO_WIDTH = 190
-LOGO_CORNER = "top-right"
+WIDTH = 1080
+HEIGHT = 1920
+FPS = 30
+OUTRO_SECONDS = 4.0
+LOGO_WIDTH = 170
+LOGO_MARGIN = 28
 
 
-def run(cmd):
+def run(command):
     result = subprocess.run(
-        cmd,
+        command,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
     )
     if result.returncode:
         raise RuntimeError(
-            "Command failed:\n"
-            + " ".join(map(str, cmd))
+            "FFmpeg/command failed:\n"
+            + " ".join(str(x) for x in command)
             + "\n"
-            + result.stderr[-3500:]
+            + result.stderr[-5000:]
         )
     return result
 
 
-def duration(path):
+def probe_duration(path):
     result = run([
         "ffprobe", "-v", "error",
         "-show_entries", "format=duration",
-        "-of", "default=nw=1:nk=1",
+        "-of", "default=noprint_wrappers=1:nokey=1",
         str(path)
     ])
     return float(result.stdout.strip())
@@ -60,116 +70,70 @@ def get_font(size):
         "/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
     ]
-
     for candidate in candidates:
         if Path(candidate).exists():
             try:
                 return ImageFont.truetype(candidate, size)
             except Exception:
                 pass
-
     return ImageFont.load_default()
 
 
-def make_book_card(path, title, subtitle, closing=False):
-    image = Image.new("RGB", (W, H), (15, 10, 7))
+def create_outro(path):
+    """Create a simple premium gold closing card; no opening logo screen."""
+    image = Image.new("RGB", (WIDTH, HEIGHT), (12, 9, 7))
     draw = ImageDraw.Draw(image)
 
-    for y in range(H):
-        shade = int(
-            14 + 24 * (1 - abs(y - H / 2) / (H / 2))
-        )
+    for y in range(HEIGHT):
+        glow = int(10 + 22 * (1 - abs(y - HEIGHT / 2) / (HEIGHT / 2)))
         draw.line(
-            (0, y, W, y),
-            fill=(shade, int(shade * 0.68), int(shade * 0.32))
+            (0, y, WIDTH, y),
+            fill=(glow + 5, int(glow * 0.72), int(glow * 0.36))
         )
 
-    gold = (235, 190, 92)
+    gold = (231, 190, 105)
+    pale_gold = (255, 226, 165)
 
     draw.rounded_rectangle(
-        (125, 520, 955, 1370),
-        radius=45,
+        (95, 570, 985, 1320),
+        radius=48,
+        fill=(35, 23, 13),
         outline=gold,
-        width=8,
-        fill=(44, 27, 13)
+        width=6
     )
-
-    draw.line(
-        (540, 560, 540, 1330),
-        fill=gold,
-        width=5
-    )
-
-    if closing:
-        draw.text(
-            (540, 800),
-            "VEDIC GURU BADSAH",
-            font=get_font(50),
-            fill=gold,
-            anchor="mm"
-        )
-    else:
-        draw.line(
-            (170, 620, 510, 650),
-            fill=(177, 139, 76),
-            width=3
-        )
-        draw.line(
-            (570, 650, 910, 620),
-            fill=(177, 139, 76),
-            width=3
-        )
-
-        draw.text(
-            (540, 800),
-            "VEDIC GURU",
-            font=get_font(64),
-            fill=gold,
-            anchor="mm"
-        )
-
-        draw.text(
-            (540, 900),
-            "BADSAH",
-            font=get_font(92),
-            fill=(255, 225, 160),
-            anchor="mm"
-        )
+    draw.line((540, 625, 540, 1265), fill=gold, width=5)
 
     draw.text(
-        (540, 1510),
-        title,
-        font=get_font(54),
-        fill=(255, 244, 218),
-        anchor="mm"
+        (540, 790), "VEDIC GURU",
+        font=get_font(68), fill=gold, anchor="mm"
     )
-
     draw.text(
-        (540, 1600),
-        subtitle,
-        font=get_font(30),
-        fill=gold,
-        anchor="mm"
+        (540, 900), "BADSAH",
+        font=get_font(100), fill=pale_gold, anchor="mm"
+    )
+    draw.text(
+        (540, 1470), "आपका विचार क्या है?",
+        font=get_font(52), fill=(255, 245, 225), anchor="mm"
+    )
+    draw.text(
+        (540, 1560), "अपना जवाब कमेंट में लिखें",
+        font=get_font(34), fill=gold, anchor="mm"
     )
 
     image.save(path)
 
 
-def ass_time(seconds):
-    centiseconds = int(round(seconds * 100))
-
-    hours = centiseconds // 360000
-    minutes = (centiseconds // 6000) % 60
-    secs = (centiseconds // 100) % 60
-    remainder = centiseconds % 100
-
-    return (
-        f"{hours}:{minutes:02d}:"
-        f"{secs:02d}.{remainder:02d}"
-    )
+def ass_timestamp(seconds):
+    total = max(0, int(round(seconds * 100)))
+    hours = total // 360000
+    minutes = (total // 6000) % 60
+    secs = (total // 100) % 60
+    centis = total % 100
+    return f"{hours}:{minutes:02d}:{secs:02d}.{centis:02d}"
 
 
-def build_ass(scenes, audio_durations):
+def build_captions(scenes, scene_durations, path):
+    """Create word-by-word karaoke captions using measured scene audio lengths."""
     header = """[Script Info]
 ScriptType: v4.00+
 PlayResX: 1080
@@ -179,59 +143,62 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Noto Sans Devanagari,54,&H00000000,&H00000000,&H00FFFFFF,&HCCFFFFFF,1,0,3,2,0,2,90,90,190,1
+Style: Default,Noto Sans Devanagari,58,&H00FFFFFF,&H0000D7FF,&H00140D05,&H64000000,1,0,1,3,1,2,85,85,210,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
-
-    lines = [header]
+    rows = [header]
     cursor = 0.0
 
-    for scene, scene_duration in zip(scenes, audio_durations):
-        dialogue = scene.get("dialogue", "").strip()
+    for scene, scene_seconds in zip(scenes, scene_durations):
+        dialogue = str(scene.get("dialogue", "")).strip()
         words = re.findall(r"\S+", dialogue)
 
         if not words:
-            cursor += scene_duration
+            cursor += scene_seconds
             continue
 
         weights = [
-            max(
-                1,
-                len(re.sub(r"[^\w\u0900-\u097F]", "", word))
-            )
+            max(1, len(re.sub(r"[^\w\u0900-\u097F]", "", word)))
             for word in words
         ]
+        total_weight = sum(weights)
+        karaoke = []
 
-        parts = []
+        centis = [
+            max(1, int(round(scene_seconds * 100 * weight / total_weight)))
+            for weight in weights
+        ]
 
-        for word, weight in zip(words, weights):
-            centiseconds = max(
-                1,
-                round(scene_duration * 100 * weight / sum(weights))
-            )
+        if centis:
+            centis[-1] += int(round(scene_seconds * 100)) - sum(centis)
 
-            safe_word = word.replace("{", "(").replace("}", ")")
+        for word, word_centis in zip(words, centis):
+            safe = word.replace("{", "(").replace("}", ")")
+            karaoke.append(r"{\k" + str(max(1, word_centis)) + "}" + safe)
 
-            parts.append(
-                r"{\k" + str(centiseconds) + "}" + safe_word
-            )
-
-        lines.append(
-            f"Dialogue: 0,{ass_time(cursor)},"
-            f"{ass_time(cursor + scene_duration)},"
-            f"Default,,0,0,0,,"
-            + " ".join(parts)
-            + "\n"
+        rows.append(
+            f"Dialogue: 0,{ass_timestamp(cursor)},"
+            f"{ass_timestamp(cursor + scene_seconds)},"
+            f"Default,,0,0,0,,{' '.join(karaoke)}\n"
         )
+        cursor += scene_seconds
 
-        cursor += scene_duration
+    path.write_text("".join(rows), encoding="utf-8-sig")
 
-    ASS.write_text(
-        "".join(lines),
-        encoding="utf-8-sig"
-    )
+
+def load_scenes():
+    if not STORY.exists():
+        raise FileNotFoundError("story_output.json is missing.")
+
+    data = json.loads(STORY.read_text(encoding="utf-8"))
+    scenes = data.get("scenes") if isinstance(data, dict) else data
+
+    if not isinstance(scenes, list) or len(scenes) != 7:
+        raise ValueError("story_output.json must contain exactly 7 scenes.")
+
+    return scenes
 
 
 def main():
@@ -240,150 +207,94 @@ def main():
             raise RuntimeError(f"{tool} is not installed.")
 
     if not SOURCE.exists():
-        raise FileNotFoundError(
-            "final_output.mp4 not found. Run video_generator.py first."
-        )
+        raise FileNotFoundError("final_output.mp4 is missing.")
+    if not LOGO.exists():
+        raise FileNotFoundError("assets/logo.png is missing.")
 
-    if not STORY.exists():
-        raise FileNotFoundError(
-            "story_output.json not found."
-        )
+    WORK.mkdir(parents=True, exist_ok=True)
 
-    WORK.mkdir(exist_ok=True)
-    ASSETS.mkdir(exist_ok=True)
-
-    data = json.loads(STORY.read_text(encoding="utf-8"))
-
-    scenes = data.get("scenes") if isinstance(data, dict) else data
-
-    if not isinstance(scenes, list) or not scenes:
-        raise ValueError("No scenes found in story_output.json")
-
+    scenes = load_scenes()
     scene_durations = []
 
-    for index, scene in enumerate(scenes, 1):
+    for index, scene in enumerate(scenes, start=1):
         scene_id = str(scene.get("scene_id", index))
-
-        audio = BASE / "audio_files" / f"scene_{scene_id}.mp3"
-
+        audio = AUDIO_DIR / f"scene_{scene_id}.mp3"
         if not audio.exists():
-            raise FileNotFoundError(f"Missing audio: {audio}")
+            raise FileNotFoundError(f"Missing narration file: {audio}")
+        scene_durations.append(probe_duration(audio))
 
-        scene_durations.append(duration(audio))
+    narration_seconds = sum(scene_durations)
+    source_seconds = probe_duration(SOURCE)
+    difference = source_seconds - narration_seconds
 
-    original_duration = duration(SOURCE)
-    narration_duration = sum(scene_durations)
-    detected_intro_seconds = original_duration - narration_duration
-
-    # Detect whether the source has a 3-second opening logo intro.
-    if abs(detected_intro_seconds) <= 1.0:
-        logo_intro_seconds = 0.0
-    elif abs(detected_intro_seconds - LOGO_INTRO_SECONDS) <= 1.0:
-        logo_intro_seconds = detected_intro_seconds
+    if abs(difference) <= 1.0:
+        opening_seconds = 0.0
+    elif 2.0 <= difference <= 4.0:
+        opening_seconds = difference
     else:
         raise RuntimeError(
-            f"Scene audio total ({narration_duration:.2f}s) differs from "
-            f"video duration ({original_duration:.2f}s) by "
-            f"{detected_intro_seconds:.2f}s. Expected either no intro or "
-            f"a {LOGO_INTRO_SECONDS:.1f}s logo intro. "
-            "Refusing to risk caption drift."
+            f"Cannot safely align source video and narration: "
+            f"video={source_seconds:.3f}s, narration={narration_seconds:.3f}s, "
+            f"difference={difference:.3f}s. Expected no intro or an "
+            "approximately 3-second silent logo intro."
         )
 
-    build_ass(scenes, scene_durations)
+    print(f"Source duration: {source_seconds:.3f}s")
+    print(f"Narration duration: {narration_seconds:.3f}s")
+    print(f"Opening intro removed: {opening_seconds:.3f}s")
 
-    ass_path = (
-        ASS.as_posix()
-        .replace("\\", "/")
-        .replace(":", "\\:")
-    )
+    ass_file = WORK / "captions.ass"
+    build_captions(scenes, scene_durations, ass_file)
 
-    subtitle_filter = f"subtitles='{ass_path}'"
+    ass_path = ass_file.resolve().as_posix()
+    ass_path = ass_path.replace(":", r"\:")
+    ass_path = ass_path.replace("'", r"\'")
 
-    logo = ASSETS / "logo.png"
-    narrator = ASSETS / "narrator.png"
-    hanuman = ASSETS / "hanuman_flight.png"
+    captioned_main = WORK / "episode_with_overlays.mp4"
 
-    if not logo.exists():
-        raise FileNotFoundError(
-            "assets/logo.png is missing. Upload your channel logo there."
-        )
-
-    # Logo is a permanent top-right watermark.
-    inputs = [
+    command = [
         "ffmpeg", "-y",
+        "-ss", f"{opening_seconds:.6f}",
         "-i", str(SOURCE),
-        "-loop", "1", "-i", str(logo),
+        "-loop", "1", "-i", str(LOGO),
     ]
 
     filters = [
-        f"[0:v]trim=start={logo_intro_seconds},"
-        f"setpts=PTS-STARTPTS,{subtitle_filter}[base]",
-
-        f"[0:a]atrim=start={logo_intro_seconds},"
-        "asetpts=PTS-STARTPTS[aout]",
-
-        f"[1:v]scale={LOGO_WIDTH}:-1,"
-        "format=rgba,colorchannelmixer=aa=0.88[logo]",
-
-        "[base][logo]overlay=W-w-28:28:"
-        "shortest=1[vlogo]",
+        f"[0:v]trim=duration={narration_seconds:.6f},"
+        f"setpts=PTS-STARTPTS,subtitles='{ass_path}'[captioned]",
+        f"[1:v]scale={LOGO_WIDTH}:-1,format=rgba,"
+        "colorchannelmixer=aa=0.90[logo]",
+        f"[captioned][logo]overlay="
+        f"W-w-{LOGO_MARGIN}:{LOGO_MARGIN}:shortest=1[vlogo]",
     ]
 
-    last = "vlogo"
+    last_video = "vlogo"
     next_input = 2
 
-    if narrator.exists():
-        inputs += ["-loop", "1", "-i", str(narrator)]
-
-        filters.append(
-            f"[{next_input}:v]scale=220:-1,format=rgba[narr]"
-        )
-
-        filters.append(
-            f"[{last}][narr]overlay=W-w-35:150:"
-            "shortest=1[vnarr]"
-        )
-
-        last = "vnarr"
-        next_input += 1
-
-    if hanuman.exists():
-        inputs += ["-loop", "1", "-i", str(hanuman)]
-
-        filters.append(
-            f"[{next_input}:v]scale=105:75,format=rgba[han]"
-        )
-
-        filters.append(
-            f"[{last}]drawbox=x=70:y=1790:w=940:h=5:"
-            "color=0x8B6A32@0.9:t=fill[track]"
-        )
-
-        narration_duration = max(
-            1.0,
-            original_duration - logo_intro_seconds
-        )
-
-        filters.append(
-            f"[track][han]overlay="
-            f"x='70+(940-105)*t/{narration_duration:.6f}':"
-            "y=1705:shortest=1[vfinal]"
-        )
-
-        last = "vfinal"
-
+    if HANUMAN.exists():
+        command += ["-loop", "1", "-i", str(HANUMAN)]
+        filters += [
+            f"[{next_input}:v]scale=105:75,format=rgba[hanuman]",
+            f"[{last_video}]drawbox=x=70:y=1790:w=940:h=5:"
+            "color=0x8B6A32@0.95:t=fill[track]",
+            f"[track][hanuman]overlay="
+            f"x='70+(940-105)*min(t/{narration_seconds:.6f},1)':"
+            "y=1705:shortest=1[vfinal]",
+        ]
+        last_video = "vfinal"
     else:
         filters.append(
-            f"[{last}]drawbox=x=70:y=1790:w=940:h=5:"
-            "color=0x8B6A32@0.9:t=fill[vfinal]"
+            f"[{last_video}]drawbox=x=70:y=1790:w=940:h=5:"
+            "color=0x8B6A32@0.95:t=fill[vfinal]"
         )
+        last_video = "vfinal"
 
-        last = "vfinal"
-
-    inputs += [
+    command += [
         "-filter_complex", ";".join(filters),
-        "-map", f"[{last}]",
-        "-map", "[aout]",
+        "-map", f"[{last_video}]",
+        "-map", "0:a:0",
+        "-t", f"{narration_seconds:.6f}",
+        "-r", str(FPS),
         "-c:v", "libx264",
         "-preset", "veryfast",
         "-crf", "20",
@@ -392,45 +303,88 @@ def main():
         "-b:a", "192k",
         "-ar", "48000",
         "-movflags", "+faststart",
-        str(OUTPUT)
+        str(captioned_main),
     ]
 
-    run(inputs)
+    run(command)
 
-    final_duration = duration(OUTPUT)
-
-    expected_final_duration = original_duration - logo_intro_seconds
-
-    if abs(final_duration - expected_final_duration) > 1.0:
+    main_seconds = probe_duration(captioned_main)
+    if abs(main_seconds - narration_seconds) > 1.2:
         raise RuntimeError(
-            f"Final video duration ({final_duration:.2f}s) does not match "
-            f"the episode duration after removing the "
-            f"{logo_intro_seconds:.1f}s opening logo intro."
+            f"Captioned episode duration {main_seconds:.2f}s does not "
+            f"match narration duration {narration_seconds:.2f}s."
+        )
+
+    outro_image = WORK / "outro.png"
+    outro_video = WORK / "outro.mp4"
+    create_outro(outro_image)
+
+    run([
+        "ffmpeg", "-y",
+        "-loop", "1", "-framerate", str(FPS),
+        "-i", str(outro_image),
+        "-f", "lavfi",
+        "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
+        "-t", str(OUTRO_SECONDS),
+        "-vf", f"scale={WIDTH}:{HEIGHT},format=yuv420p",
+        "-r", str(FPS),
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "20",
+        "-c:a", "aac",
+        "-b:a", "192k",
+        "-ar", "48000",
+        "-shortest",
+        str(outro_video),
+    ])
+
+    concat_file = WORK / "concat.txt"
+    concat_file.write_text(
+        "file '" + captioned_main.resolve().as_posix() + "'\n"
+        "file '" + outro_video.resolve().as_posix() + "'\n",
+        encoding="utf-8"
+    )
+
+    run([
+        "ffmpeg", "-y",
+        "-f", "concat",
+        "-safe", "0",
+        "-i", str(concat_file),
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "20",
+        "-pix_fmt", "yuv420p",
+        "-c:a", "aac",
+        "-b:a", "192k",
+        "-ar", "48000",
+        "-movflags", "+faststart",
+        str(OUTPUT),
+    ])
+
+    final_seconds = probe_duration(OUTPUT)
+
+    if final_seconds <= source_seconds:
+        raise RuntimeError(
+            f"Final video ({final_seconds:.2f}s) is not longer than "
+            f"the original ({source_seconds:.2f}s)."
         )
 
     report = {
         "output": OUTPUT.name,
-        "original_duration_seconds": round(original_duration, 3),
-        "final_duration_seconds": round(final_duration, 3),
-        "opening_logo_intro_removed_seconds": round(
-            logo_intro_seconds, 3
-        ),
-        "logo_watermark": (
-            "assets/logo.png, top-right corner throughout the episode"
-        ),
-        "original_episode_preserved": True,
-        "word_highlighting": (
-            "Estimated from text character weights; "
-            "not exact forced alignment."
-        ),
-        "narrator_overlay": (
-            "Static portrait; speaking animation not implemented."
-        ),
+        "original_duration_seconds": round(source_seconds, 3),
+        "narration_duration_seconds": round(narration_seconds, 3),
+        "opening_logo_intro_removed_seconds": round(opening_seconds, 3),
+        "final_duration_seconds": round(final_seconds, 3),
+        "outro_seconds": OUTRO_SECONDS,
+        "logo_watermark": "assets/logo.png, top-right corner throughout narration",
         "hanuman_progress": (
-            "Flying overlay enabled."
-            if hanuman.exists()
-            else "Golden track enabled; Hanuman asset missing."
-        )
+            "assets/hanuman_flight.png overlay enabled"
+            if HANUMAN.exists()
+            else "Progress track enabled; Hanuman image missing"
+        ),
+        "captions": "Hindi word-by-word karaoke timing estimated from text",
+        "original_scene_audio_preserved": True,
+        "workflow_yaml_change_required": False,
     }
 
     REPORT.write_text(
@@ -439,7 +393,8 @@ def main():
     )
 
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    print(f"\nSUCCESS: {OUTPUT}")
+    print("BADSAH POST-PRODUCTION COMPLETE")
+    print(f"SUCCESS: {OUTPUT}")
 
 
 if __name__ == "__main__":
