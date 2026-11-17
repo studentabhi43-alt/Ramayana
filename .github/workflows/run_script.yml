@@ -1,8 +1,8 @@
+
 name: BADSAH - Automatic Episode Generator
 
 on:
   workflow_dispatch:
-
   schedule:
     # Daily at 5:30 AM India time
     - cron: "0 0 * * *"
@@ -20,19 +20,10 @@ jobs:
     timeout-minutes: 120
 
     steps:
-
-      # ==========================================
-      # 1. CHECKOUT REPOSITORY
-      # ==========================================
-
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # ==========================================
-      # 2. SETUP PYTHON
-      # ==========================================
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,30 +32,17 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
 
-      # ==========================================
-      # 3. INSTALL FFMPEG AND HINDI FONTS
-      # ==========================================
-
       - name: Install FFmpeg and Fonts
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg fonts-noto-core
-
           ffmpeg -version
           ffprobe -version
-
-      # ==========================================
-      # 4. INSTALL PYTHON DEPENDENCIES
-      # ==========================================
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      # ==========================================
-      # 5. CHECK API CONFIGURATION
-      # ==========================================
 
       - name: Check API Secrets
         env:
@@ -100,10 +78,6 @@ jobs:
           print("All required API secrets are configured.")
           PY
 
-      # ==========================================
-      # 6. GENERATE RESEARCH + SCRIPT
-      # ==========================================
-
       - name: Generate Scripture Research and Script
         timeout-minutes: 15
         env:
@@ -111,7 +85,6 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GEMINI_MODELS: gemini-3.8-flash,gemini-3.8-flash-lite
           GROQ_MODEL: openai/gpt-oss-20b
-
         run: |
           python main.py
 
@@ -129,7 +102,6 @@ jobs:
           for path in required_files:
               if not os.path.isfile(path):
                   sys.exit(f"Missing file: {path}")
-
               if os.path.getsize(path) == 0:
                   sys.exit(f"Empty file: {path}")
 
@@ -151,17 +123,11 @@ jobs:
                   "claim_refs"
               ]:
                   if not scene.get(field):
-                      sys.exit(
-                          f"Scene {index} missing {field}"
-                      )
+                      sys.exit(f"Scene {index} missing {field}")
 
           print("SCRIPT VALIDATION PASSED")
           print("Total scenes:", len(scenes))
           PY
-
-      # ==========================================
-      # 7. GENERATE SCENE IMAGES
-      # ==========================================
 
       - name: Generate Scene Images
         timeout-minutes: 30
@@ -169,7 +135,6 @@ jobs:
           CLOUDFLARE_WORKER_URL: ${{ secrets.CLOUDFLARE_WORKER_URL }}
           POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
           POLLINATIONS_MODEL: flux
-
         run: |
           python image_generator.py
 
@@ -182,13 +147,12 @@ jobs:
           with open("story_output.json", encoding="utf-8") as f:
               scenes = json.load(f)
 
-          for index, scene in enumerate(scenes, 1):
+          for scene in scenes:
               scene_id = str(scene["scene_id"])
               path = Path("images") / f"scene_{scene_id}.png"
 
               if not path.exists():
                   sys.exit(f"Missing image: {path}")
-
               if path.stat().st_size < 1000:
                   sys.exit(f"Invalid image: {path}")
 
@@ -198,16 +162,11 @@ jobs:
           print("ALL 7 IMAGES VERIFIED.")
           PY
 
-      # ==========================================
-      # 8. GENERATE VOICEOVERS
-      # ==========================================
-
       - name: Generate Scene Voiceovers
         timeout-minutes: 30
         env:
           SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
           SARVAM_SPEAKER: shubh_enhi_ads
-
         run: |
           python audio_generator.py
 
@@ -219,22 +178,17 @@ jobs:
           with open("story_output.json", encoding="utf-8") as f:
               scenes = json.load(f)
 
-          for index, scene in enumerate(scenes, 1):
+          for scene in scenes:
               scene_id = str(scene["scene_id"])
               path = Path("audio_files") / f"scene_{scene_id}.mp3"
 
               if not path.exists():
                   sys.exit(f"Missing audio: {path}")
-
               if path.stat().st_size < 1000:
                   sys.exit(f"Invalid audio: {path}")
 
           print("ALL 7 AUDIO FILES VERIFIED.")
           PY
-
-      # ==========================================
-      # 9. CREATE ORIGINAL FINAL VIDEO
-      # ==========================================
 
       - name: Create Final MP4
         timeout-minutes: 30
@@ -248,10 +202,6 @@ jobs:
 
           echo "ORIGINAL VIDEO CREATED."
 
-      # ==========================================
-      # 10. VERIFY ORIGINAL VIDEO
-      # ==========================================
-
       - name: Verify Original Video
         run: |
           python - <<'PY'
@@ -259,18 +209,13 @@ jobs:
           import subprocess
           import sys
 
-          video = "final_output.mp4"
-
           result = subprocess.run(
               [
-                  "ffprobe",
-                  "-v", "error",
+                  "ffprobe", "-v", "error",
                   "-show_entries",
                   "stream=codec_type,width,height,codec_name",
-                  "-show_entries",
-                  "format=duration,size",
-                  "-of", "json",
-                  video
+                  "-show_entries", "format=duration,size",
+                  "-of", "json", "final_output.mp4"
               ],
               capture_output=True,
               text=True,
@@ -284,7 +229,6 @@ jobs:
               (s for s in streams if s.get("codec_type") == "video"),
               None
           )
-
           audio_stream = next(
               (s for s in streams if s.get("codec_type") == "audio"),
               None
@@ -295,7 +239,6 @@ jobs:
 
           if video_stream.get("width") != 1080:
               sys.exit("Incorrect original video width.")
-
           if video_stream.get("height") != 1920:
               sys.exit("Incorrect original video height.")
 
@@ -303,10 +246,6 @@ jobs:
           print("Resolution: 1080x1920")
           print("Duration:", data["format"]["duration"])
           PY
-
-      # ==========================================
-      # 11. BADSAH POST-PRODUCTION
-      # ==========================================
 
       - name: Create BADSAH Cinematic Version
         timeout-minutes: 40
@@ -325,10 +264,6 @@ jobs:
 
           echo "BADSAH POST-PRODUCTION COMPLETE"
 
-      # ==========================================
-      # 12. VERIFY UPGRADED VIDEO
-      # ==========================================
-
       - name: Verify BADSAH Cinematic Video
         run: |
           python - <<'PY'
@@ -339,14 +274,11 @@ jobs:
           def probe(path):
               result = subprocess.run(
                   [
-                      "ffprobe",
-                      "-v", "error",
+                      "ffprobe", "-v", "error",
                       "-show_entries",
                       "stream=codec_type,width,height",
-                      "-show_entries",
-                      "format=duration,size",
-                      "-of", "json",
-                      path
+                      "-show_entries", "format=duration,size",
+                      "-of", "json", path
                   ],
                   capture_output=True,
                   text=True,
@@ -357,13 +289,8 @@ jobs:
           original = probe("final_output.mp4")
           upgraded = probe("badsah_final.mp4")
 
-          original_duration = float(
-              original["format"]["duration"]
-          )
-
-          upgraded_duration = float(
-              upgraded["format"]["duration"]
-          )
+          original_duration = float(original["format"]["duration"])
+          upgraded_duration = float(upgraded["format"]["duration"])
 
           streams = upgraded.get("streams", [])
 
@@ -371,7 +298,6 @@ jobs:
               (s for s in streams if s.get("codec_type") == "video"),
               None
           )
-
           audio_stream = next(
               (s for s in streams if s.get("codec_type") == "audio"),
               None
@@ -382,28 +308,18 @@ jobs:
 
           if video_stream.get("width") != 1080:
               sys.exit("Upgraded video width incorrect.")
-
           if video_stream.get("height") != 1920:
               sys.exit("Upgraded video height incorrect.")
 
           if upgraded_duration <= original_duration:
-              sys.exit(
-                  "Upgraded video is not longer than original."
-              )
+              sys.exit("Upgraded video is not longer than original.")
 
           print("BADSAH CINEMATIC VIDEO VERIFIED")
           print(f"Original duration: {original_duration:.2f}s")
           print(f"Upgraded duration: {upgraded_duration:.2f}s")
-          print(
-              f"Added duration: "
-              f"{upgraded_duration - original_duration:.2f}s"
-          )
+          print(f"Added duration: {upgraded_duration - original_duration:.2f}s")
           print("Resolution: 1080x1920")
           PY
-
-      # ==========================================
-      # 13. SAVE GENERATED EPISODE TO GITHUB
-      # ==========================================
 
       - name: Commit Generated Episode
         run: |
@@ -430,10 +346,6 @@ jobs:
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
-      # ==========================================
-      # 14. UPLOAD FINAL VIDEO ARTIFACTS
-      # ==========================================
-
       - name: Upload BADSAH Episodes
         uses: actions/upload-artifact@v4
         with:
@@ -453,10 +365,6 @@ jobs:
           if-no-files-found: error
           compression-level: 0
           retention-days: 7
-
-      # ==========================================
-      # 15. COMPLETION
-      # ==========================================
 
       - name: BADSAH Completed
         if: success()
