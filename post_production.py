@@ -192,7 +192,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
     lines = [header]
-    cursor = 0.0
+    # The source video begins with the 3-second logo intro; narration starts after it.
+    cursor = INTRO_SECONDS
 
     for scene, scene_duration in zip(scenes, audio_durations):
         dialogue = scene.get("dialogue", "").strip()
@@ -279,11 +280,20 @@ def main():
 
     original_duration = duration(SOURCE)
     narration_duration = sum(scene_durations)
+    expected_narration_duration = original_duration - INTRO_SECONDS
 
-    if abs(narration_duration - original_duration) > 1.0:
+    if expected_narration_duration <= 0:
+        raise RuntimeError(
+            "Original video is shorter than the configured logo intro. "
+            "Check INTRO_SECONDS and final_output.mp4."
+        )
+
+    if abs(narration_duration - expected_narration_duration) > 1.0:
         raise RuntimeError(
             f"Scene audio total ({narration_duration:.2f}s) "
-            f"differs from original video ({original_duration:.2f}s). "
+            f"differs from video narration section "
+            f"({expected_narration_duration:.2f}s; total video "
+            f"{original_duration:.2f}s including {INTRO_SECONDS:.2f}s logo intro). "
             "Refusing to risk caption drift."
         )
 
@@ -481,4 +491,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
