@@ -1,14 +1,7 @@
 
 """BADSAH post-production.
-Keeps final_output.mp4 untouched.
-Requires FFmpeg, FFprobe and Pillow.
-
-Optional assets:
-  assets/narrator.png
-  assets/hanuman_flying.png
-
-Note: Word highlighting uses estimated timing, not true forced alignment.
-The narrator is currently a static portrait, not lip-synced animation.
+Keeps the original episode and places the channel logo
+as a watermark in the top-right corner throughout.
 """
 
 import json
@@ -29,8 +22,9 @@ REPORT = BASE / "post_production_report.json"
 ASS = WORK / "captions.ass"
 
 W, H, FPS = 1080, 1920, 30
-INTRO_SECONDS = 3.0
-OUTRO_SECONDS = 4.0
+LOGO_INTRO_SECONDS = 3.0
+LOGO_WIDTH = 190
+LOGO_CORNER = "top-right"
 
 
 def run(cmd):
@@ -192,8 +186,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
     lines = [header]
-    # The source video begins with the 3-second logo intro; narration starts after it.
-    cursor = INTRO_SECONDS
+    cursor = 0.0
 
     for scene, scene_duration in zip(scenes, audio_durations):
         dialogue = scene.get("dialogue", "").strip()
@@ -256,15 +249,15 @@ def main():
             "story_output.json not found."
         )
 
+    WORK.mkdir(exist_ok=True)
+    ASSETS.mkdir(exist_ok=True)
+
     data = json.loads(STORY.read_text(encoding="utf-8"))
 
     scenes = data.get("scenes") if isinstance(data, dict) else data
 
     if not isinstance(scenes, list) or not scenes:
         raise ValueError("No scenes found in story_output.json")
-
-    WORK.mkdir(exist_ok=True)
-    ASSETS.mkdir(exist_ok=True)
 
     scene_durations = []
 
@@ -280,66 +273,23 @@ def main():
 
     original_duration = duration(SOURCE)
     narration_duration = sum(scene_durations)
-    expected_narration_duration = original_duration - INTRO_SECONDS
+    detected_intro_seconds = original_duration - narration_duration
 
-    if expected_narration_duration <= 0:
+    # Detect whether the source has a 3-second opening logo intro.
+    if abs(detected_intro_seconds) <= 1.0:
+        logo_intro_seconds = 0.0
+    elif abs(detected_intro_seconds - LOGO_INTRO_SECONDS) <= 1.0:
+        logo_intro_seconds = detected_intro_seconds
+    else:
         raise RuntimeError(
-            "Original video is shorter than the configured logo intro. "
-            "Check INTRO_SECONDS and final_output.mp4."
-        )
-
-    if abs(narration_duration - expected_narration_duration) > 1.0:
-        raise RuntimeError(
-            f"Scene audio total ({narration_duration:.2f}s) "
-            f"differs from video narration section "
-            f"({expected_narration_duration:.2f}s; total video "
-            f"{original_duration:.2f}s including {INTRO_SECONDS:.2f}s logo intro). "
+            f"Scene audio total ({narration_duration:.2f}s) differs from "
+            f"video duration ({original_duration:.2f}s) by "
+            f"{detected_intro_seconds:.2f}s. Expected either no intro or "
+            f"a {LOGO_INTRO_SECONDS:.1f}s logo intro. "
             "Refusing to risk caption drift."
         )
 
     build_ass(scenes, scene_durations)
-
-    intro_image = WORK / "intro.png"
-    outro_image = WORK / "outro.png"
-
-    make_book_card(
-        intro_image,
-        "आज का विशेष प्रसंग",
-        "एक नई शास्त्रीय यात्रा"
-    )
-
-    make_book_card(
-        outro_image,
-        "आपका उत्तर क्या है?",
-        "अपना जवाब कमेंट में लिखें",
-        closing=True
-    )
-
-    intro_video = WORK / "intro.mp4"
-    outro_video = WORK / "outro.mp4"
-
-    for image, output, seconds in [
-        (intro_image, intro_video, INTRO_SECONDS),
-        (outro_image, outro_video, OUTRO_SECONDS)
-    ]:
-        run([
-            "ffmpeg", "-y",
-            "-loop", "1",
-            "-i", str(image),
-            "-f", "lavfi",
-            "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
-            "-t", str(seconds),
-            "-r", str(FPS),
-            "-vf", f"scale={W}:{H},format=yuv420p",
-            "-c:v", "libx264",
-            "-preset", "ultrafast",
-            "-crf", "22",
-            "-c:a", "aac",
-            "-shortest",
-            str(output)
-        ])
-
-    captioned = WORK / "captioned_original.mp4"
 
     ass_path = (
         ASS.as_posix()
@@ -349,47 +299,59 @@ def main():
 
     subtitle_filter = f"subtitles='{ass_path}'"
 
+    logo = ASSETS / "logo.png"
     narrator = ASSETS / "narrator.png"
-    hanuman = ASSETS / "hanuman_flying.png"
+    hanuman = ASSETS / "hanuman_flight.png"
 
+    if not logo.exists():
+        raise FileNotFoundError(
+            "assets/logo.png is missing. Upload your channel logo there."
+        )
+
+    # Logo is a permanent top-right watermark.
     inputs = [
         "ffmpeg", "-y",
-        "-i", str(SOURCE)
+        "-i", str(SOURCE),
+        "-loop", "1", "-i", str(logo),
     ]
 
     filters = [
-        f"[0:v]{subtitle_filter}[base]"
+        f"[0:v]trim=start={logo_intro_seconds},"
+        f"setpts=PTS-STARTPTS,{subtitle_filter}[base]",
+
+        f"[0:a]atrim=start={logo_intro_seconds},"
+        "asetpts=PTS-STARTPTS[aout]",
+
+        f"[1:v]scale={LOGO_WIDTH}:-1,"
+        "format=rgba,colorchannelmixer=aa=0.88[logo]",
+
+        "[base][logo]overlay=W-w-28:28:"
+        "shortest=1[vlogo]",
     ]
 
-    last = "base"
+    last = "vlogo"
+    next_input = 2
 
     if narrator.exists():
-        inputs += [
-            "-loop", "1",
-            "-i", str(narrator)
-        ]
+        inputs += ["-loop", "1", "-i", str(narrator)]
 
         filters.append(
-            "[1:v]scale=220:-1,format=rgba[narr]"
+            f"[{next_input}:v]scale=220:-1,format=rgba[narr]"
         )
 
         filters.append(
-            f"[{last}][narr]overlay=W-w-35:100:"
-            "shortest=1[v1]"
+            f"[{last}][narr]overlay=W-w-35:150:"
+            "shortest=1[vnarr]"
         )
 
-        last = "v1"
+        last = "vnarr"
+        next_input += 1
 
     if hanuman.exists():
-        inputs += [
-            "-loop", "1",
-            "-i", str(hanuman)
-        ]
-
-        index = 2 if narrator.exists() else 1
+        inputs += ["-loop", "1", "-i", str(hanuman)]
 
         filters.append(
-            f"[{index}:v]scale=105:75,format=rgba[han]"
+            f"[{next_input}:v]scale=105:75,format=rgba[han]"
         )
 
         filters.append(
@@ -397,74 +359,65 @@ def main():
             "color=0x8B6A32@0.9:t=fill[track]"
         )
 
-        filters.append(
-            f"[track][han]overlay="
-            f"x='70+(940-105)*t/{original_duration:.6f}':"
-            "y=1705:shortest=1[v2]"
+        narration_duration = max(
+            1.0,
+            original_duration - logo_intro_seconds
         )
 
-        last = "v2"
+        filters.append(
+            f"[track][han]overlay="
+            f"x='70+(940-105)*t/{narration_duration:.6f}':"
+            "y=1705:shortest=1[vfinal]"
+        )
+
+        last = "vfinal"
 
     else:
         filters.append(
             f"[{last}]drawbox=x=70:y=1790:w=940:h=5:"
-            "color=0x8B6A32@0.9:t=fill[v2]"
+            "color=0x8B6A32@0.9:t=fill[vfinal]"
         )
 
-        last = "v2"
+        last = "vfinal"
 
     inputs += [
-        "-filter_complex",
-        ";".join(filters),
+        "-filter_complex", ";".join(filters),
         "-map", f"[{last}]",
-        "-map", "0:a:0",
+        "-map", "[aout]",
         "-c:v", "libx264",
         "-preset", "veryfast",
         "-crf", "20",
         "-pix_fmt", "yuv420p",
-        "-c:a", "copy",
+        "-c:a", "aac",
+        "-b:a", "192k",
+        "-ar", "48000",
         "-movflags", "+faststart",
-        str(captioned)
+        str(OUTPUT)
     ]
 
     run(inputs)
 
-    concat_file = WORK / "concat.txt"
-
-    concat_file.write_text(
-        "\n".join(
-            f"file '{path.resolve()}'"
-            for path in (intro_video, captioned, outro_video)
-        ),
-        encoding="utf-8"
-    )
-
-    run([
-        "ffmpeg", "-y",
-        "-f", "concat",
-        "-safe", "0",
-        "-i", str(concat_file),
-        "-c", "copy",
-        "-movflags", "+faststart",
-        str(OUTPUT)
-    ])
-
     final_duration = duration(OUTPUT)
 
-    if final_duration < (
-        original_duration + INTRO_SECONDS + OUTRO_SECONDS - 0.5
-    ):
+    expected_final_duration = original_duration - logo_intro_seconds
+
+    if abs(final_duration - expected_final_duration) > 1.0:
         raise RuntimeError(
-            "Output duration check failed. "
-            "Original episode may not have been preserved."
+            f"Final video duration ({final_duration:.2f}s) does not match "
+            f"the episode duration after removing the "
+            f"{logo_intro_seconds:.1f}s opening logo intro."
         )
 
     report = {
         "output": OUTPUT.name,
         "original_duration_seconds": round(original_duration, 3),
         "final_duration_seconds": round(final_duration, 3),
-        "intro_seconds": INTRO_SECONDS,
-        "outro_seconds": OUTRO_SECONDS,
+        "opening_logo_intro_removed_seconds": round(
+            logo_intro_seconds, 3
+        ),
+        "logo_watermark": (
+            "assets/logo.png, top-right corner throughout the episode"
+        ),
         "original_episode_preserved": True,
         "word_highlighting": (
             "Estimated from text character weights; "
