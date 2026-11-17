@@ -1,4 +1,9 @@
-google-genai>=1.0.0
+
+google-genai
+edge-tts
+requests
+gradio_client
+huggingface_hub
+pillow
 requests>=2.31.0
-Pillow>=10.0.0
-edge-tts>=6.1.0
+faster-whisper>=1.0.0
