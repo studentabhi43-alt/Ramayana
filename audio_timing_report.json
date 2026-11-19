@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 32.472,
+    "actual_total_audio_seconds": 33.024,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.464,
-            "difference_seconds": -2.536,
+            "actual_duration_seconds": 6.528,
+            "difference_seconds": -0.472,
             "within_target": true,
-            "dialogue": "सभी जानते हैं सिता का जन्म... पर क्या आप जानते हैं, किसने कमल से जन्म की कहानी लिखी?"
+            "dialogue": "क्या आप जानते हैं कि भगवद गीता का प्रसिद्ध श्लोक 2.50 मूल महाभारत में नहीं मिलता?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.904,
-            "difference_seconds": -1.096,
+            "actual_duration_seconds": 6.456,
+            "difference_seconds": -0.544,
             "within_target": true,
-            "dialogue": "रामचरितमानस में सिता का जन्म कमल से हुआ, जबकि वाल्मीकि रामायण में वह पृथ्वी से उत्पन्न हुई।"
+            "dialogue": "श्लोक 2.50: 'योगः कर्मसु कौशलम्' को अक्सर गीता का सार माना जाता है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.368,
-            "difference_seconds": -2.632,
+            "actual_duration_seconds": 4.944,
+            "difference_seconds": -2.056,
             "within_target": true,
-            "dialogue": "आइए देखें रामचरितमानस के उस पंक्ति को, जहाँ कमल की कहानी है।"
+            "dialogue": "परंतु पुरातन महाभारत पांडुलिपियों में यह श्लोक अनुपस्थित पाया गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.128,
-            "difference_seconds": -2.872,
+            "actual_duration_seconds": 3.888,
+            "difference_seconds": -3.112,
             "within_target": true,
-            "dialogue": "यह पंक्ति है: ‘गंगा के तट पर कमल फूटा, सिता को जन्म दिया।’"
+            "dialogue": "शोधकर्ताओं ने पाया कि यह श्लोक बाद के सम्पादन में जोड़ा गया।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.016,
-            "difference_seconds": -1.984,
+            "actual_duration_seconds": 3.504,
+            "difference_seconds": -3.496,
             "within_target": true,
-            "dialogue": "वाल्मीकि रामायण में, सिता का जन्म पृथ्वी से हुआ, जिसे ‘बाला काण्ड’ में वर्णित किया गया है।"
+            "dialogue": "इसका अर्थ है कि गीता के कुछ श्लोकों का इतिहास जटिल है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.296,
-            "difference_seconds": -2.704,
+            "actual_duration_seconds": 3.888,
+            "difference_seconds": -3.112,
             "within_target": true,
-            "dialogue": "दोनों कथाएँ हमें दिखाती हैं कि कहानी कैसे समय के साथ बदलती है।"
+            "dialogue": "इसलिए हमें गीता के मूल पाठ को समझने के लिए सावधानी बरतनी चाहिए।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.296,
-            "difference_seconds": -2.704,
+            "actual_duration_seconds": 3.816,
+            "difference_seconds": -3.184,
             "within_target": true,
-            "dialogue": "सिता के जन्म की यह रोचक कहानी हमें सांस्कृतिक विविधता की याद दिलाती है।"
+            "dialogue": "आइए, इस रहस्य को और गहराई से समझते हैं, ताकि ज्ञान बढ़े।"
         }
     ]
 }

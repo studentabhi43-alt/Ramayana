@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "सभी जानते हैं सिता का जन्म... पर क्या आप जानते हैं, किसने कमल से जन्म की कहानी लिखी?",
-        "image_prompt": "A close-up of an ancient manuscript page with Sanskrit script, sunlight filtering through a window.",
-        "video_motion_prompt": "Slow pan across the manuscript.",
+        "dialogue": "क्या आप जानते हैं कि भगवद गीता का प्रसिद्ध श्लोक 2.50 मूल महाभारत में नहीं मिलता?",
+        "image_prompt": "Ancient Sanskrit manuscript of Mahabharata with a highlighted page.",
+        "video_motion_prompt": "Slow pan from cover to the highlighted page, soft focus.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रामचरितमानस में सिता का जन्म कमल से हुआ, जबकि वाल्मीकि रामायण में वह पृथ्वी से उत्पन्न हुई।",
-        "image_prompt": "Illustration of a lotus blooming on the Ganga river, with a subtle glow.",
-        "video_motion_prompt": "Zoom in on the lotus.",
+        "dialogue": "श्लोक 2.50: 'योगः कर्मसु कौशलम्' को अक्सर गीता का सार माना जाता है।",
+        "image_prompt": "Illustration of Krishna speaking to Arjuna on the battlefield.",
+        "video_motion_prompt": "Camera zooms in on Krishna's hand holding a scroll.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "आइए देखें रामचरितमानस के उस पंक्ति को, जहाँ कमल की कहानी है।",
-        "image_prompt": "A hand turning pages of a digital tablet showing the Ramcharitmanas text.",
-        "video_motion_prompt": "Swipe left across the tablet page.",
+        "dialogue": "परंतु पुरातन महाभारत पांडुलिपियों में यह श्लोक अनुपस्थित पाया गया है।",
+        "image_prompt": "Close-up of a faded manuscript page showing missing verse.",
+        "video_motion_prompt": "Camera tilts down to reveal blank space where verse would be.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह पंक्ति है: ‘गंगा के तट पर कमल फूटा, सिता को जन्म दिया।’",
-        "image_prompt": "A stylized depiction of the verse with a lotus and a newborn Sita.",
-        "video_motion_prompt": "Tilt down to reveal the verse.",
+        "dialogue": "शोधकर्ताओं ने पाया कि यह श्लोक बाद के सम्पादन में जोड़ा गया।",
+        "image_prompt": "Scholars in a library comparing manuscripts.",
+        "video_motion_prompt": "Camera pans across shelves, focusing on a scholar pointing at a text.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि रामायण में, सिता का जन्म पृथ्वी से हुआ, जिसे ‘बाला काण्ड’ में वर्णित किया गया है।",
-        "image_prompt": "An ancient stone tablet with the Valmiki Ramayana text, showing the earth motif.",
-        "video_motion_prompt": "Rotate around the stone tablet.",
+        "dialogue": "इसका अर्थ है कि गीता के कुछ श्लोकों का इतिहास जटिल है।",
+        "image_prompt": "Timeline graphic showing evolution of Bhagavad Gita verses.",
+        "video_motion_prompt": "Animated timeline slides from left to right, highlighting the 2.50 addition.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "दोनों कथाएँ हमें दिखाती हैं कि कहानी कैसे समय के साथ बदलती है।",
-        "image_prompt": "A montage of different cultural depictions of Sita's birth across India.",
-        "video_motion_prompt": "Crossfade between murals.",
+        "dialogue": "इसलिए हमें गीता के मूल पाठ को समझने के लिए सावधानी बरतनी चाहिए।",
+        "image_prompt": "Arjuna contemplating, with a thought bubble of the verse.",
+        "video_motion_prompt": "Camera slowly circles Arjuna, then zooms into thought bubble.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "सिता के जन्म की यह रोचक कहानी हमें सांस्कृतिक विविधता की याद दिलाती है।",
-        "image_prompt": "A panoramic view of a temple courtyard with murals of Sita's birth.",
-        "video_motion_prompt": "Slow dolly out to reveal the courtyard.",
+        "dialogue": "आइए, इस रहस्य को और गहराई से समझते हैं, ताकि ज्ञान बढ़े।",
+        "image_prompt": "Animated text of the verse appearing on screen.",
+        "video_motion_prompt": "Text fades in with subtle glow, then fades out.",
         "claim_refs": [
             "C1"
         ]
