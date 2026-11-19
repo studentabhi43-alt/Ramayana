@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि महाभारत में शाकुनी ने एक प्राचीन बोर्ड गेम खेला था?",
-        "image_prompt": "पुरातन भारतीय पांडुलिपि पर शाकुनी के चित्रित दृश्य, पृष्ठभूमि में पांडवों का समूह",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पांडुलिपि के पृष्ठ पर ज़ूम करता है, हल्की पृष्ठभूमि संगीत",
+        "dialogue": "क्या आप जानते हैं कि रावण को वैदिक विद्या का ज्ञान था?",
+        "image_prompt": "Ancient manuscript of Valmiki Ramayana with a stylized illustration of Ravana in the background.",
+        "video_motion_prompt": "Slow zoom into the manuscript page, subtle panning to the illustration.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "शाकुनी, कुंती के भाई, अपनी चालाकी के लिए प्रसिद्ध थे, और यह खेल उनकी रणनीति को दर्शाता है।",
-        "image_prompt": "शाकुनी का चित्र, हाथ में रणनीतिक बोर्ड, पृष्ठभूमि में युद्ध के दृश्य",
-        "video_motion_prompt": "कैमरा शाकुनी के हाथों पर फोकस करता है, फिर धीरे-धीरे पीछे हटता है",
+        "dialogue": "वाल्मीकि रामायण में रावण को केवल दस-शिर वाला शासक बताया गया है।",
+        "image_prompt": "Illustration of Ravana as a ten-headed king on a throne, surrounded by warriors.",
+        "video_motion_prompt": "Camera pans across the throne, focusing on Ravana's face.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "महाभारत के 12वें परव में एक संवाद में शाकुनी को एक बोर्ड पर चाल चलते हुए दिखाया गया है।",
-        "image_prompt": "पांडुलिपि का पृष्ठ, शाकुनी की चाल, पृष्ठभूमि में पांडवों की चर्चा",
-        "video_motion_prompt": "कैमरा पृष्ठ पर ज़ूम करता है, फिर धीरे-धीरे पैन करता है",
+        "dialogue": "रामचरितमानस में रावण को वैदिक विद्या का धनी दिखाया गया है।",
+        "image_prompt": "Illustration from Ramcharitmanas depicting Ravana studying Vedas under a banyan tree.",
+        "video_motion_prompt": "Camera moves from the banyan tree canopy to Ravana's open Veda scroll.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "शास्त्रज्ञों ने इस दृश्य को चतुरंग के प्रारम्भिक रूप के रूप में देखा है, परंतु सटीक प्रमाण अभी भी अनिश्चित है।",
-        "image_prompt": "शास्त्रज्ञ पुस्तकालय में पांडुलिपि का अध्ययन करते हुए, नोट्स लिखते हुए",
-        "video_motion_prompt": "कैमरा शास्त्रज्ञ के चेहरे पर ज़ूम करता है, फिर पैन करता है",
+        "dialogue": "यह अंतर हमें बताता है कि कथाएँ समय के साथ बदलती हैं।",
+        "image_prompt": "Timeline graphic showing evolution of Ramayana from Valmiki to Ramcharitmanas.",
+        "video_motion_prompt": "Timeline scrolls horizontally, highlighting key dates.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यदि यह सत्य है, तो महाभारत प्राचीन भारतीय संस्कृति के खेल इतिहास में एक महत्वपूर्ण स्थान रखता है।",
-        "image_prompt": "प्राचीन भारतीय खेलों के चित्र, पृष्ठभूमि में महाभारत के दृश्य",
-        "video_motion_prompt": "कैमरा धीरे-धीरे ऊपर से नीचे तक पैन करता है, पृष्ठभूमि में संगीत",
+        "dialogue": "वाल्मीकि के अंश में रावण की वैदिक शिक्षा का कोई उल्लेख नहीं है।",
+        "image_prompt": "Close-up of Valmiki Ramayana text, highlighting absence of Vedic terms.",
+        "video_motion_prompt": "Text scrolls slowly, highlighting relevant passages.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "लेकिन यह व्याख्या अभी भी शोध के अधीन है, और हमें मूल ग्रंथों का गहन अध्ययन करना चाहिए।",
-        "image_prompt": "पांडुलिपि के पृष्ठ पर गहन अध्ययन करते हुए शोधकर्ता, पृष्ठभूमि में पांडवों का दृश्य",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पांडुलिपि पर ज़ूम करता है, फिर पैन करता है",
+        "dialogue": "रावण के वैदिक ज्ञान का दावा रामचरितमानस में ही है, अन्य स्रोतों में नहीं।",
+        "image_prompt": "Side-by-side comparison of Valmiki and Ramcharitmanas manuscripts.",
+        "video_motion_prompt": "Camera splits screen, left side Valmiki, right side Ramcharitmanas.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस रोचक तथ्य के साथ, आइए हम महाभारत की गहराई में और भी खोजें।",
-        "image_prompt": "महाभारत के पांडुलिपि के पृष्ठ पर धीरे-धीरे पैन करते हुए, पृष्ठभूमि में भारतीय संगीत",
-        "video_motion_prompt": "कैमरा पृष्ठ पर पैन करता है, फिर धीरे-धीरे ज़ूम आउट करता है",
+        "dialogue": "इससे हमें मिलता है कि पौराणिक कथाएँ विविध रूपों में विकसित होती हैं।",
+        "image_prompt": "Illustrated montage of various Ramayana versions across India.",
+        "video_motion_prompt": "Camera circles montage, fading into a world map.",
         "claim_refs": [
             "C1"
         ]

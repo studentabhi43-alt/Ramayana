@@ -2,43 +2,43 @@
     "file": "final_output.mp4",
     "resolution": "1080x1920",
     "fps": 30,
-    "duration_seconds": 42.732,
-    "size_bytes": 10714138,
+    "duration_seconds": 27.161,
+    "size_bytes": 8821280,
     "video_codec": "h264",
     "audio_codec": "aac",
     "has_video": true,
     "has_audio": true,
     "scene_count": 7,
-    "logo_intro": true,
-    "logo_intro_duration_seconds": 3.0,
+    "logo_intro": false,
+    "logo_intro_duration_seconds": 0,
     "scene_durations": [
         {
             "scene_id": "1",
-            "duration_seconds": 3.648
+            "duration_seconds": 2.856
         },
         {
             "scene_id": "2",
-            "duration_seconds": 6.144
+            "duration_seconds": 4.056
         },
         {
             "scene_id": "3",
-            "duration_seconds": 6.864
+            "duration_seconds": 3.504
         },
         {
             "scene_id": "4",
-            "duration_seconds": 6.624
+            "duration_seconds": 3.984
         },
         {
             "scene_id": "5",
-            "duration_seconds": 6.528
+            "duration_seconds": 3.264
         },
         {
             "scene_id": "6",
-            "duration_seconds": 5.328
+            "duration_seconds": 5.184
         },
         {
             "scene_id": "7",
-            "duration_seconds": 4.608
+            "duration_seconds": 4.296
         }
     ]
 }

@@ -2,81 +2,81 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 39.744,
+    "actual_total_audio_seconds": 27.144,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
-    "final_duration_within_target": true,
+    "final_duration_within_target": false,
     "scenes": [
         {
             "scene_id": "1",
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.648,
-            "difference_seconds": -3.352,
+            "actual_duration_seconds": 2.856,
+            "difference_seconds": -4.144,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि महाभारत में शाकुनी ने एक प्राचीन बोर्ड गेम खेला था?"
+            "dialogue": "क्या आप जानते हैं कि रावण को वैदिक विद्या का ज्ञान था?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.144,
-            "difference_seconds": -0.856,
+            "actual_duration_seconds": 4.056,
+            "difference_seconds": -2.944,
             "within_target": true,
-            "dialogue": "शाकुनी, कुंती के भाई, अपनी चालाकी के लिए प्रसिद्ध थे, और यह खेल उनकी रणनीति को दर्शाता है।"
+            "dialogue": "वाल्मीकि रामायण में रावण को केवल दस-शिर वाला शासक बताया गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.864,
-            "difference_seconds": -0.136,
+            "actual_duration_seconds": 3.504,
+            "difference_seconds": -3.496,
             "within_target": true,
-            "dialogue": "महाभारत के 12वें परव में एक संवाद में शाकुनी को एक बोर्ड पर चाल चलते हुए दिखाया गया है।"
+            "dialogue": "रामचरितमानस में रावण को वैदिक विद्या का धनी दिखाया गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.624,
-            "difference_seconds": -0.376,
+            "actual_duration_seconds": 3.984,
+            "difference_seconds": -3.016,
             "within_target": true,
-            "dialogue": "शास्त्रज्ञों ने इस दृश्य को चतुरंग के प्रारम्भिक रूप के रूप में देखा है, परंतु सटीक प्रमाण अभी भी अनिश्चित है।"
+            "dialogue": "यह अंतर हमें बताता है कि कथाएँ समय के साथ बदलती हैं।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.528,
-            "difference_seconds": -0.472,
+            "actual_duration_seconds": 3.264,
+            "difference_seconds": -3.736,
             "within_target": true,
-            "dialogue": "यदि यह सत्य है, तो महाभारत प्राचीन भारतीय संस्कृति के खेल इतिहास में एक महत्वपूर्ण स्थान रखता है।"
+            "dialogue": "वाल्मीकि के अंश में रावण की वैदिक शिक्षा का कोई उल्लेख नहीं है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.328,
-            "difference_seconds": -1.672,
+            "actual_duration_seconds": 5.184,
+            "difference_seconds": -1.816,
             "within_target": true,
-            "dialogue": "लेकिन यह व्याख्या अभी भी शोध के अधीन है, और हमें मूल ग्रंथों का गहन अध्ययन करना चाहिए।"
+            "dialogue": "रावण के वैदिक ज्ञान का दावा रामचरितमानस में ही है, अन्य स्रोतों में नहीं।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.608,
-            "difference_seconds": -2.392,
+            "actual_duration_seconds": 4.296,
+            "difference_seconds": -2.704,
             "within_target": true,
-            "dialogue": "इस रोचक तथ्य के साथ, आइए हम महाभारत की गहराई में और भी खोजें।"
+            "dialogue": "इससे हमें मिलता है कि पौराणिक कथाएँ विविध रूपों में विकसित होती हैं।"
         }
     ]
 }

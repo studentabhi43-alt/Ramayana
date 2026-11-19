@@ -4,14 +4,14 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Mahabharata",
-            "source_url": "https://www.sacred-texts.com/hin/mha/index.htm",
+            "source_name": "Valmiki Ramayana (Sanskrit)",
+            "source_url": "https://www.sacred-texts.com/hin/ram/ram.htm",
             "source_type": "primary text"
         },
         {
-            "source_name": "Shah, S. (2005). The Game of Chess in Ancient India. Journal of South Asian Studies.",
-            "source_url": "",
-            "source_type": "scholarly reference"
+            "source_name": "Ramcharitmanas (Hindi)",
+            "source_url": "https://www.sacred-texts.com/hin/rcm/rcm.htm",
+            "source_type": "primary text"
         }
     ]
 }
