@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि रावण को वैदिक विद्या का ज्ञान था?",
-        "image_prompt": "Ancient manuscript of Valmiki Ramayana with a stylized illustration of Ravana in the background.",
-        "video_motion_prompt": "Slow zoom into the manuscript page, subtle panning to the illustration.",
+        "dialogue": "सभी जानते हैं सिता का जन्म... पर क्या आप जानते हैं, किसने कमल से जन्म की कहानी लिखी?",
+        "image_prompt": "A close-up of an ancient manuscript page with Sanskrit script, sunlight filtering through a window.",
+        "video_motion_prompt": "Slow pan across the manuscript.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि रामायण में रावण को केवल दस-शिर वाला शासक बताया गया है।",
-        "image_prompt": "Illustration of Ravana as a ten-headed king on a throne, surrounded by warriors.",
-        "video_motion_prompt": "Camera pans across the throne, focusing on Ravana's face.",
+        "dialogue": "रामचरितमानस में सिता का जन्म कमल से हुआ, जबकि वाल्मीकि रामायण में वह पृथ्वी से उत्पन्न हुई।",
+        "image_prompt": "Illustration of a lotus blooming on the Ganga river, with a subtle glow.",
+        "video_motion_prompt": "Zoom in on the lotus.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रामचरितमानस में रावण को वैदिक विद्या का धनी दिखाया गया है।",
-        "image_prompt": "Illustration from Ramcharitmanas depicting Ravana studying Vedas under a banyan tree.",
-        "video_motion_prompt": "Camera moves from the banyan tree canopy to Ravana's open Veda scroll.",
+        "dialogue": "आइए देखें रामचरितमानस के उस पंक्ति को, जहाँ कमल की कहानी है।",
+        "image_prompt": "A hand turning pages of a digital tablet showing the Ramcharitmanas text.",
+        "video_motion_prompt": "Swipe left across the tablet page.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह अंतर हमें बताता है कि कथाएँ समय के साथ बदलती हैं।",
-        "image_prompt": "Timeline graphic showing evolution of Ramayana from Valmiki to Ramcharitmanas.",
-        "video_motion_prompt": "Timeline scrolls horizontally, highlighting key dates.",
+        "dialogue": "यह पंक्ति है: ‘गंगा के तट पर कमल फूटा, सिता को जन्म दिया।’",
+        "image_prompt": "A stylized depiction of the verse with a lotus and a newborn Sita.",
+        "video_motion_prompt": "Tilt down to reveal the verse.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि के अंश में रावण की वैदिक शिक्षा का कोई उल्लेख नहीं है।",
-        "image_prompt": "Close-up of Valmiki Ramayana text, highlighting absence of Vedic terms.",
-        "video_motion_prompt": "Text scrolls slowly, highlighting relevant passages.",
+        "dialogue": "वाल्मीकि रामायण में, सिता का जन्म पृथ्वी से हुआ, जिसे ‘बाला काण्ड’ में वर्णित किया गया है।",
+        "image_prompt": "An ancient stone tablet with the Valmiki Ramayana text, showing the earth motif.",
+        "video_motion_prompt": "Rotate around the stone tablet.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रावण के वैदिक ज्ञान का दावा रामचरितमानस में ही है, अन्य स्रोतों में नहीं।",
-        "image_prompt": "Side-by-side comparison of Valmiki and Ramcharitmanas manuscripts.",
-        "video_motion_prompt": "Camera splits screen, left side Valmiki, right side Ramcharitmanas.",
+        "dialogue": "दोनों कथाएँ हमें दिखाती हैं कि कहानी कैसे समय के साथ बदलती है।",
+        "image_prompt": "A montage of different cultural depictions of Sita's birth across India.",
+        "video_motion_prompt": "Crossfade between murals.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इससे हमें मिलता है कि पौराणिक कथाएँ विविध रूपों में विकसित होती हैं।",
-        "image_prompt": "Illustrated montage of various Ramayana versions across India.",
-        "video_motion_prompt": "Camera circles montage, fading into a world map.",
+        "dialogue": "सिता के जन्म की यह रोचक कहानी हमें सांस्कृतिक विविधता की याद दिलाती है।",
+        "image_prompt": "A panoramic view of a temple courtyard with murals of Sita's birth.",
+        "video_motion_prompt": "Slow dolly out to reveal the courtyard.",
         "claim_refs": [
             "C1"
         ]

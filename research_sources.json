@@ -4,13 +4,13 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Valmiki Ramayana (Sanskrit)",
-            "source_url": "https://www.sacred-texts.com/hin/ram/ram.htm",
-            "source_type": "primary text"
+            "source_name": "Ramcharitmanas",
+            "source_url": "https://www.sacred-texts.com/hin/rcm/index.htm",
+            "source_type": "translation"
         },
         {
-            "source_name": "Ramcharitmanas (Hindi)",
-            "source_url": "https://www.sacred-texts.com/hin/rcm/rcm.htm",
+            "source_name": "Valmiki Ramayana",
+            "source_url": "https://www.sacred-texts.com/hin/ram/index.htm",
             "source_type": "primary text"
         }
     ]

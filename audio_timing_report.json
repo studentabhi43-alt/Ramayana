@@ -2,71 +2,71 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 27.144,
+    "actual_total_audio_seconds": 32.472,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
-    "final_duration_within_target": false,
+    "final_duration_within_target": true,
     "scenes": [
         {
             "scene_id": "1",
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 2.856,
-            "difference_seconds": -4.144,
+            "actual_duration_seconds": 4.464,
+            "difference_seconds": -2.536,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि रावण को वैदिक विद्या का ज्ञान था?"
+            "dialogue": "सभी जानते हैं सिता का जन्म... पर क्या आप जानते हैं, किसने कमल से जन्म की कहानी लिखी?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.056,
-            "difference_seconds": -2.944,
+            "actual_duration_seconds": 5.904,
+            "difference_seconds": -1.096,
             "within_target": true,
-            "dialogue": "वाल्मीकि रामायण में रावण को केवल दस-शिर वाला शासक बताया गया है।"
+            "dialogue": "रामचरितमानस में सिता का जन्म कमल से हुआ, जबकि वाल्मीकि रामायण में वह पृथ्वी से उत्पन्न हुई।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.504,
-            "difference_seconds": -3.496,
+            "actual_duration_seconds": 4.368,
+            "difference_seconds": -2.632,
             "within_target": true,
-            "dialogue": "रामचरितमानस में रावण को वैदिक विद्या का धनी दिखाया गया है।"
+            "dialogue": "आइए देखें रामचरितमानस के उस पंक्ति को, जहाँ कमल की कहानी है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.984,
-            "difference_seconds": -3.016,
+            "actual_duration_seconds": 4.128,
+            "difference_seconds": -2.872,
             "within_target": true,
-            "dialogue": "यह अंतर हमें बताता है कि कथाएँ समय के साथ बदलती हैं।"
+            "dialogue": "यह पंक्ति है: ‘गंगा के तट पर कमल फूटा, सिता को जन्म दिया।’"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.264,
-            "difference_seconds": -3.736,
+            "actual_duration_seconds": 5.016,
+            "difference_seconds": -1.984,
             "within_target": true,
-            "dialogue": "वाल्मीकि के अंश में रावण की वैदिक शिक्षा का कोई उल्लेख नहीं है।"
+            "dialogue": "वाल्मीकि रामायण में, सिता का जन्म पृथ्वी से हुआ, जिसे ‘बाला काण्ड’ में वर्णित किया गया है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.184,
-            "difference_seconds": -1.816,
+            "actual_duration_seconds": 4.296,
+            "difference_seconds": -2.704,
             "within_target": true,
-            "dialogue": "रावण के वैदिक ज्ञान का दावा रामचरितमानस में ही है, अन्य स्रोतों में नहीं।"
+            "dialogue": "दोनों कथाएँ हमें दिखाती हैं कि कहानी कैसे समय के साथ बदलती है।"
         },
         {
             "scene_id": "7",
@@ -76,7 +76,7 @@
             "actual_duration_seconds": 4.296,
             "difference_seconds": -2.704,
             "within_target": true,
-            "dialogue": "इससे हमें मिलता है कि पौराणिक कथाएँ विविध रूपों में विकसित होती हैं।"
+            "dialogue": "सिता के जन्म की यह रोचक कहानी हमें सांस्कृतिक विविधता की याद दिलाती है।"
         }
     ]
 }
