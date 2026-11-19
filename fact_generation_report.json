@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "Krishna and Balarama's Twin Birth in Bhagavata Purana",
-    "title": "क्या कृष्ण और बलराम एक ही गर्भ से जन्मे थे?",
+    "topic": "Mahabharata Chess Game",
+    "title": "क्या महाभारत में शाकुनी ने चतुरंग खेला? तथ्य या कल्पना?",
     "total_scenes": 7,
-    "total_dialogue_words": 100,
+    "total_dialogue_words": 123,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

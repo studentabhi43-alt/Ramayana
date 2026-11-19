@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 32.304,
+    "actual_total_audio_seconds": 39.744,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.816,
-            "difference_seconds": -3.184,
+            "actual_duration_seconds": 3.648,
+            "difference_seconds": -3.352,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि कृष्ण और बलराम एक ही गर्भ से जन्मे थे?"
+            "dialogue": "क्या आप जानते हैं कि महाभारत में शाकुनी ने एक प्राचीन बोर्ड गेम खेला था?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.576,
-            "difference_seconds": -3.424,
+            "actual_duration_seconds": 6.144,
+            "difference_seconds": -0.856,
             "within_target": true,
-            "dialogue": "ब्रह्माण्ड कथा में यह विवरण नहीं मिलता, पर भगवद् पुराण में मिलता है।"
+            "dialogue": "शाकुनी, कुंती के भाई, अपनी चालाकी के लिए प्रसिद्ध थे, और यह खेल उनकी रणनीति को दर्शाता है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.904,
-            "difference_seconds": -1.096,
+            "actual_duration_seconds": 6.864,
+            "difference_seconds": -0.136,
             "within_target": true,
-            "dialogue": "भगवद् पुराण 10.5.1 में लिखा है, 'कृष्ण और बलराम एक ही गर्भ से उत्पन्न हुए।'"
+            "dialogue": "महाभारत के 12वें परव में एक संवाद में शाकुनी को एक बोर्ड पर चाल चलते हुए दिखाया गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.328,
-            "difference_seconds": -1.672,
+            "actual_duration_seconds": 6.624,
+            "difference_seconds": -0.376,
             "within_target": true,
-            "dialogue": "महाभारत में इस कथा का उल्लेख नहीं है, जिससे हमें मिलता है दो अलग दृष्टिकोण।"
+            "dialogue": "शास्त्रज्ञों ने इस दृश्य को चतुरंग के प्रारम्भिक रूप के रूप में देखा है, परंतु सटीक प्रमाण अभी भी अनिश्चित है।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.216,
-            "difference_seconds": -0.784,
+            "actual_duration_seconds": 6.528,
+            "difference_seconds": -0.472,
             "within_target": true,
-            "dialogue": "यह भिन्नता हमें बताती है कि पुराणों ने दिव्य पहलुओं पर जोर दिया, जबकि महाभारत युद्ध पर।"
+            "dialogue": "यदि यह सत्य है, तो महाभारत प्राचीन भारतीय संस्कृति के खेल इतिहास में एक महत्वपूर्ण स्थान रखता है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.576,
-            "difference_seconds": -3.424,
+            "actual_duration_seconds": 5.328,
+            "difference_seconds": -1.672,
             "within_target": true,
-            "dialogue": "शोधकर्ताओं का मानना है कि यह भेद धार्मिक परिप्रेक्ष्य के कारण है।"
+            "dialogue": "लेकिन यह व्याख्या अभी भी शोध के अधीन है, और हमें मूल ग्रंथों का गहन अध्ययन करना चाहिए।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.888,
-            "difference_seconds": -3.112,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "तो अगली बार जब आप पुराण पढ़ें, तो इस अनोखे विवरण को याद रखें।"
+            "dialogue": "इस रोचक तथ्य के साथ, आइए हम महाभारत की गहराई में और भी खोजें।"
         }
     ]
 }
