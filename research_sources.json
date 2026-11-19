@@ -4,13 +4,8 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Mahabharata: A Critical Edition (Sanskrit)",
-            "source_url": "https://www.sacred-texts.com/hin/mg/",
-            "source_type": "primary text"
-        },
-        {
-            "source_name": "Bhagavad Gita: A Critical Edition",
-            "source_url": "https://www.bhagavadgita.org/",
+            "source_name": "Ramcharitmanas (Tulsidas)",
+            "source_url": "https://www.sacred-texts.com/hin/rcm/rcm.htm",
             "source_type": "primary text"
         }
     ]

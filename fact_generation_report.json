@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "Bhagavad Gita's Verse 2.50: A Textual Mystery",
-    "title": "क्या है 'योगः कर्मसु कौशलम्' का असली इतिहास?",
+    "topic": "सैंडल का स्वर्ण रंग: रामचरितमानस बनाम वाल्मीकि रामायण",
+    "title": "क्या राम के जूते सुनहरे थे? रामचरितमानस और वाल्मीकि रामायण की तुलना",
     "total_scenes": 7,
-    "total_dialogue_words": 89,
+    "total_dialogue_words": 87,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

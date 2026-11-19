@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि भगवद गीता का प्रसिद्ध श्लोक 2.50 मूल महाभारत में नहीं मिलता?",
-        "image_prompt": "Ancient Sanskrit manuscript of Mahabharata with a highlighted page.",
-        "video_motion_prompt": "Slow pan from cover to the highlighted page, soft focus.",
+        "dialogue": "क्या आपने कभी सोचा है कि राम के जूते सुनहरे थे?",
+        "image_prompt": "Illustration of Rama's sandals from a 16th-century manuscript of Valmiki Ramayana.",
+        "video_motion_prompt": "Slow zoom in on the manuscript page.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "श्लोक 2.50: 'योगः कर्मसु कौशलम्' को अक्सर गीता का सार माना जाता है।",
-        "image_prompt": "Illustration of Krishna speaking to Arjuna on the battlefield.",
-        "video_motion_prompt": "Camera zooms in on Krishna's hand holding a scroll.",
+        "dialogue": "वाल्मीकि रामायण में जूतों के रंग का कोई उल्लेख नहीं मिलता।",
+        "image_prompt": "A page from the Valmiki Ramayana with no mention of sandals color, showing text only.",
+        "video_motion_prompt": "Pan across the page to show the text.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "परंतु पुरातन महाभारत पांडुलिपियों में यह श्लोक अनुपस्थित पाया गया है।",
-        "image_prompt": "Close-up of a faded manuscript page showing missing verse.",
-        "video_motion_prompt": "Camera tilts down to reveal blank space where verse would be.",
+        "dialogue": "लेकिन रामचरितमानस में तुर्सिदास ने जूतों को सुनहरा बताया है, सुनहरे ही।",
+        "image_prompt": "Illustration from Ramcharitmanas depicting Rama's sandals as golden, with bright gold color.",
+        "video_motion_prompt": "Zoom out to reveal the golden sandals illustration.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "शोधकर्ताओं ने पाया कि यह श्लोक बाद के सम्पादन में जोड़ा गया।",
-        "image_prompt": "Scholars in a library comparing manuscripts.",
-        "video_motion_prompt": "Camera pans across shelves, focusing on a scholar pointing at a text.",
+        "dialogue": "यह विवरण तुर्सिदास के कलात्मक शैली का हिस्सा है, साहित्यिक संदर्भ में।",
+        "image_prompt": "A scholar studying Tulsidas's Ramcharitmanas, with a magnifying glass over the golden sandals verse.",
+        "video_motion_prompt": "Close-up of scholar's hands turning pages.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसका अर्थ है कि गीता के कुछ श्लोकों का इतिहास जटिल है।",
-        "image_prompt": "Timeline graphic showing evolution of Bhagavad Gita verses.",
-        "video_motion_prompt": "Animated timeline slides from left to right, highlighting the 2.50 addition.",
+        "dialogue": "वाल्मीकि रामायण में जूतों के रंग का उल्लेख न होने से यह स्पष्ट है।",
+        "image_prompt": "Comparison chart showing Valmiki Ramayana vs Ramcharitmanas, highlighting absence vs presence of sandals color.",
+        "video_motion_prompt": "Side-by-side split-screen comparison, slight zoom on each side.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसलिए हमें गीता के मूल पाठ को समझने के लिए सावधानी बरतनी चाहिए।",
-        "image_prompt": "Arjuna contemplating, with a thought bubble of the verse.",
-        "video_motion_prompt": "Camera slowly circles Arjuna, then zooms into thought bubble.",
+        "dialogue": "इसलिए, रामचरितमानस का सुनहरा विवरण एक कलात्मक जोड़ है, साहित्यिक संदर्भ में।",
+        "image_prompt": "Artistic rendering of golden sandals with a subtle overlay of a script page.",
+        "video_motion_prompt": "Slow rotation of the golden sandals rendering.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "आइए, इस रहस्य को और गहराई से समझते हैं, ताकि ज्ञान बढ़े।",
-        "image_prompt": "Animated text of the verse appearing on screen.",
-        "video_motion_prompt": "Text fades in with subtle glow, then fades out.",
+        "dialogue": "तो अगली बार जब आप राम की कथा सुनें, जूतों के रंग पर ध्यान दें।",
+        "image_prompt": "A modern viewer listening to a podcast about Ramayana, with a thought bubble showing golden sandals.",
+        "video_motion_prompt": "Fade to black with golden sandals overlay.",
         "claim_refs": [
             "C1"
         ]
