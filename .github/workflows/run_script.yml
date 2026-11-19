@@ -454,9 +454,21 @@ jobs:
           if-no-files-found: error
           compression-level: 0
           retention-days: 7
-
       # ==========================================
-      # 15. COMPLETION
+      # 15. AUTOMATIC YOUTUBE UPLOAD
+      # ==========================================
+
+      - name: Upload BADSAH Video to YouTube
+        timeout-minutes: 30
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          pip install google-api-python-client google-auth
+          python youtube_uploader.py
+      # ==========================================
+      # 16. COMPLETION
       # ==========================================
 
       - name: BADSAH Completed
