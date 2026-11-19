@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 # =====================================================
-# BADSAH VIDEO GENERATOR + LOGO INTRO
+# BADSAH VIDEO GENERATOR - SCENES ONLY
 # =====================================================
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -14,7 +14,6 @@ STORY_FILE = BASE_DIR / "story_output.json"
 IMAGE_DIR = BASE_DIR / "images"
 AUDIO_DIR = BASE_DIR / "audio_files"
 ASSET_DIR = BASE_DIR / "assets"
-LOGO_FILE = ASSET_DIR / "logo.png"
 
 TEMP_DIR = BASE_DIR / "video_temp"
 
@@ -29,8 +28,6 @@ EXPECTED_SCENES = 7
 
 VIDEO_CRF = "20"
 VIDEO_PRESET = "medium"
-
-INTRO_DURATION = 3.0
 
 # =====================================================
 # COMMAND UTILITIES
@@ -200,97 +197,6 @@ def validate_files(scenes):
     return checked
 
 
-def validate_logo():
-
-    if not LOGO_FILE.exists():
-        raise FileNotFoundError(
-            "Logo not found. Upload it to assets/logo.png"
-        )
-
-    if LOGO_FILE.stat().st_size < 1000:
-        raise ValueError(
-            f"Logo file is too small or invalid: {LOGO_FILE}"
-        )
-
-    print(f"Logo detected: {LOGO_FILE}")
-
-
-# =====================================================
-# CREATE CINEMATIC LOGO INTRO
-# =====================================================
-
-def create_logo_intro():
-
-    intro_path = TEMP_DIR / "logo_intro.mp4"
-
-    filter_complex = (
-        "[0:v]split=2[bg][fg];"
-        "[bg]"
-        "scale=1080:1920:force_original_aspect_ratio=increase,"
-        "crop=1080:1920,"
-        "boxblur=28:12,"
-        "eq=brightness=-0.22:saturation=1.15"
-        "[background];"
-        "[fg]"
-        "scale=1000:1500:force_original_aspect_ratio=decrease"
-        "[logo];"
-        "[background][logo]"
-        "overlay=(W-w)/2:(H-h)/2:shortest=1,"
-        "zoompan="
-        "z='min(zoom+0.00055,1.05)':"
-        "x='iw/2-(iw/zoom/2)':"
-        "y='ih/2-(ih/zoom/2)':"
-        f"d={round(INTRO_DURATION * FPS)}:"
-        f"s={WIDTH}x{HEIGHT}:"
-        f"fps={FPS},"
-        "fade=t=in:st=0:d=0.65,"
-        f"fade=t=out:st={max(0, INTRO_DURATION - 0.45):.2f}:d=0.45,"
-        "format=yuv420p"
-        "[v]"
-    )
-
-    command = [
-        "ffmpeg",
-        "-y",
-
-        "-loop", "1",
-        "-framerate", str(FPS),
-        "-i", str(LOGO_FILE),
-
-        "-f", "lavfi",
-        "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
-
-        "-filter_complex", filter_complex,
-
-        "-map", "[v]",
-        "-map", "1:a:0",
-
-        "-t", f"{INTRO_DURATION:.3f}",
-
-        "-c:v", "libx264",
-        "-preset", VIDEO_PRESET,
-        "-crf", VIDEO_CRF,
-        "-pix_fmt", "yuv420p",
-
-        "-c:a", "aac",
-        "-b:a", "192k",
-        "-ar", "48000",
-
-        "-movflags", "+faststart",
-
-        str(intro_path)
-    ]
-
-    print("\nCreating VEDIC GURU BADSAH logo intro...")
-    run_command(command)
-
-    if not intro_path.exists() or intro_path.stat().st_size < 10000:
-        raise RuntimeError("Logo intro video was not created correctly.")
-
-    print("Logo intro completed.")
-    return intro_path
-
-
 # =====================================================
 # CREATE ONE SCENE VIDEO
 # =====================================================
@@ -377,7 +283,7 @@ def create_scene_video(scene, index):
 
 
 # =====================================================
-# CONCATENATE INTRO + SCENES
+# CONCATENATE SCENES ONLY - NO LOGO INTRO
 # =====================================================
 
 def create_concat_file(video_files):
@@ -422,7 +328,7 @@ def merge_videos(video_files):
         str(temporary_output)
     ]
 
-    print("\nMerging logo intro and all scenes...")
+    print("\nMerging all scenes (no logo intro)...")
     run_command(command)
 
     if not temporary_output.exists():
@@ -432,7 +338,7 @@ def merge_videos(video_files):
         raise RuntimeError("Merged video is unexpectedly small.")
 
     temporary_output.replace(OUTPUT_FILE)
-    print("Intro and all scenes merged successfully.")
+    print("All scenes merged successfully. No logo intro was added.")
 
 
 # =====================================================
@@ -504,11 +410,10 @@ def main():
 
     print("\n")
     print("=" * 60)
-    print("BADSAH CINEMATIC VIDEO GENERATOR")
+    print("BADSAH VIDEO GENERATOR")
     print("=" * 60)
 
     check_ffmpeg()
-    validate_logo()
 
     scenes = load_scenes()
 
@@ -529,8 +434,6 @@ def main():
         f"\nTotal voice-over duration: {total_audio:.2f} seconds"
     )
 
-    intro_video = create_logo_intro()
-
     scene_videos = []
 
     for index, scene in enumerate(checked_scenes, start=1):
@@ -538,15 +441,17 @@ def main():
         video_file = create_scene_video(scene, index)
         scene_videos.append(video_file)
 
-    all_videos = [intro_video] + scene_videos
+    # Merge only the generated story scenes.
+    # The logo is added later as a static watermark
+    # by post_production.py.
 
-    merge_videos(all_videos)
+    merge_videos(scene_videos)
 
     report = validate_final_video()
 
     report["scene_count"] = len(scenes)
-    report["logo_intro"] = True
-    report["logo_intro_duration_seconds"] = INTRO_DURATION
+    report["logo_intro"] = False
+    report["logo_intro_duration_seconds"] = 0
 
     report["scene_durations"] = [
         {
@@ -585,7 +490,7 @@ def main():
     )
     print("Video codec:", report["video_codec"])
     print("Audio codec:", report["audio_codec"])
-    print("Logo intro:", INTRO_DURATION, "seconds")
+    print("Logo intro: Disabled (0 seconds)")
     print("\nReport saved:", REPORT_FILE)
 
 
