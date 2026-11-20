@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आपने कभी सोचा है कि राम के जूते सुनहरे थे?",
-        "image_prompt": "Illustration of Rama's sandals from a 16th-century manuscript of Valmiki Ramayana.",
-        "video_motion_prompt": "Slow zoom in on the manuscript page.",
+        "dialogue": "क्या आप जानते हैं कि कृष्ण का बचपन दो अलग-अलग पौराणिक कथाओं में अलग दिखता है?",
+        "image_prompt": "सूर्यास्त के समय गोकुल के खेतों में एक युवा कृष्ण का चित्रण, चारों ओर गायें और पवन व नंदा की आकृति।",
+        "video_motion_prompt": "धीमी पैनिंग शॉट, कैमरा धीरे-धीरे गोकुल के दृश्य पर घूमता है।",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि रामायण में जूतों के रंग का कोई उल्लेख नहीं मिलता।",
-        "image_prompt": "A page from the Valmiki Ramayana with no mention of sandals color, showing text only.",
-        "video_motion_prompt": "Pan across the page to show the text.",
+        "dialogue": "वृन्दावन के गोकुल में, श्रीमद्भागवताम् में कृष्ण को चंद्रमा की रोशनी में जन्म लेते हुए वर्णित किया गया है।",
+        "image_prompt": "चंद्रमा की रोशनी में गोकुल के एक छोटे से घर के बाहर कृष्ण का जन्म, नंदा और पवन के साथ।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे ऊपर उठता है, चंद्रमा की रोशनी को दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "लेकिन रामचरितमानस में तुर्सिदास ने जूतों को सुनहरा बताया है, सुनहरे ही।",
-        "image_prompt": "Illustration from Ramcharitmanas depicting Rama's sandals as golden, with bright gold color.",
-        "video_motion_prompt": "Zoom out to reveal the golden sandals illustration.",
+        "dialogue": "इसके विपरीत, हरिवाम्स में कृष्ण को गोवर्धन के नीचे जन्म लेते हुए बताया गया है।",
+        "image_prompt": "गोवर्धन के नीचे एक पौराणिक दृश्य, जहाँ कृष्ण का जन्म हो रहा है, आसपास के देवता और पवन।",
+        "video_motion_prompt": "कैमरा नीचे से ऊपर की ओर पैन करता है, गोवर्धन के दृश्य को दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह विवरण तुर्सिदास के कलात्मक शैली का हिस्सा है, साहित्यिक संदर्भ में।",
-        "image_prompt": "A scholar studying Tulsidas's Ramcharitmanas, with a magnifying glass over the golden sandals verse.",
-        "video_motion_prompt": "Close-up of scholar's hands turning pages.",
+        "dialogue": "दोनों कथाएँ प्राचीन परंपराओं को दर्शाती हैं, परंतु उनके भिन्न विवरण अलग-अलग क्षेत्रीय रीति-रिवाजों को दिखाते हैं।",
+        "image_prompt": "दोनों ग्रंथों के पांडुलिपि के पन्ने, एक तरफ भक्ति शैली और दूसरी तरफ पौराणिक शैली।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पन्नों के बीच स्विच करता है।",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि रामायण में जूतों के रंग का उल्लेख न होने से यह स्पष्ट है।",
-        "image_prompt": "Comparison chart showing Valmiki Ramayana vs Ramcharitmanas, highlighting absence vs presence of sandals color.",
-        "video_motion_prompt": "Side-by-side split-screen comparison, slight zoom on each side.",
+        "dialogue": "श्रीमद्भागवताम् में गोकुल के पवन और नंदा के साथ कृष्ण का बचपन चित्रित है।",
+        "image_prompt": "गोकुल के मैदान में पवन और नंदा के साथ खेलते हुए कृष्ण का चित्रण, पवन के हाथ में गिटार।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पवन और नंदा के बीच घूमता है।",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसलिए, रामचरितमानस का सुनहरा विवरण एक कलात्मक जोड़ है, साहित्यिक संदर्भ में।",
-        "image_prompt": "Artistic rendering of golden sandals with a subtle overlay of a script page.",
-        "video_motion_prompt": "Slow rotation of the golden sandals rendering.",
+        "dialogue": "हरिवाम्स में, कृष्ण के पिता के रूप में गोवर्धन के साथ एक अलग कथा प्रस्तुत की गई है।",
+        "image_prompt": "गोवर्धन के नीचे कृष्ण के पिता के रूप में एक पौराणिक आकृति, पृष्ठभूमि में देवता।",
+        "video_motion_prompt": "कैमरा ऊपर से नीचे की ओर पैन करता है, गोवर्धन के दृश्य को दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "तो अगली बार जब आप राम की कथा सुनें, जूतों के रंग पर ध्यान दें।",
-        "image_prompt": "A modern viewer listening to a podcast about Ramayana, with a thought bubble showing golden sandals.",
-        "video_motion_prompt": "Fade to black with golden sandals overlay.",
+        "dialogue": "इसलिए, दोनों ग्रंथ हमें बताते हैं कि पौराणिक कथाएँ विविध परंपराओं से समृद्ध हैं।",
+        "image_prompt": "एक पौराणिक पुस्तक के पन्ने खुलते हुए, दोनों ग्रंथों के प्रतीक दिखाई देते हैं।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पन्नों के बीच स्विच करता है, प्रकाश का प्रभाव।",
         "claim_refs": [
             "C1"
         ]

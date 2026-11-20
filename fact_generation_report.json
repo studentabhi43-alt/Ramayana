@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "सैंडल का स्वर्ण रंग: रामचरितमानस बनाम वाल्मीकि रामायण",
-    "title": "क्या राम के जूते सुनहरे थे? रामचरितमानस और वाल्मीकि रामायण की तुलना",
+    "topic": "Krishna's Childhood in Bhagavata Purana vs Harivamsa",
+    "title": "कृष्ण का बचपन: दो पौराणिक कथाएँ, एक अलग कहानी",
     "total_scenes": 7,
-    "total_dialogue_words": 87,
+    "total_dialogue_words": 113,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

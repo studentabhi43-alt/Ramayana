@@ -4,9 +4,14 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Ramcharitmanas (Tulsidas)",
-            "source_url": "https://www.sacred-texts.com/hin/rcm/rcm.htm",
-            "source_type": "primary text"
+            "source_name": "Srimad Bhagavatam (Swami Prabhupada Translation)",
+            "source_url": "https://www.bhagavat.com",
+            "source_type": "translation"
+        },
+        {
+            "source_name": "Harivamsa (Sacred Texts)",
+            "source_url": "https://www.sacred-texts.com/hin/harivamsa/index.htm",
+            "source_type": "translation"
         }
     ]
 }

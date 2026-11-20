@@ -2,81 +2,81 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 29.688,
+    "actual_total_audio_seconds": 36.312,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
-    "final_duration_within_target": false,
+    "final_duration_within_target": true,
     "scenes": [
         {
             "scene_id": "1",
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.168,
-            "difference_seconds": -3.832,
+            "actual_duration_seconds": 4.704,
+            "difference_seconds": -2.296,
             "within_target": true,
-            "dialogue": "क्या आपने कभी सोचा है कि राम के जूते सुनहरे थे?"
+            "dialogue": "क्या आप जानते हैं कि कृष्ण का बचपन दो अलग-अलग पौराणिक कथाओं में अलग दिखता है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.264,
-            "difference_seconds": -3.736,
+            "actual_duration_seconds": 5.904,
+            "difference_seconds": -1.096,
             "within_target": true,
-            "dialogue": "वाल्मीकि रामायण में जूतों के रंग का कोई उल्लेख नहीं मिलता।"
+            "dialogue": "वृन्दावन के गोकुल में, श्रीमद्भागवताम् में कृष्ण को चंद्रमा की रोशनी में जन्म लेते हुए वर्णित किया गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.944,
-            "difference_seconds": -2.056,
+            "actual_duration_seconds": 5.016,
+            "difference_seconds": -1.984,
             "within_target": true,
-            "dialogue": "लेकिन रामचरितमानस में तुर्सिदास ने जूतों को सुनहरा बताया है, सुनहरे ही।"
+            "dialogue": "इसके विपरीत, हरिवाम्स में कृष्ण को गोवर्धन के नीचे जन्म लेते हुए बताया गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.224,
-            "difference_seconds": -2.776,
+            "actual_duration_seconds": 6.048,
+            "difference_seconds": -0.952,
             "within_target": true,
-            "dialogue": "यह विवरण तुर्सिदास के कलात्मक शैली का हिस्सा है, साहित्यिक संदर्भ में।"
+            "dialogue": "दोनों कथाएँ प्राचीन परंपराओं को दर्शाती हैं, परंतु उनके भिन्न विवरण अलग-अलग क्षेत्रीय रीति-रिवाजों को दिखाते हैं।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.224,
-            "difference_seconds": -2.776,
+            "actual_duration_seconds": 5.088,
+            "difference_seconds": -1.912,
             "within_target": true,
-            "dialogue": "वाल्मीकि रामायण में जूतों के रंग का उल्लेख न होने से यह स्पष्ट है।"
+            "dialogue": "श्रीमद्भागवताम् में गोकुल के पवन और नंदा के साथ कृष्ण का बचपन चित्रित है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.048,
-            "difference_seconds": -0.952,
+            "actual_duration_seconds": 4.776,
+            "difference_seconds": -2.224,
             "within_target": true,
-            "dialogue": "इसलिए, रामचरितमानस का सुनहरा विवरण एक कलात्मक जोड़ है, साहित्यिक संदर्भ में।"
+            "dialogue": "हरिवाम्स में, कृष्ण के पिता के रूप में गोवर्धन के साथ एक अलग कथा प्रस्तुत की गई है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.816,
-            "difference_seconds": -3.184,
+            "actual_duration_seconds": 4.776,
+            "difference_seconds": -2.224,
             "within_target": true,
-            "dialogue": "तो अगली बार जब आप राम की कथा सुनें, जूतों के रंग पर ध्यान दें।"
+            "dialogue": "इसलिए, दोनों ग्रंथ हमें बताते हैं कि पौराणिक कथाएँ विविध परंपराओं से समृद्ध हैं।"
         }
     ]
 }
