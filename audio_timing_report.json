@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 36.312,
+    "actual_total_audio_seconds": 43.128,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.704,
-            "difference_seconds": -2.296,
+            "actual_duration_seconds": 6.624,
+            "difference_seconds": -0.376,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि कृष्ण का बचपन दो अलग-अलग पौराणिक कथाओं में अलग दिखता है?"
+            "dialogue": "क्या आप जानते हैं कि सिता का वन निर्वासन वाल्मीकि रामायण के उत्तरा काण्ड में है, पर रामचरितमानस में नहीं?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.904,
-            "difference_seconds": -1.096,
+            "actual_duration_seconds": 5.424,
+            "difference_seconds": -1.576,
             "within_target": true,
-            "dialogue": "वृन्दावन के गोकुल में, श्रीमद्भागवताम् में कृष्ण को चंद्रमा की रोशनी में जन्म लेते हुए वर्णित किया गया है।"
+            "dialogue": "उत्तरा काण्ड में सिता का निर्वासन और राक्षस राजा से मुलाकात का विस्तृत वर्णन मिलता है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.016,
-            "difference_seconds": -1.984,
+            "actual_duration_seconds": 6.384,
+            "difference_seconds": -0.616,
             "within_target": true,
-            "dialogue": "इसके विपरीत, हरिवाम्स में कृष्ण को गोवर्धन के नीचे जन्म लेते हुए बताया गया है।"
+            "dialogue": "रामचरितमानस में सिता के निर्वासन का उल्लेख अलग ढंग से है, पर राक्षस राजा से मुलाकात नहीं है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.048,
-            "difference_seconds": -0.952,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "दोनों कथाएँ प्राचीन परंपराओं को दर्शाती हैं, परंतु उनके भिन्न विवरण अलग-अलग क्षेत्रीय रीति-रिवाजों को दिखाते हैं।"
+            "dialogue": "इस अंतर से पता चलता है कि परंपराएँ समय के साथ बदलती हैं और व्याख्याएँ भिन्न होती हैं।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.088,
-            "difference_seconds": -1.912,
+            "actual_duration_seconds": 7.248,
+            "difference_seconds": 0.248,
             "within_target": true,
-            "dialogue": "श्रीमद्भागवताम् में गोकुल के पवन और नंदा के साथ कृष्ण का बचपन चित्रित है।"
+            "dialogue": "वाल्मीकि के उत्तरा काण्ड को अक्सर बाद में जोड़ा गया माना जाता है, जबकि रामचरितमानस 16वीं सदी की रचना है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.776,
-            "difference_seconds": -2.224,
+            "actual_duration_seconds": 7.824,
+            "difference_seconds": 0.824,
             "within_target": true,
-            "dialogue": "हरिवाम्स में, कृष्ण के पिता के रूप में गोवर्धन के साथ एक अलग कथा प्रस्तुत की गई है।"
+            "dialogue": "दोनों ग्रंथों में सिता के निर्वासन की कहानी अलग-अलग ढंग से प्रस्तुत की गई है, जिससे पाठकों को विविध दृष्टिकोण मिलते हैं।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.776,
-            "difference_seconds": -2.224,
+            "actual_duration_seconds": 5.016,
+            "difference_seconds": -1.984,
             "within_target": true,
-            "dialogue": "इसलिए, दोनों ग्रंथ हमें बताते हैं कि पौराणिक कथाएँ विविध परंपराओं से समृद्ध हैं।"
+            "dialogue": "इस तुलना से हमें यह समझ आता है कि परंपरा और व्याख्या में अंतर क्यों होता है।"
         }
     ]
 }

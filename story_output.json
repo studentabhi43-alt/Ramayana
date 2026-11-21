@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि कृष्ण का बचपन दो अलग-अलग पौराणिक कथाओं में अलग दिखता है?",
-        "image_prompt": "सूर्यास्त के समय गोकुल के खेतों में एक युवा कृष्ण का चित्रण, चारों ओर गायें और पवन व नंदा की आकृति।",
-        "video_motion_prompt": "धीमी पैनिंग शॉट, कैमरा धीरे-धीरे गोकुल के दृश्य पर घूमता है।",
+        "dialogue": "क्या आप जानते हैं कि सिता का वन निर्वासन वाल्मीकि रामायण के उत्तरा काण्ड में है, पर रामचरितमानस में नहीं?",
+        "image_prompt": "A dramatic illustration of Sita standing in a forest with a sorrowful expression, surrounded by ancient trees, with a subtle overlay of a faded manuscript page of Valmiki Ramayana.",
+        "video_motion_prompt": "Slow zoom in on the illustration, with subtle pan across the forest background.",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वृन्दावन के गोकुल में, श्रीमद्भागवताम् में कृष्ण को चंद्रमा की रोशनी में जन्म लेते हुए वर्णित किया गया है।",
-        "image_prompt": "चंद्रमा की रोशनी में गोकुल के एक छोटे से घर के बाहर कृष्ण का जन्म, नंदा और पवन के साथ।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे ऊपर उठता है, चंद्रमा की रोशनी को दिखाता है।",
+        "dialogue": "उत्तरा काण्ड में सिता का निर्वासन और राक्षस राजा से मुलाकात का विस्तृत वर्णन मिलता है।",
+        "image_prompt": "An ancient manuscript page from Valmiki Ramayana's Uttara Kanda, showing a hand-drawn illustration of Sita in exile, with Sanskrit text visible.",
+        "video_motion_prompt": "Close-up of manuscript page, gentle panning across the Sanskrit text.",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसके विपरीत, हरिवाम्स में कृष्ण को गोवर्धन के नीचे जन्म लेते हुए बताया गया है।",
-        "image_prompt": "गोवर्धन के नीचे एक पौराणिक दृश्य, जहाँ कृष्ण का जन्म हो रहा है, आसपास के देवता और पवन।",
-        "video_motion_prompt": "कैमरा नीचे से ऊपर की ओर पैन करता है, गोवर्धन के दृश्य को दिखाता है।",
+        "dialogue": "रामचरितमानस में सिता के निर्वासन का उल्लेख अलग ढंग से है, पर राक्षस राजा से मुलाकात नहीं है।",
+        "image_prompt": "A page from Ramcharitmanas depicting Sita in a modest setting, with Tulsidas's calligraphic script in Devanagari, showing a different scene.",
+        "video_motion_prompt": "Soft dolly in on Ramcharitmanas page, slight tilt to reveal calligraphy.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "दोनों कथाएँ प्राचीन परंपराओं को दर्शाती हैं, परंतु उनके भिन्न विवरण अलग-अलग क्षेत्रीय रीति-रिवाजों को दिखाते हैं।",
-        "image_prompt": "दोनों ग्रंथों के पांडुलिपि के पन्ने, एक तरफ भक्ति शैली और दूसरी तरफ पौराणिक शैली।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पन्नों के बीच स्विच करता है।",
+        "dialogue": "इस अंतर से पता चलता है कि परंपराएँ समय के साथ बदलती हैं और व्याख्याएँ भिन्न होती हैं।",
+        "image_prompt": "A split-screen comparison of the two manuscripts, highlighting the presence of a demon king illustration in Valmiki but not in Ramcharitmanas.",
+        "video_motion_prompt": "Split-screen transition, with a sliding effect to reveal both pages side by side.",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "श्रीमद्भागवताम् में गोकुल के पवन और नंदा के साथ कृष्ण का बचपन चित्रित है।",
-        "image_prompt": "गोकुल के मैदान में पवन और नंदा के साथ खेलते हुए कृष्ण का चित्रण, पवन के हाथ में गिटार।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पवन और नंदा के बीच घूमता है।",
+        "dialogue": "वाल्मीकि के उत्तरा काण्ड को अक्सर बाद में जोड़ा गया माना जाता है, जबकि रामचरितमानस 16वीं सदी की रचना है।",
+        "image_prompt": "A historical timeline graphic showing the dates of Valmiki Ramayana (circa 4th-5th century BCE) and Ramcharitmanas (16th century CE).",
+        "video_motion_prompt": "Pan across the timeline graphic, with a slight zoom to emphasize dates.",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "हरिवाम्स में, कृष्ण के पिता के रूप में गोवर्धन के साथ एक अलग कथा प्रस्तुत की गई है।",
-        "image_prompt": "गोवर्धन के नीचे कृष्ण के पिता के रूप में एक पौराणिक आकृति, पृष्ठभूमि में देवता।",
-        "video_motion_prompt": "कैमरा ऊपर से नीचे की ओर पैन करता है, गोवर्धन के दृश्य को दिखाता है।",
+        "dialogue": "दोनों ग्रंथों में सिता के निर्वासन की कहानी अलग-अलग ढंग से प्रस्तुत की गई है, जिससे पाठकों को विविध दृष्टिकोण मिलते हैं।",
+        "image_prompt": "A collage of scholars and devotees reading both texts, with thought bubbles indicating diverse interpretations.",
+        "video_motion_prompt": "Slow pan across the collage, focusing on each scholar's face.",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इसलिए, दोनों ग्रंथ हमें बताते हैं कि पौराणिक कथाएँ विविध परंपराओं से समृद्ध हैं।",
-        "image_prompt": "एक पौराणिक पुस्तक के पन्ने खुलते हुए, दोनों ग्रंथों के प्रतीक दिखाई देते हैं।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पन्नों के बीच स्विच करता है, प्रकाश का प्रभाव।",
+        "dialogue": "इस तुलना से हमें यह समझ आता है कि परंपरा और व्याख्या में अंतर क्यों होता है।",
+        "image_prompt": "A serene image of a temple courtyard at sunset, symbolizing the enduring legacy of both texts.",
+        "video_motion_prompt": "Slow dolly out from the temple courtyard, with a gentle upward tilt to the sky.",
         "claim_refs": [
             "C1"
         ]
