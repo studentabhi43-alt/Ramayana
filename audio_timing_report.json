@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 43.128,
+    "actual_total_audio_seconds": 37.608,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.624,
-            "difference_seconds": -0.376,
+            "actual_duration_seconds": 3.744,
+            "difference_seconds": -3.256,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि सिता का वन निर्वासन वाल्मीकि रामायण के उत्तरा काण्ड में है, पर रामचरितमानस में नहीं?"
+            "dialogue": "क्या आप जानते हैं कि वैदिक ग्रंथों में भी काली देवी का उल्लेख मिलता है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.424,
-            "difference_seconds": -1.576,
+            "actual_duration_seconds": 6.384,
+            "difference_seconds": -0.616,
             "within_target": true,
-            "dialogue": "उत्तरा काण्ड में सिता का निर्वासन और राक्षस राजा से मुलाकात का विस्तृत वर्णन मिलता है।"
+            "dialogue": "अथर्व वेद के 10.1.1 अध्याय में एक विशेष स्तुति काली के लिए समर्पित है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.384,
-            "difference_seconds": -0.616,
+            "actual_duration_seconds": 4.944,
+            "difference_seconds": -2.056,
             "within_target": true,
-            "dialogue": "रामचरितमानस में सिता के निर्वासन का उल्लेख अलग ढंग से है, पर राक्षस राजा से मुलाकात नहीं है।"
+            "dialogue": "यह स्तुति काली को विनाश और पुनर्जन्म दोनों के रूप में वर्णित करती है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.608,
-            "difference_seconds": -2.392,
+            "actual_duration_seconds": 3.816,
+            "difference_seconds": -3.184,
             "within_target": true,
-            "dialogue": "इस अंतर से पता चलता है कि परंपराएँ समय के साथ बदलती हैं और व्याख्याएँ भिन्न होती हैं।"
+            "dialogue": "वैदिक स्तुति में काली को एक शक्तिशाली देवी के रूप में माना गया है।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 7.248,
-            "difference_seconds": 0.248,
+            "actual_duration_seconds": 5.808,
+            "difference_seconds": -1.192,
             "within_target": true,
-            "dialogue": "वाल्मीकि के उत्तरा काण्ड को अक्सर बाद में जोड़ा गया माना जाता है, जबकि रामचरितमानस 16वीं सदी की रचना है।"
+            "dialogue": "हालाँकि यह स्तुति एक ही स्थान पर है, परंतु यह काली की प्राचीन पूजा का संकेत देती है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 7.824,
-            "difference_seconds": 0.824,
+            "actual_duration_seconds": 6.696,
+            "difference_seconds": -0.304,
             "within_target": true,
-            "dialogue": "दोनों ग्रंथों में सिता के निर्वासन की कहानी अलग-अलग ढंग से प्रस्तुत की गई है, जिससे पाठकों को विविध दृष्टिकोण मिलते हैं।"
+            "dialogue": "बाद के पुराणों में काली का विस्तार से वर्णन नहीं मिलता, पर वैदिक ग्रंथों में उसकी उपस्थिति स्पष्ट है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.016,
-            "difference_seconds": -1.984,
+            "actual_duration_seconds": 6.216,
+            "difference_seconds": -0.784,
             "within_target": true,
-            "dialogue": "इस तुलना से हमें यह समझ आता है कि परंपरा और व्याख्या में अंतर क्यों होता है।"
+            "dialogue": "इससे स्पष्ट होता है कि काली देवी का महत्व वैदिक काल से ही रहा है, और यह प्राचीन परंपरा का हिस्सा है।"
         }
     ]
 }

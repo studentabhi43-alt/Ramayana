@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि सिता का वन निर्वासन वाल्मीकि रामायण के उत्तरा काण्ड में है, पर रामचरितमानस में नहीं?",
-        "image_prompt": "A dramatic illustration of Sita standing in a forest with a sorrowful expression, surrounded by ancient trees, with a subtle overlay of a faded manuscript page of Valmiki Ramayana.",
-        "video_motion_prompt": "Slow zoom in on the illustration, with subtle pan across the forest background.",
+        "dialogue": "क्या आप जानते हैं कि वैदिक ग्रंथों में भी काली देवी का उल्लेख मिलता है?",
+        "image_prompt": "पुरातन वैदिक पांडुलिपि के पन्ने, जिस पर काली के स्तुति का पाठ लिखा हुआ है।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पांडुलिपि पर ज़ूम करता है, पृष्ठ पर लिखे शब्दों को दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "उत्तरा काण्ड में सिता का निर्वासन और राक्षस राजा से मुलाकात का विस्तृत वर्णन मिलता है।",
-        "image_prompt": "An ancient manuscript page from Valmiki Ramayana's Uttara Kanda, showing a hand-drawn illustration of Sita in exile, with Sanskrit text visible.",
-        "video_motion_prompt": "Close-up of manuscript page, gentle panning across the Sanskrit text.",
+        "dialogue": "अथर्व वेद के 10.1.1 अध्याय में एक विशेष स्तुति काली के लिए समर्पित है।",
+        "image_prompt": "अथर्व वेद के 10.1.1 के पृष्ठ पर काली के रूप में चित्रित एक देवी की रचना।",
+        "video_motion_prompt": "कैमरा पृष्ठ के ऊपर से धीरे-धीरे नीचे की ओर स्लाइड करता है, स्तुति के शब्दों को उजागर करता है।",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रामचरितमानस में सिता के निर्वासन का उल्लेख अलग ढंग से है, पर राक्षस राजा से मुलाकात नहीं है।",
-        "image_prompt": "A page from Ramcharitmanas depicting Sita in a modest setting, with Tulsidas's calligraphic script in Devanagari, showing a different scene.",
-        "video_motion_prompt": "Soft dolly in on Ramcharitmanas page, slight tilt to reveal calligraphy.",
+        "dialogue": "यह स्तुति काली को विनाश और पुनर्जन्म दोनों के रूप में वर्णित करती है।",
+        "image_prompt": "काली की एक प्राचीन चित्रकारी, जिसमें वह विनाश और पुनर्जन्म के प्रतीक के रूप में दिखाई देती हैं।",
+        "video_motion_prompt": "कैमरा चित्र पर ज़ूम करता है, काली के प्रतीकों को धीरे-धीरे उजागर करता है।",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस अंतर से पता चलता है कि परंपराएँ समय के साथ बदलती हैं और व्याख्याएँ भिन्न होती हैं।",
-        "image_prompt": "A split-screen comparison of the two manuscripts, highlighting the presence of a demon king illustration in Valmiki but not in Ramcharitmanas.",
-        "video_motion_prompt": "Split-screen transition, with a sliding effect to reveal both pages side by side.",
+        "dialogue": "वैदिक स्तुति में काली को एक शक्तिशाली देवी के रूप में माना गया है।",
+        "image_prompt": "वैदिक पांडुलिपि के पृष्ठ पर काली को एक शक्तिशाली देवी के रूप में दर्शाया गया है।",
+        "video_motion_prompt": "कैमरा पृष्ठ पर घूमता है, काली के चित्र को उजागर करता है।",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वाल्मीकि के उत्तरा काण्ड को अक्सर बाद में जोड़ा गया माना जाता है, जबकि रामचरितमानस 16वीं सदी की रचना है।",
-        "image_prompt": "A historical timeline graphic showing the dates of Valmiki Ramayana (circa 4th-5th century BCE) and Ramcharitmanas (16th century CE).",
-        "video_motion_prompt": "Pan across the timeline graphic, with a slight zoom to emphasize dates.",
+        "dialogue": "हालाँकि यह स्तुति एक ही स्थान पर है, परंतु यह काली की प्राचीन पूजा का संकेत देती है।",
+        "image_prompt": "वैदिक पांडुलिपि के पृष्ठ पर काली की पूजा के प्रतीक, जैसे कि फूल और धूप।",
+        "video_motion_prompt": "कैमरा पृष्ठ पर घूमता है, पूजा के प्रतीकों को धीरे-धीरे दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "दोनों ग्रंथों में सिता के निर्वासन की कहानी अलग-अलग ढंग से प्रस्तुत की गई है, जिससे पाठकों को विविध दृष्टिकोण मिलते हैं।",
-        "image_prompt": "A collage of scholars and devotees reading both texts, with thought bubbles indicating diverse interpretations.",
-        "video_motion_prompt": "Slow pan across the collage, focusing on each scholar's face.",
+        "dialogue": "बाद के पुराणों में काली का विस्तार से वर्णन नहीं मिलता, पर वैदिक ग्रंथों में उसकी उपस्थिति स्पष्ट है।",
+        "image_prompt": "पुराणों के पृष्ठों के साथ वैदिक पांडुलिपि की तुलना, जहाँ काली का उल्लेख कम है।",
+        "video_motion_prompt": "कैमरा वैदिक पांडुलिपि से पुराण पृष्ठों पर स्वाइप करता है, तुलना दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस तुलना से हमें यह समझ आता है कि परंपरा और व्याख्या में अंतर क्यों होता है।",
-        "image_prompt": "A serene image of a temple courtyard at sunset, symbolizing the enduring legacy of both texts.",
-        "video_motion_prompt": "Slow dolly out from the temple courtyard, with a gentle upward tilt to the sky.",
+        "dialogue": "इससे स्पष्ट होता है कि काली देवी का महत्व वैदिक काल से ही रहा है, और यह प्राचीन परंपरा का हिस्सा है।",
+        "image_prompt": "काली देवी की प्राचीन पेंटिंग, वैदिक पांडुलिपि के पृष्ठ के साथ, परंपरा की निरंतरता दर्शाती है।",
+        "video_motion_prompt": "कैमरा पेंटिंग पर ज़ूम करता है, पृष्ठभूमि में वैदिक पांडुलिपि धीरे-धीरे फेड होती है।",
         "claim_refs": [
             "C1"
         ]

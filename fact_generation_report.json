@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "सिता का निर्वासन: वाल्मीकि बनाम तुलसीदास",
-    "title": "सिता का निर्वासन: वाल्मीकि रामायण बनाम रामचरितमानस",
+    "topic": "Early Vedic Worship of Goddess Kali",
+    "title": "काली की प्राचीन जड़ें: वैदिक ग्रंथों में छिपी कहानी",
     "total_scenes": 7,
-    "total_dialogue_words": 131,
+    "total_dialogue_words": 116,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

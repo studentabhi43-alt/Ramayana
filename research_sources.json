@@ -4,14 +4,9 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "वाल्मीकि रामायण",
-            "source_url": "https://www.sacred-texts.com/hin/ram/ram.htm",
-            "source_type": "primary text"
-        },
-        {
-            "source_name": "रामचरितमानस",
-            "source_url": "https://www.sacred-texts.com/hin/ramcharit/ramcharit.htm",
-            "source_type": "primary text"
+            "source_name": "Atharva Veda, translated by R. N. Dutt",
+            "source_url": "https://www.sacred-texts.com/hin/av/av01.htm",
+            "source_type": "primary text / translation"
         }
     ]
 }
