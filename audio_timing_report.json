@@ -2,81 +2,81 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 37.608,
+    "actual_total_audio_seconds": 26.976,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
-    "final_duration_within_target": true,
+    "final_duration_within_target": false,
     "scenes": [
         {
             "scene_id": "1",
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.744,
-            "difference_seconds": -3.256,
+            "actual_duration_seconds": 2.544,
+            "difference_seconds": -4.456,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि वैदिक ग्रंथों में भी काली देवी का उल्लेख मिलता है?"
+            "dialogue": "क्या आप जानते हैं कि राम वासुदेव हैं या नहीं सच?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.384,
-            "difference_seconds": -0.616,
+            "actual_duration_seconds": 3.816,
+            "difference_seconds": -3.184,
             "within_target": true,
-            "dialogue": "अथर्व वेद के 10.1.1 अध्याय में एक विशेष स्तुति काली के लिए समर्पित है।"
+            "dialogue": "वैल्मिकी रामायण में राम को वासुदेव के रूप में नहीं बताया गया है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.944,
-            "difference_seconds": -2.056,
+            "actual_duration_seconds": 4.776,
+            "difference_seconds": -2.224,
             "within_target": true,
-            "dialogue": "यह स्तुति काली को विनाश और पुनर्जन्म दोनों के रूप में वर्णित करती है।"
+            "dialogue": "तुलसीदास के रामचरितमानस में राम को वासुदेव के रूप में स्पष्ट रूप से कहा गया है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.816,
-            "difference_seconds": -3.184,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "वैदिक स्तुति में काली को एक शक्तिशाली देवी के रूप में माना गया है।"
+            "dialogue": "रामचरितमानस के कांड 3, दोहा 12 में यह स्पष्ट है कि राम"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.808,
-            "difference_seconds": -1.192,
+            "actual_duration_seconds": 3.984,
+            "difference_seconds": -3.016,
             "within_target": true,
-            "dialogue": "हालाँकि यह स्तुति एक ही स्थान पर है, परंतु यह काली की प्राचीन पूजा का संकेत देती है।"
+            "dialogue": "वैल्मिकी रामायण में कोई स्पष्ट द्योतक नहीं मिलता कि राम वासुदेव हैं।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.696,
-            "difference_seconds": -0.304,
+            "actual_duration_seconds": 3.744,
+            "difference_seconds": -3.256,
             "within_target": true,
-            "dialogue": "बाद के पुराणों में काली का विस्तार से वर्णन नहीं मिलता, पर वैदिक ग्रंथों में उसकी उपस्थिति स्पष्ट है।"
+            "dialogue": "यह अंतर दर्शाता है कि तत्त्वज्ञान और भक्ति परंपरा में बदलाव आया।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.216,
-            "difference_seconds": -0.784,
+            "actual_duration_seconds": 3.504,
+            "difference_seconds": -3.496,
             "within_target": true,
-            "dialogue": "इससे स्पष्ट होता है कि काली देवी का महत्व वैदिक काल से ही रहा है, और यह प्राचीन परंपरा का हिस्सा है।"
+            "dialogue": "दोनों ग्रंथों में राम का सम्मान है, पर दृष्टिकोण भिन्न है।"
         }
     ]
 }

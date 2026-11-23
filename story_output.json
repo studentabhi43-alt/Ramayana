@@ -6,11 +6,12 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि वैदिक ग्रंथों में भी काली देवी का उल्लेख मिलता है?",
-        "image_prompt": "पुरातन वैदिक पांडुलिपि के पन्ने, जिस पर काली के स्तुति का पाठ लिखा हुआ है।",
-        "video_motion_prompt": "कैमरा धीरे-धीरे पांडुलिपि पर ज़ूम करता है, पृष्ठ पर लिखे शब्दों को दिखाता है।",
+        "dialogue": "क्या आप जानते हैं कि राम वासुदेव हैं या नहीं सच?",
+        "image_prompt": "Ancient sandstone temple at dawn, soft light illuminating carvings of Rama and Sita, subtle aura of devotion.",
+        "video_motion_prompt": "Slow pan from temple entrance to interior, gentle rise of camera to reveal sunrise.",
         "claim_refs": [
-            "C1"
+            "C1",
+            "C2"
         ]
     },
     {
@@ -20,11 +21,12 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "अथर्व वेद के 10.1.1 अध्याय में एक विशेष स्तुति काली के लिए समर्पित है।",
-        "image_prompt": "अथर्व वेद के 10.1.1 के पृष्ठ पर काली के रूप में चित्रित एक देवी की रचना।",
-        "video_motion_prompt": "कैमरा पृष्ठ के ऊपर से धीरे-धीरे नीचे की ओर स्लाइड करता है, स्तुति के शब्दों को उजागर करता है।",
+        "dialogue": "वैल्मिकी रामायण में राम को वासुदेव के रूप में नहीं बताया गया है।",
+        "image_prompt": "Illustration of Valmiki Ramayana manuscript pages, with faded Sanskrit text, inked illustrations of Rama.",
+        "video_motion_prompt": "Zoom into manuscript page, slight tilt to reveal calligraphy.",
         "claim_refs": [
-            "C1"
+            "C1",
+            "C2"
         ]
     },
     {
@@ -34,9 +36,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह स्तुति काली को विनाश और पुनर्जन्म दोनों के रूप में वर्णित करती है।",
-        "image_prompt": "काली की एक प्राचीन चित्रकारी, जिसमें वह विनाश और पुनर्जन्म के प्रतीक के रूप में दिखाई देती हैं।",
-        "video_motion_prompt": "कैमरा चित्र पर ज़ूम करता है, काली के प्रतीकों को धीरे-धीरे उजागर करता है।",
+        "dialogue": "तुलसीदास के रामचरितमानस में राम को वासुदेव के रूप में स्पष्ट रूप से कहा गया है।",
+        "image_prompt": "Tulsidas's Ramcharitmanas manuscript with vibrant illustrations of Rama, surrounded by devotees.",
+        "video_motion_prompt": "Rotate 360° around the manuscript, highlighting the illustration of Rama.",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +50,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वैदिक स्तुति में काली को एक शक्तिशाली देवी के रूप में माना गया है।",
-        "image_prompt": "वैदिक पांडुलिपि के पृष्ठ पर काली को एक शक्तिशाली देवी के रूप में दर्शाया गया है।",
-        "video_motion_prompt": "कैमरा पृष्ठ पर घूमता है, काली के चित्र को उजागर करता है।",
+        "dialogue": "रामचरितमानस के कांड 3, दोहा 12 में यह स्पष्ट है कि राम",
+        "image_prompt": "Close-up of Ramcharitmanas page showing Kanda 3, Doha 12, with highlighted Sanskrit words.",
+        "video_motion_prompt": "Slow zoom into the highlighted words, then fade to black.",
         "claim_refs": [
             "C1"
         ]
@@ -62,11 +64,11 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "हालाँकि यह स्तुति एक ही स्थान पर है, परंतु यह काली की प्राचीन पूजा का संकेत देती है।",
-        "image_prompt": "वैदिक पांडुलिपि के पृष्ठ पर काली की पूजा के प्रतीक, जैसे कि फूल और धूप।",
-        "video_motion_prompt": "कैमरा पृष्ठ पर घूमता है, पूजा के प्रतीकों को धीरे-धीरे दिखाता है।",
+        "dialogue": "वैल्मिकी रामायण में कोई स्पष्ट द्योतक नहीं मिलता कि राम वासुदेव हैं।",
+        "image_prompt": "Valmiki Ramayana page with no explicit mention of Vishnu, only Rama's name.",
+        "video_motion_prompt": "Pan across the page, focusing on the absence of Vishnu's name.",
         "claim_refs": [
-            "C1"
+            "C2"
         ]
     },
     {
@@ -76,11 +78,12 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "बाद के पुराणों में काली का विस्तार से वर्णन नहीं मिलता, पर वैदिक ग्रंथों में उसकी उपस्थिति स्पष्ट है।",
-        "image_prompt": "पुराणों के पृष्ठों के साथ वैदिक पांडुलिपि की तुलना, जहाँ काली का उल्लेख कम है।",
-        "video_motion_prompt": "कैमरा वैदिक पांडुलिपि से पुराण पृष्ठों पर स्वाइप करता है, तुलना दिखाता है।",
+        "dialogue": "यह अंतर दर्शाता है कि तत्त्वज्ञान और भक्ति परंपरा में बदलाव आया।",
+        "image_prompt": "A split-screen of ancient Vedic scholars debating, one side with Valmiki, other with Tulsidas.",
+        "video_motion_prompt": "Crossfade between the two scholars, then merge into a single frame.",
         "claim_refs": [
-            "C1"
+            "C1",
+            "C2"
         ]
     },
     {
@@ -90,11 +93,12 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इससे स्पष्ट होता है कि काली देवी का महत्व वैदिक काल से ही रहा है, और यह प्राचीन परंपरा का हिस्सा है।",
-        "image_prompt": "काली देवी की प्राचीन पेंटिंग, वैदिक पांडुलिपि के पृष्ठ के साथ, परंपरा की निरंतरता दर्शाती है।",
-        "video_motion_prompt": "कैमरा पेंटिंग पर ज़ूम करता है, पृष्ठभूमि में वैदिक पांडुलिपि धीरे-धीरे फेड होती है।",
+        "dialogue": "दोनों ग्रंथों में राम का सम्मान है, पर दृष्टिकोण भिन्न है।",
+        "image_prompt": "A montage of modern devotees from different regions, all chanting Rama's name.",
+        "video_motion_prompt": "Fast montage of devotees, ending with a slow fade to the title.",
         "claim_refs": [
-            "C1"
+            "C1",
+            "C2"
         ]
     }
 ]
