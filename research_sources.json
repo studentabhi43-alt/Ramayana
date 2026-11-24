@@ -4,13 +4,13 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Ramcharitmanas",
-            "source_url": "https://www.vedabase.com/ramcharitmanas",
-            "source_type": "translation"
+            "source_name": "Bhavishya Purana",
+            "source_url": "https://www.sacred-texts.com/hin/bp/",
+            "source_type": "primary text"
         },
         {
-            "source_name": "Valmiki Ramayana",
-            "source_url": "https://www.vedabase.com/ramayana",
+            "source_name": "Mahabharata",
+            "source_url": "https://www.sacred-texts.com/hin/mh/",
             "source_type": "primary text"
         }
     ]

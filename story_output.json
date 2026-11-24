@@ -6,12 +6,11 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि राम वासुदेव हैं या नहीं सच?",
-        "image_prompt": "Ancient sandstone temple at dawn, soft light illuminating carvings of Rama and Sita, subtle aura of devotion.",
-        "video_motion_prompt": "Slow pan from temple entrance to interior, gentle rise of camera to reveal sunrise.",
+        "dialogue": "क्या आपने कभी सुना है कि वैष्णव का जन्म एक सपने से हुआ था?",
+        "image_prompt": "Ancient manuscript page with Sanskrit text, faintly illuminated by candlelight, showing a dreamlike scene.",
+        "video_motion_prompt": "Slow pan across the manuscript, gentle zoom on the highlighted verse.",
         "claim_refs": [
-            "C1",
-            "C2"
+            "C1"
         ]
     },
     {
@@ -21,12 +20,11 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वैल्मिकी रामायण में राम को वासुदेव के रूप में नहीं बताया गया है।",
-        "image_prompt": "Illustration of Valmiki Ramayana manuscript pages, with faded Sanskrit text, inked illustrations of Rama.",
-        "video_motion_prompt": "Zoom into manuscript page, slight tilt to reveal calligraphy.",
+        "dialogue": "भव्यश्वरी पुराण के अनुसार, सृष्टि की देवी सरस्वती ने एक स्वप्न में वैष्णव को जन्म दिया।",
+        "image_prompt": "Illustration of goddess Saraswati with a luminous aura, surrounded by swirling dream motifs.",
+        "video_motion_prompt": "Camera slowly circles the illustration, highlighting the goddess's serene expression.",
         "claim_refs": [
-            "C1",
-            "C2"
+            "C1"
         ]
     },
     {
@@ -36,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "तुलसीदास के रामचरितमानस में राम को वासुदेव के रूप में स्पष्ट रूप से कहा गया है।",
-        "image_prompt": "Tulsidas's Ramcharitmanas manuscript with vibrant illustrations of Rama, surrounded by devotees.",
-        "video_motion_prompt": "Rotate 360° around the manuscript, highlighting the illustration of Rama.",
+        "dialogue": "इस कथा में वैष्णव को एक पवित्र स्वप्न के रूप में वर्णित किया गया है, जो अन्य ग्रंथों में नहीं मिलता।",
+        "image_prompt": "A parchment depicting a dreamscape, with subtle symbols of knowledge and creation.",
+        "video_motion_prompt": "Fade in from black to the parchment, then a gentle zoom to the central motif.",
         "claim_refs": [
             "C1"
         ]
@@ -50,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "रामचरितमानस के कांड 3, दोहा 12 में यह स्पष्ट है कि राम",
-        "image_prompt": "Close-up of Ramcharitmanas page showing Kanda 3, Doha 12, with highlighted Sanskrit words.",
-        "video_motion_prompt": "Slow zoom into the highlighted words, then fade to black.",
+        "dialogue": "इसके विपरीत, महाभारत में वैष्णव के जन्म की कोई सपनीली कहानी नहीं है।",
+        "image_prompt": "Page from Mahabharata with a simple illustration of Vyasa, no dream motif.",
+        "video_motion_prompt": "Camera pans across the page, focusing on Vyasa's portrait.",
         "claim_refs": [
             "C1"
         ]
@@ -64,11 +62,11 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "वैल्मिकी रामायण में कोई स्पष्ट द्योतक नहीं मिलता कि राम वासुदेव हैं।",
-        "image_prompt": "Valmiki Ramayana page with no explicit mention of Vishnu, only Rama's name.",
-        "video_motion_prompt": "Pan across the page, focusing on the absence of Vishnu's name.",
+        "dialogue": "यह अंतर हमें बताता है कि प्राचीन ग्रंथों में किस प्रकार की विविधता पाई जाती है।",
+        "image_prompt": "Collage of various ancient Indian manuscripts, each with unique artistic styles.",
+        "video_motion_prompt": "Slow crossfade between manuscripts, highlighting differences.",
         "claim_refs": [
-            "C2"
+            "C1"
         ]
     },
     {
@@ -78,12 +76,11 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह अंतर दर्शाता है कि तत्त्वज्ञान और भक्ति परंपरा में बदलाव आया।",
-        "image_prompt": "A split-screen of ancient Vedic scholars debating, one side with Valmiki, other with Tulsidas.",
-        "video_motion_prompt": "Crossfade between the two scholars, then merge into a single frame.",
+        "dialogue": "इस प्रकार, भव्यश्वरी पुराण हमें वैष्णव के जन्म के एक अनोखे पहलू से परिचित कराता है।",
+        "image_prompt": "Illustration of Vyasa emerging from a dream cloud, surrounded by symbols of wisdom.",
+        "video_motion_prompt": "Camera slowly zooms into the dream cloud, revealing Vyasa's form.",
         "claim_refs": [
-            "C1",
-            "C2"
+            "C1"
         ]
     },
     {
@@ -93,12 +90,11 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "दोनों ग्रंथों में राम का सम्मान है, पर दृष्टिकोण भिन्न है।",
-        "image_prompt": "A montage of modern devotees from different regions, all chanting Rama's name.",
-        "video_motion_prompt": "Fast montage of devotees, ending with a slow fade to the title.",
+        "dialogue": "अंत में, यह हमें याद दिलाता है कि हर ग्रंथ अपनी अनूठी कहानी बताता है।",
+        "image_prompt": "A closing shot of a stack of ancient scrolls, symbolizing diverse narratives.",
+        "video_motion_prompt": "Slow zoom out to reveal the stack, then fade to black.",
         "claim_refs": [
-            "C1",
-            "C2"
+            "C1"
         ]
     }
 ]
