@@ -3,10 +3,10 @@
     "status": "SUCCESS",
     "winner": "GROQ",
     "winning_model": "openai/gpt-oss-20b",
-    "topic": "Vyasa's Dream Birth: A Hidden Detail in the Bhavishya Purana",
-    "title": "क्या वैदिक ग्रंथों में वैष्णव के जन्म का रहस्य छिपा है?",
+    "topic": "कुंवारी: महाभारत की अनुष्ठान परवा में छिपा हुआ रहस्य",
+    "title": "क्या है कुंवारी? महाभारत की अनुष्ठान परवा में छिपा हुआ रहस्य",
     "total_scenes": 7,
-    "total_dialogue_words": 111,
+    "total_dialogue_words": 103,
     "source_verification": "AI-generated source suggestions; not independently verified by Google Search.",
     "output_file": "story_output.json",
     "research_file": "research_sources.json"

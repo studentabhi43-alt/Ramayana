@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 34.968,
+    "actual_total_audio_seconds": 31.656,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.296,
-            "difference_seconds": -2.704,
+            "actual_duration_seconds": 4.704,
+            "difference_seconds": -2.296,
             "within_target": true,
-            "dialogue": "क्या आपने कभी सुना है कि वैष्णव का जन्म एक सपने से हुआ था?"
+            "dialogue": "क्या आप जानते हैं कि महाभारत में एक महिला है जो पांडवों की पुत्री होने का दावा करती है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.216,
-            "difference_seconds": -0.784,
+            "actual_duration_seconds": 6.768,
+            "difference_seconds": -0.232,
             "within_target": true,
-            "dialogue": "भव्यश्वरी पुराण के अनुसार, सृष्टि की देवी सरस्वती ने एक स्वप्न में वैष्णव को जन्म दिया।"
+            "dialogue": "यह कहानी अनुष्ठान परवा के सत्तरवें अध्याय में मिलती है, जहाँ युधिष्ठिर उससे मिलता है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.976,
-            "difference_seconds": -1.024,
+            "actual_duration_seconds": 3.816,
+            "difference_seconds": -3.184,
             "within_target": true,
-            "dialogue": "इस कथा में वैष्णव को एक पवित्र स्वप्न के रूप में वर्णित किया गया है, जो अन्य ग्रंथों में नहीं मिलता।"
+            "dialogue": "कुंवारी का नाम है और वह दावा करती है कि वह पांडवों की पुत्री है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.576,
-            "difference_seconds": -3.424,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "इसके विपरीत, महाभारत में वैष्णव के जन्म की कोई सपनीली कहानी नहीं है।"
+            "dialogue": "युधिष्ठिर उसे सुनते हैं, परंतु वह उसकी पहचान पर संदेह करते हैं।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.224,
-            "difference_seconds": -2.776,
+            "actual_duration_seconds": 3.336,
+            "difference_seconds": -3.664,
             "within_target": true,
-            "dialogue": "यह अंतर हमें बताता है कि प्राचीन ग्रंथों में किस प्रकार की विविधता पाई जाती है।"
+            "dialogue": "कथा में यह स्पष्ट नहीं किया गया कि वह वास्तव में पांडवों की पुत्री है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.456,
-            "difference_seconds": -0.544,
+            "actual_duration_seconds": 4.368,
+            "difference_seconds": -2.632,
             "within_target": true,
-            "dialogue": "इस प्रकार, भव्यश्वरी पुराण हमें वैष्णव के जन्म के एक अनोखे पहलू से परिचित कराता है।"
+            "dialogue": "यह कहानी हमें महाभारत के साहित्यिक परिप्रेक्ष्य को समझने में मदद करती है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.224,
-            "difference_seconds": -2.776,
+            "actual_duration_seconds": 4.056,
+            "difference_seconds": -2.944,
             "within_target": true,
-            "dialogue": "अंत में, यह हमें याद दिलाता है कि हर ग्रंथ अपनी अनूठी कहानी बताता है।"
+            "dialogue": "तो अगली बार जब आप महाभारत पढ़ें, तो इस रोचक कथानक पर ध्यान दें।"
         }
     ]
 }
