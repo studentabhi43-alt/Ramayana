@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 31.656,
+    "actual_total_audio_seconds": 34.368,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.704,
-            "difference_seconds": -2.296,
+            "actual_duration_seconds": 4.848,
+            "difference_seconds": -2.152,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि महाभारत में एक महिला है जो पांडवों की पुत्री होने का दावा करती है?"
+            "dialogue": "क्या आप जानते हैं कि भगवान कृष्ण की माँ यशोदा को एक दिव्य आवाज़ ने भविष्यवाणी की थी?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.768,
-            "difference_seconds": -0.232,
+            "actual_duration_seconds": 4.368,
+            "difference_seconds": -2.632,
             "within_target": true,
-            "dialogue": "यह कहानी अनुष्ठान परवा के सत्तरवें अध्याय में मिलती है, जहाँ युधिष्ठिर उससे मिलता है।"
+            "dialogue": "ब्रह्माण्डीय कथा में, यशोदा को यह संदेश मिला कि कृष्ण एक महान राजा बनेगा।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.816,
-            "difference_seconds": -3.184,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "कुंवारी का नाम है और वह दावा करती है कि वह पांडवों की पुत्री है।"
+            "dialogue": "यह कथन भगवद् पुराण के तीसरे भाग, प्रथम अध्याय, चौथे श्लोक में मिलता है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.608,
-            "difference_seconds": -2.392,
+            "actual_duration_seconds": 4.536,
+            "difference_seconds": -2.464,
             "within_target": true,
-            "dialogue": "युधिष्ठिर उसे सुनते हैं, परंतु वह उसकी पहचान पर संदेह करते हैं।"
+            "dialogue": "यह श्लोक मूल संस्कृत में लिखा गया है, इसलिए यह प्राथमिक स्रोत है।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.336,
-            "difference_seconds": -3.664,
+            "actual_duration_seconds": 5.016,
+            "difference_seconds": -1.984,
             "within_target": true,
-            "dialogue": "कथा में यह स्पष्ट नहीं किया गया कि वह वास्तव में पांडवों की पुत्री है।"
+            "dialogue": "पर यह केवल भविष्यवाणी है, वास्तविक इतिहास में यह सत्य हुआ या नहीं, यह अलग बात है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.368,
-            "difference_seconds": -2.632,
+            "actual_duration_seconds": 4.704,
+            "difference_seconds": -2.296,
             "within_target": true,
-            "dialogue": "यह कहानी हमें महाभारत के साहित्यिक परिप्रेक्ष्य को समझने में मदद करती है।"
+            "dialogue": "अन्य ग्रंथों में इस भविष्यवाणी का उल्लेख नहीं मिलता, जिससे यह अनोखा बनता है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.056,
-            "difference_seconds": -2.944,
+            "actual_duration_seconds": 6.288,
+            "difference_seconds": -0.712,
             "within_target": true,
-            "dialogue": "तो अगली बार जब आप महाभारत पढ़ें, तो इस रोचक कथानक पर ध्यान दें।"
+            "dialogue": "इस प्रकार, भगवद् पुराण हमें एक अनोखी झलक देता है, पर हमें इतिहास के साथ संतुलित रहना चाहिए।"
         }
     ]
 }

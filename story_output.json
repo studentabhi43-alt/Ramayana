@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि महाभारत में एक महिला है जो पांडवों की पुत्री होने का दावा करती है?",
-        "image_prompt": "Ancient Sanskrit manuscript of Mahabharata, close-up of a page with a woman illustration.",
-        "video_motion_prompt": "slow zoom into manuscript, gentle pan across illustration.",
+        "dialogue": "क्या आप जानते हैं कि भगवान कृष्ण की माँ यशोदा को एक दिव्य आवाज़ ने भविष्यवाणी की थी?",
+        "image_prompt": "एक प्राचीन पांडुलिपि के पन्ने पर यशोदा की चित्रित आकृति, पृष्ठभूमि में धुंधली प्रकाश।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पांडुलिपि के पन्ने पर ज़ूम करता है, पृष्ठभूमि में हल्की धुंध।",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह कहानी अनुष्ठान परवा के सत्तरवें अध्याय में मिलती है, जहाँ युधिष्ठिर उससे मिलता है।",
-        "image_prompt": "Illustration of Yudhishthira listening to a woman in a forest setting.",
-        "video_motion_prompt": "camera pans from Yudhishthira to the woman, soft focus.",
+        "dialogue": "ब्रह्माण्डीय कथा में, यशोदा को यह संदेश मिला कि कृष्ण एक महान राजा बनेगा।",
+        "image_prompt": "यशोदा की शांत मुद्रा, हाथ में एक दिव्य प्रकाश की रश्मि, पृष्ठभूमि में एक मंदिर।",
+        "video_motion_prompt": "कैमरा हल्का पैन करता है, प्रकाश की रश्मि को उजागर करता है।",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "कुंवारी का नाम है और वह दावा करती है कि वह पांडवों की पुत्री है।",
-        "image_prompt": "Portrait of a young woman with a thoughtful expression, ancient backdrop.",
-        "video_motion_prompt": "slow zoom in on the woman's face, subtle light shift.",
+        "dialogue": "यह कथन भगवद् पुराण के तीसरे भाग, प्रथम अध्याय, चौथे श्लोक में मिलता है।",
+        "image_prompt": "भगवद् पुराण के पन्ने पर लिखा हुआ श्लोक, पृष्ठभूमि में प्राचीन लेखन शैली।",
+        "video_motion_prompt": "कैमरा पन्ने पर फोकस करता है, श्लोक को धीरे-धीरे दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "युधिष्ठिर उसे सुनते हैं, परंतु वह उसकी पहचान पर संदेह करते हैं।",
-        "image_prompt": "Yudhishthira with a contemplative expression, listening to the woman.",
-        "video_motion_prompt": "camera shifts between Yudhishthira and the woman, slight tilt.",
+        "dialogue": "यह श्लोक मूल संस्कृत में लिखा गया है, इसलिए यह प्राथमिक स्रोत है।",
+        "image_prompt": "संस्कृत श्लोक का चित्र, पृष्ठभूमि में प्राचीन भारतीय लेखन कला।",
+        "video_motion_prompt": "कैमरा पैन करता है, श्लोक के अक्षरों को ज़ूम करता है।",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "कथा में यह स्पष्ट नहीं किया गया कि वह वास्तव में पांडवों की पुत्री है।",
-        "image_prompt": "Open page of Mahabharata with faded text, symbolizing ambiguity.",
-        "video_motion_prompt": "soft fade to black and back, highlighting the text.",
+        "dialogue": "पर यह केवल भविष्यवाणी है, वास्तविक इतिहास में यह सत्य हुआ या नहीं, यह अलग बात है।",
+        "image_prompt": "इतिहास की किताबों के पन्ने, एक खुला पृष्ठ, पृष्ठभूमि में धुंधली पृष्ठभूमि।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पृष्ठ पर ज़ूम करता है, पृष्ठभूमि में धुंध।",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह कहानी हमें महाभारत के साहित्यिक परिप्रेक्ष्य को समझने में मदद करती है।",
-        "image_prompt": "Illustrated scroll of Mahabharata with symbolic motifs.",
-        "video_motion_prompt": "slow pan across scroll, revealing motifs.",
+        "dialogue": "अन्य ग्रंथों में इस भविष्यवाणी का उल्लेख नहीं मिलता, जिससे यह अनोखा बनता है।",
+        "image_prompt": "अन्य पुराणों के पन्ने, पृष्ठभूमि में एक खुला पृष्ठ, तुलना के लिए।",
+        "video_motion_prompt": "कैमरा पैन करता है, पृष्ठों के बीच तुलना दिखाता है।",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "तो अगली बार जब आप महाभारत पढ़ें, तो इस रोचक कथानक पर ध्यान दें।",
-        "image_prompt": "Close-up of a hand turning pages of Mahabharata, light illuminating the text.",
-        "video_motion_prompt": "hand turns page, camera follows the motion.",
+        "dialogue": "इस प्रकार, भगवद् पुराण हमें एक अनोखी झलक देता है, पर हमें इतिहास के साथ संतुलित रहना चाहिए।",
+        "image_prompt": "एक संतुलित दृश्य, इतिहास की पुस्तक और भगवद् पुराण के पन्ने साथ-साथ।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे ज़ूम आउट करता है, दोनों पन्नों को दिखाता है।",
         "claim_refs": [
             "C1"
         ]
