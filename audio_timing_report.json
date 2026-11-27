@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 34.368,
+    "actual_total_audio_seconds": 37.032,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.848,
-            "difference_seconds": -2.152,
+            "actual_duration_seconds": 4.944,
+            "difference_seconds": -2.056,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि भगवान कृष्ण की माँ यशोदा को एक दिव्य आवाज़ ने भविष्यवाणी की थी?"
+            "dialogue": "क्या आप जानते हैं कि महाभारत में भिश्म और विदुर के बीच मोक्ष पर एक अनकहा संवाद है?"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.368,
-            "difference_seconds": -2.632,
+            "actual_duration_seconds": 5.496,
+            "difference_seconds": -1.504,
             "within_target": true,
-            "dialogue": "ब्रह्माण्डीय कथा में, यशोदा को यह संदेश मिला कि कृष्ण एक महान राजा बनेगा।"
+            "dialogue": "यह संवाद अनुषासन अध्याय में मिलता है, जहाँ भिश्म विदुर को मोक्ष का अर्थ बताते हैं।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.608,
-            "difference_seconds": -2.392,
+            "actual_duration_seconds": 4.776,
+            "difference_seconds": -2.224,
             "within_target": true,
-            "dialogue": "यह कथन भगवद् पुराण के तीसरे भाग, प्रथम अध्याय, चौथे श्लोक में मिलता है।"
+            "dialogue": "भगवद् पुराण में इसी विषय पर ऐसा कोई संवाद नहीं मिलता, जिससे पाठ्य भिन्नता स्पष्ट होती है।"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.536,
-            "difference_seconds": -2.464,
+            "actual_duration_seconds": 6.624,
+            "difference_seconds": -0.376,
             "within_target": true,
-            "dialogue": "यह श्लोक मूल संस्कृत में लिखा गया है, इसलिए यह प्राथमिक स्रोत है।"
+            "dialogue": "यह संवाद मोक्ष की व्याख्या को गहरा करता है, भिश्म की ज्ञानवर्धक शिक्षाओं को उजागर करता है।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.016,
-            "difference_seconds": -1.984,
+            "actual_duration_seconds": 5.568,
+            "difference_seconds": -1.432,
             "within_target": true,
-            "dialogue": "पर यह केवल भविष्यवाणी है, वास्तविक इतिहास में यह सत्य हुआ या नहीं, यह अलग बात है।"
+            "dialogue": "चित्र: महाभारत के अनुषासन परा के पृष्ठ, भिश्म और विदुर के चित्रण के साथ।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.704,
-            "difference_seconds": -2.296,
+            "actual_duration_seconds": 6.456,
+            "difference_seconds": -0.544,
             "within_target": true,
-            "dialogue": "अन्य ग्रंथों में इस भविष्यवाणी का उल्लेख नहीं मिलता, जिससे यह अनोखा बनता है।"
+            "dialogue": "इस प्रकार, महाभारत और भगवद् पुराण के बीच यह भिन्नता हमें पाठ्य परंपराओं की समृद्धि दिखाती है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.288,
-            "difference_seconds": -0.712,
+            "actual_duration_seconds": 3.168,
+            "difference_seconds": -3.832,
             "within_target": true,
-            "dialogue": "इस प्रकार, भगवद् पुराण हमें एक अनोखी झलक देता है, पर हमें इतिहास के साथ संतुलित रहना चाहिए।"
+            "dialogue": "अधिक रोचक पौराणिक कथाओं के लिए हमारे चैनल को सब्सक्राइब करें!"
         }
     ]
 }

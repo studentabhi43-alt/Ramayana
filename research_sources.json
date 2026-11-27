@@ -4,8 +4,13 @@
     "verification_status": "AI-generated source suggestions; not independently verified by Google Search.",
     "sources": [
         {
-            "source_name": "Bhagavata Purana (Sanskrit) – Bhagavata Publication Society",
-            "source_url": "https://www.bhagavata.org",
+            "source_name": "Mahabharata (Anushasana Parva)",
+            "source_url": "https://www.sacred-texts.com/hin/mha/index.htm",
+            "source_type": "primary text"
+        },
+        {
+            "source_name": "Bhagavata Purana (Canto 1)",
+            "source_url": "https://www.sacred-texts.com/hin/bpv/index.htm",
             "source_type": "primary text"
         }
     ]
