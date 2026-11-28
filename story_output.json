@@ -6,9 +6,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 1, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "क्या आप जानते हैं कि महाभारत में भिश्म और विदुर के बीच मोक्ष पर एक अनकहा संवाद है?",
-        "image_prompt": "Ancient manuscript of Mahabharata with a close-up of Anushasana Parva page, inked Sanskrit text, parchment background.",
-        "video_motion_prompt": "Slow pan from left to right across the manuscript page.",
+        "dialogue": "महाभारत के अनुषासन परव में माया का पहला स्पष्ट उल्लेख मिलता है।",
+        "image_prompt": "पुरातन पांडुलिपि का क्लोज़‑अप, जिसमें महाभारत के अनुषासन परव के पन्ने दिखाई दें।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पन्ने पर ज़ूम करता है, पृष्ठभूमि में हल्की धुंधली ध्वनि।",
         "claim_refs": [
             "C1"
         ]
@@ -20,9 +20,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 2, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह संवाद अनुषासन अध्याय में मिलता है, जहाँ भिश्म विदुर को मोक्ष का अर्थ बताते हैं।",
-        "image_prompt": "Illustration of Bhishma and Vidura seated in a traditional Indian setting, with a scroll in front.",
-        "video_motion_prompt": "Camera zooms in on Bhishma and Vidura illustration.",
+        "dialogue": "माया को 'भ्रम' के रूप में परिभाषित किया गया है, जो वास्तविकता को ढकता है।",
+        "image_prompt": "माया की अवधारणा को दर्शाती एक कलात्मक चित्रण, जिसमें प्रकाश और छाया का खेल दिखाया गया हो।",
+        "video_motion_prompt": "कैमरा हल्का पैन करता है, प्रकाश की किरणें धीरे-धीरे छाया में बदलती हैं।",
         "claim_refs": [
             "C1"
         ]
@@ -34,9 +34,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 3, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "भगवद् पुराण में इसी विषय पर ऐसा कोई संवाद नहीं मिलता, जिससे पाठ्य भिन्नता स्पष्ट होती है।",
-        "image_prompt": "Side‑by‑side comparison of Mahabharata and Bhagavata Purana manuscripts, highlighting differences.",
-        "video_motion_prompt": "Split‑screen slide transition between two manuscripts.",
+        "dialogue": "अनुषासन परव के अध्याय 8 में यह स्पष्ट रूप से लिखा है, 'माया है भ्रम का स्रोत्र।'",
+        "image_prompt": "अनुषासन परव के पृष्ठ का डिजिटल स्कैन, जिसमें प्रमुख वाक्यांश हाइलाइट किया गया हो।",
+        "video_motion_prompt": "स्कैन पर ज़ूम इन, हाइलाइटेड टेक्स्ट पर फोकस।",
         "claim_refs": [
             "C1"
         ]
@@ -48,9 +48,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 4, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "यह संवाद मोक्ष की व्याख्या को गहरा करता है, भिश्म की ज्ञानवर्धक शिक्षाओं को उजागर करता है।",
-        "image_prompt": "Close‑up of Bhishma's hand pointing to a diagram of Moksha concept.",
-        "video_motion_prompt": "Hand gesture animation pointing to diagram.",
+        "dialogue": "वैदिक साहित्य में माया का उल्लेख है, परंतु यह परिभाषा नहीं मिलती।",
+        "image_prompt": "वेदों के प्राचीन पांडुलिपि के पन्ने, जिसमें माया शब्द के संदर्भ दिखें।",
+        "video_motion_prompt": "कैमरा पन्ने पर धीरे-धीरे पैन करता है, पृष्ठभूमि में शास्त्रीय संगीत।",
         "claim_refs": [
             "C1"
         ]
@@ -62,9 +62,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 5, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "चित्र: महाभारत के अनुषासन परा के पृष्ठ, भिश्म और विदुर के चित्रण के साथ।",
-        "image_prompt": "A high‑resolution image of a Mahabharata page showing the dialogue, with a subtle overlay of a golden aura.",
-        "video_motion_prompt": "Zoom in on dialogue text with a subtle glow.",
+        "dialogue": "इस परिभाषा से दर्शन में नया आयाम जुड़ता है, जो बाद के उपनिषदों में भी मिलता है।",
+        "image_prompt": "उपनिषदों के पृष्ठों का कलात्मक चित्रण, जिसमें माया का उल्लेख दिखाया गया हो।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे पृष्ठों के बीच पैन करता है, पृष्ठभूमि में शास्त्रीय धुन।",
         "claim_refs": [
             "C1"
         ]
@@ -76,9 +76,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 6, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "इस प्रकार, महाभारत और भगवद् पुराण के बीच यह भिन्नता हमें पाठ्य परंपराओं की समृद्धि दिखाती है।",
-        "image_prompt": "A montage of ancient manuscripts and modern scholars studying the texts.",
-        "video_motion_prompt": "Fade to montage of scholars.",
+        "dialogue": "महाभारत की यह परिभाषा हमें माया के वास्तविक अर्थ को समझने में मदद करती है।",
+        "image_prompt": "ध्यानस्थ मनुष्य की छवि, जिसके चारों ओर माया के प्रतीकात्मक प्रकाश की रेखाएँ हों।",
+        "video_motion_prompt": "कैमरा धीरे-धीरे व्यक्ति के चारों ओर घूमता है, प्रकाश की रेखाएँ फैलती हैं।",
         "claim_refs": [
             "C1"
         ]
@@ -90,9 +90,9 @@
         "target_duration_seconds": 7,
         "scene_time_description": "Scene 7, approximately 7 seconds",
         "visible_characters": [],
-        "dialogue": "अधिक रोचक पौराणिक कथाओं के लिए हमारे चैनल को सब्सक्राइब करें!",
-        "image_prompt": "Animated logo of the channel with a subtle background of Sanskrit script.",
-        "video_motion_prompt": "Fade in channel logo.",
+        "dialogue": "इस प्रकार, महाभारत माया की परिभाषा के साथ दर्शन को समृद्ध करता है।",
+        "image_prompt": "सूर्यास्त के समय एक प्राचीन मंदिर का दृश्य, जिसमें शास्त्रीय संगीत बज रहा हो।",
+        "video_motion_prompt": "कैमरा मंदिर के ऊपर से नीचे तक पैन करता है, पृष्ठभूमि में हल्की ध्वनि।",
         "claim_refs": [
             "C1"
         ]

@@ -2,7 +2,7 @@
     "engine": "BADSAH AUDIO ENGINE",
     "scene_count": 7,
     "planned_total_seconds": 49.0,
-    "actual_total_audio_seconds": 37.032,
+    "actual_total_audio_seconds": 32.304,
     "final_target_min_seconds": 30,
     "final_target_max_seconds": 55,
     "all_scenes_within_target": true,
@@ -13,70 +13,70 @@
             "audio_file": "audio_files/scene_1.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.944,
-            "difference_seconds": -2.056,
+            "actual_duration_seconds": 5.088,
+            "difference_seconds": -1.912,
             "within_target": true,
-            "dialogue": "क्या आप जानते हैं कि महाभारत में भिश्म और विदुर के बीच मोक्ष पर एक अनकहा संवाद है?"
+            "dialogue": "महाभारत के अनुषासन परव में माया का पहला स्पष्ट उल्लेख मिलता है।"
         },
         {
             "scene_id": "2",
             "audio_file": "audio_files/scene_2.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.496,
-            "difference_seconds": -1.504,
+            "actual_duration_seconds": 4.296,
+            "difference_seconds": -2.704,
             "within_target": true,
-            "dialogue": "यह संवाद अनुषासन अध्याय में मिलता है, जहाँ भिश्म विदुर को मोक्ष का अर्थ बताते हैं।"
+            "dialogue": "माया को 'भ्रम' के रूप में परिभाषित किया गया है, जो वास्तविकता को ढकता है।"
         },
         {
             "scene_id": "3",
             "audio_file": "audio_files/scene_3.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 4.776,
-            "difference_seconds": -2.224,
+            "actual_duration_seconds": 5.424,
+            "difference_seconds": -1.576,
             "within_target": true,
-            "dialogue": "भगवद् पुराण में इसी विषय पर ऐसा कोई संवाद नहीं मिलता, जिससे पाठ्य भिन्नता स्पष्ट होती है।"
+            "dialogue": "अनुषासन परव के अध्याय 8 में यह स्पष्ट रूप से लिखा है, 'माया है भ्रम का स्रोत्र।'"
         },
         {
             "scene_id": "4",
             "audio_file": "audio_files/scene_4.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.624,
-            "difference_seconds": -0.376,
+            "actual_duration_seconds": 3.408,
+            "difference_seconds": -3.592,
             "within_target": true,
-            "dialogue": "यह संवाद मोक्ष की व्याख्या को गहरा करता है, भिश्म की ज्ञानवर्धक शिक्षाओं को उजागर करता है।"
+            "dialogue": "वैदिक साहित्य में माया का उल्लेख है, परंतु यह परिभाषा नहीं मिलती।"
         },
         {
             "scene_id": "5",
             "audio_file": "audio_files/scene_5.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 5.568,
-            "difference_seconds": -1.432,
+            "actual_duration_seconds": 5.184,
+            "difference_seconds": -1.816,
             "within_target": true,
-            "dialogue": "चित्र: महाभारत के अनुषासन परा के पृष्ठ, भिश्म और विदुर के चित्रण के साथ।"
+            "dialogue": "इस परिभाषा से दर्शन में नया आयाम जुड़ता है, जो बाद के उपनिषदों में भी मिलता है।"
         },
         {
             "scene_id": "6",
             "audio_file": "audio_files/scene_6.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 6.456,
-            "difference_seconds": -0.544,
+            "actual_duration_seconds": 4.296,
+            "difference_seconds": -2.704,
             "within_target": true,
-            "dialogue": "इस प्रकार, महाभारत और भगवद् पुराण के बीच यह भिन्नता हमें पाठ्य परंपराओं की समृद्धि दिखाती है।"
+            "dialogue": "महाभारत की यह परिभाषा हमें माया के वास्तविक अर्थ को समझने में मदद करती है।"
         },
         {
             "scene_id": "7",
             "audio_file": "audio_files/scene_7.mp3",
             "provider": "Sarvam",
             "target_duration_seconds": 7.0,
-            "actual_duration_seconds": 3.168,
-            "difference_seconds": -3.832,
+            "actual_duration_seconds": 4.608,
+            "difference_seconds": -2.392,
             "within_target": true,
-            "dialogue": "अधिक रोचक पौराणिक कथाओं के लिए हमारे चैनल को सब्सक्राइब करें!"
+            "dialogue": "इस प्रकार, महाभारत माया की परिभाषा के साथ दर्शन को समृद्ध करता है।"
         }
     ]
 }
